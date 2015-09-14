@@ -67,7 +67,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'manual_name'     => 'manual',
 			'type_name'       => 'type',
 			'singular'        => __( 'Slider', 'nivo-slider' ),
-			'plural'          => __( 'Sliders', 'nivo-slider' )
+			'plural'          => __( 'Sliders', 'nivo-slider' ),
 		);
 		$this->post_type = $this->labels['post_type'];
 
@@ -96,6 +96,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 		add_filter( $this->post_type . '_shortcode_styles', array( $this, 'shortcode_styles' ) );
 		add_filter( $this->post_type . '_shortcode_styles_enqueue', array( $this, 'shortcode_styles_enqueue' ), 10, 2 );
 		add_filter( $this->post_type . '_shortcode_output', array( $this, 'shortcode_output' ), 10, 5 );
+		add_filter( $this->post_type . '_get_image_sources', array( $this, 'get_image_sources' ) );
 	}
 
 	/**
@@ -107,13 +108,14 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 	private function add_actions() {
 		add_action( 'admin_menu', array( $this, 'remove_settings_menu' ), 11 );
 		add_action( $this->post_type . '_admin_scripts', array( $this, 'admin_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
+		add_action( $this->post_type . '_manual_type_description', array( $this, 'manual_type_description' ) );
 	}
 
 	/**
 	 * Remove the settings page for the Lite plugin
 	 */
-	public function remove_settings_menu()
-	{
+	public function remove_settings_menu() {
 		remove_submenu_page( 'edit.php?post_type=' . $this->post_type, 'nivoslider-settings' );
 	}
 
@@ -124,13 +126,17 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 	 * @access public
 	 */
 	public function admin_scripts() {
-		wp_register_script(
-			$this->post_type . '-admin', plugins_url( 'assets/js/admin.js', dirname( __FILE__ ) ), array(
-				'jquery',
-				$this->post_type . '-core-admin'
-			)
-		);
+		wp_register_script( $this->post_type . '-admin', plugins_url( 'assets/js/admin.js', dirname( __FILE__ ) ), array(
+			'jquery',
+			$this->post_type . '-core-admin',
+		), $this->version );
 		wp_enqueue_script( $this->post_type . '-admin' );
+	}
+
+	public function admin_styles()
+	{
+		wp_register_style( $this->post_type . '-admin', plugins_url( 'assets/css/admin.css', dirname( __FILE__ ) ), array(), $this->version );
+		wp_enqueue_style( $this->post_type . '-admin' );
 	}
 
 	/**
@@ -177,7 +183,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 		$styles = array();
 		$themes = $this->get_themes();
 		foreach ( $themes as $theme ) {
-			$styles['nivoslider-theme-' . $theme['theme_name']] = $theme['theme_url'];
+			$styles[ 'nivoslider-theme-' . $theme['theme_name'] ] = $theme['theme_url'];
 		}
 
 		return $styles;
@@ -200,7 +206,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			foreach ( $styles as $name => $url ) {
 				if ( substr( $name, 0, 17 ) == 'nivoslider-theme-' ) {
 					if ( $name != $slider_theme ) {
-						unset( $styles[$name] );
+						unset( $styles[ $name ] );
 					}
 				}
 			}
@@ -343,7 +349,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'title'    => __( 'Enable Captions', 'nivo-slider' ),
 			'descp'    => __( 'Enable automatic captions from post titles', 'nivo-slider' ),
 			'sub'      => true,
-			'tr_class' => 'dev7_captions'
+			'tr_class' => 'dev7_captions',
 		);
 		$settings[] = array(
 			'name'     => 'number_images',
@@ -353,18 +359,17 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'descp'    => __( 'The number of images to use in the slider. Leave blank for all images. External sources default to 20', 'nivo-slider' ),
 			'sub'      => true,
 			'tr_class' => 'dev7_non_manual',
-			'reload'   => true
+			'reload'   => true,
 		);
 		$settings[] = array(
 			'name'    => 'sizing',
-			'default' => 'responsive',
+			'default' => 'fixed',
 			'type'    => 'select',
 			'title'   => __( 'Slider Sizing', 'nivo-slider' ),
-			'descp'   => __( 'Responsive sliders will fill the width of the container', 'nivo-slider' ),
+			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Create fully <strong>responsive</strong> sliders.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=size_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
 			'options' => array(
-				'responsive' => __( 'Responsive', 'nivo-slider' ),
-				'fixed'      => __( 'Fixed Size', 'nivo-slider' )
-			)
+				'fixed' => __( 'Fixed Size', 'nivo-slider' ),
+			),
 		);
 		$settings[] = array(
 			'name'     => 'wp_image_size',
@@ -373,7 +378,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'title'    => __( 'Image Size', 'nivo-slider' ),
 			'descp'    => __( 'Select the size of image from the WordPress media library', 'nivo-slider' ),
 			'options'  => Dev7_Core_Images::get_image_sizes(),
-			'tr_class' => 'wp-image-size'
+			'tr_class' => 'wp-image-size',
 		);
 		$settings[] = array(
 			'name'    => array( 'dim_x', 'dim_y' ),
@@ -383,42 +388,33 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'descp'   => __( '(Size in px) Images will be cropped to these dimensions (eg 400 x 150)', 'nivo-slider' ),
 			'connect' => ' x ',
 			'parent'  => 'sizing',
-			'visible' => 'fixed'
+			'visible' => 'fixed',
 		);
-		$themes     = $this->get_themes( true );
-		$themes     = array_merge( array( '' => 'None' ), (array) $themes );
 		$settings[] = array(
 			'name'    => 'theme',
-			'default' => '',
+			'default' => 'default',
 			'type'    => 'select',
 			'title'   => __( 'Slider Theme', 'nivo-slider' ),
-			'descp'   => __( 'Use a pre-built theme or provide your own styles.', 'nivo-slider' ),
-			'options' => $themes
+			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Select from our selection of beautiful <strong>pre-built themes</strong> or provide your own.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=themes_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
+			'options' => array(
+				''        => __( 'None', 'nivo-slider' ),
+				'default' => __( 'Nivo Slider Default Theme', 'nivo-slider' ),
+			),
 		);
 		$effects    = array(
-			'random'             => __( 'Random', 'nivo-slider' ),
-			'fade'               => __( 'Fade', 'nivo-slider' ),
-			'fold'               => __( 'Fold', 'nivo-slider' ),
-			'sliceDown'          => __( 'Slice Down', 'nivo-slider' ),
-			'sliceDownLeft'      => __( 'Slice Down (Left)', 'nivo-slider' ),
-			'sliceUp'            => __( 'Slice Up', 'nivo-slider' ),
-			'sliceUpLeft'        => __( 'Slice Up (Left)', 'nivo-slider' ),
-			'sliceUpDown'        => __( 'Slice Up/Down', 'nivo-slider' ),
-			'sliceUpDownLeft'    => __( 'Slice Up/Down (Left)', 'nivo-slider' ),
-			'slideInRight'       => __( 'Slide In (Right)', 'nivo-slider' ),
-			'slideInLeft'        => __( 'Slide In (Left)', 'nivo-slider' ),
-			'boxRandom'          => __( 'Box Random', 'nivo-slider' ),
-			'boxRain'            => __( 'Box Rain', 'nivo-slider' ),
-			'boxRainReverse'     => __( 'Box Rain (Reverse)', 'nivo-slider' ),
-			'boxRainGrow'        => __( 'Box Rain Grow', 'nivo-slider' ),
-			'boxRainGrowReverse' => __( 'Box Rain Grow (Reverse)', 'nivo-slider' )
+			'fade'        => __( 'Fade', 'nivo-slider' ),
+			'fold'        => __( 'Fold', 'nivo-slider' ),
+			'sliceDown'   => __( 'Slice Down', 'nivo-slider' ),
+			'sliceUp'     => __( 'Slice Up', 'nivo-slider' ),
+			'sliceUpDown' => __( 'Slice Up/Down', 'nivo-slider' ),
 		);
 		$settings[] = array(
 			'name'    => 'effect',
 			'default' => 'fade',
 			'type'    => 'select',
 			'title'   => __( 'Transition Effect', 'nivo-slider' ),
-			'options' => $effects
+			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Enable all <strong>16 stunning transition effects</strong>.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=transition_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
+			'options' => $effects,
 		);
 		$settings[] = array(
 			'name'    => 'slices',
@@ -433,7 +429,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'type'    => 'number',
 			'title'   => __( 'Box (Cols x Rows)', 'nivo-slider' ),
 			'descp'   => __( 'The number of columns and rows to use in the "Box" transitions (eg 8 x 4)', 'nivo-slider' ),
-			'connect' => ' x '
+			'connect' => ' x ',
 		);
 		$settings[] = array(
 			'name'    => 'animSpeed',
@@ -443,20 +439,11 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'descp'   => __( 'The speed of the transition animation in milliseconds (eg 500)', 'nivo-slider' ),
 		);
 		$settings[] = array(
-			'name'     => 'controlNavThumbs',
-			'default'  => 'off',
-			'type'     => 'checkbox',
-			'title'    => __( 'Enable Thumbnail Navigation', 'nivo-slider' ),
-			'tr_class' => 'dev7_thumb_nav'
-		);
-		$settings[] = array(
-			'name'     => array( 'thumbSizeWidth', 'thumbSizeHeight' ),
-			'default'  => array( 70, 50 ),
-			'type'     => 'number',
-			'title'    => __( 'Thumbnail Size', 'nivo-slider' ),
-			'descp'    => __( 'The width and height of the thumbnails', 'nivo-slider' ),
-			'connect'  => ' x ',
-			'tr_class' => 'dev7_thumb_size'
+			'name'    => 'controlNavThumbs',
+			'default' => 'off',
+			'type'    => 'custom',
+			'title'   => __( 'Enable Thumbnail Navigation', 'nivo-slider' ),
+			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Enable <strong>thumbnail navigation</strong> and control thumb sizes.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=thumbnail_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
 		);
 		$settings[] = array(
 			'name'    => 'pauseTime',
@@ -500,7 +487,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'title'   => __( 'Open Links in New Window', 'nivo-slider' ),
 			'descp'   => __( 'Open the links in a new window.', 'nivo-slider' ),
 			'parent'  => 'imageLink',
-			'visible' => 'on'
+			'visible' => 'on',
 		);
 		$settings[] = array(
 			'name'    => 'pauseOnHover',
@@ -518,9 +505,9 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 		$settings[] = array(
 			'name'    => 'randomStart',
 			'default' => 'off',
-			'type'    => 'checkbox',
+			'type'    => 'custom',
 			'title'   => __( 'Random Start Slide', 'nivo-slider' ),
-			'descp'   => __( 'Overrides Start Slide value', 'nivo-slider' )
+			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Enable <strong>random start slide</strong>.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=random_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
 		);
 
 		return $settings;
@@ -544,7 +531,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'Version'        => 'Version',
 			'Author'         => 'Author',
 			'AuthorURI'      => 'Author URI',
-			'SupportsThumbs' => 'Supports Thumbs'
+			'SupportsThumbs' => 'Supports Thumbs',
 		);
 
 		$plugin_themes = glob( NIVO_SLIDER_LITE_PLUGIN_DIR . '/assets/themes/*', GLOB_ONLYDIR );
@@ -578,11 +565,11 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 					} else {
 						$theme_url = plugins_url( 'assets/themes/' . $theme_name . '/' . $theme_name . '.css', NIVO_SLIDER_LITE_PLUGIN_FILE );
 					}
-					$themes[$theme_name] = array(
+					$themes[ $theme_name ] = array(
 						'theme_name'    => $theme_name,
 						'theme_path'    => $theme_path,
 						'theme_url'     => $theme_url,
-						'theme_details' => get_file_data( $theme_path, $nivo_theme_specs )
+						'theme_details' => get_file_data( $theme_path, $nivo_theme_specs ),
 					);
 				}
 			}
@@ -591,13 +578,24 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 		if ( $select ) {
 			$options = array();
 			foreach ( $themes as $theme ) {
-				$options[$theme['theme_name']] = $theme['theme_details']['SkinName'];
+				$options[ $theme['theme_name'] ] = $theme['theme_details']['SkinName'];
 			}
 
 			return $options;
 		}
 
 		return $themes;
+	}
+
+	public function manual_type_description() {
+		echo '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Automatically populate sliders from <strong>posts galleries</strong>, <strong>posts in categories</strong> and <strong>sticky posts</strong>.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=type_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>';
+	}
+
+	public function get_image_sources( $sources ) {
+		$new_sources   = array();
+		$new_sources[] = $sources['manual'];
+
+		return $new_sources;
 	}
 
 	/**
@@ -654,12 +652,12 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			if ( ( $options['type'] == 'manual' || $options['type'] == 'gallery' ) && isset( $image['post_title'] ) && $image['post_title'] != '' ) {
 				$captions[] = $image['post_title'];
 				$output .= 'title="#nivoslider-' . $id . '-caption-' . $i . '" ';
-				$i ++;
+				$i++;
 			}
 			if ( ( $options['type'] == 'category' || $options['type'] == 'sticky' || $options['type'] == 'custom' ) && $options['enable_captions'] == 'on' && isset( $image['post_title'] ) && $image['post_title'] != '' ) {
 				$captions[] = $image['post_title'];
 				$output .= 'title="#nivoslider-' . $id . '-caption-' . $i . '" ';
-				$i ++;
+				$i++;
 			}
 
 			if ( isset( $options['controlNavThumbs'] ) && $options['controlNavThumbs'] == 'on' ) {
@@ -691,11 +689,11 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 
 			// Force the height/width of thumbnails set in slider settings.
 			$output .= "<style type='text/css' media='screen'> \n";
-				$output .= ".theme-default .nivo-controlNav.nivo-thumbs-enabled img, \n";
-				$output .= ".nivo-thumbs-enabled img { \n";
-				$output .= "	width: {$thumbnail_width}px !important; \n";
-				$output .= "	height: {$thumbnail_height}px !important; \n";
-				$output .= "} \n";
+			$output .= ".theme-default .nivo-controlNav.nivo-thumbs-enabled img, \n";
+			$output .= ".nivo-thumbs-enabled img { \n";
+			$output .= "	width: {$thumbnail_width}px !important; \n";
+			$output .= "	height: {$thumbnail_height}px !important; \n";
+			$output .= "} \n";
 			$output .= "</style> \n";
 		}
 
@@ -704,7 +702,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			$output .= '<div id="nivoslider-' . $id . '-caption-' . $i . '" class="nivo-html-caption">';
 			$output .= __( $caption );
 			$output .= '</div>';
-			$i ++;
+			$i++;
 		}
 
 		if ( count( $images ) > 1 ) {
