@@ -183,6 +183,8 @@ class Dev7_Core_Admin_Edit {
 						printf( __( 'Connect more sources using %1$s Media Manager Plus %2$s', 'dev7core' ), '<a href="' . admin_url( 'upload.php?page=uber-media' ) . '">', '</a>' );
 					}
 					?>
+	                <br>
+	                <?php do_action( $this->labels->post_type . '_manual_type_description' ); ?>
                 </span></td>
 			</tr>
 			<tr valign="top" id="dev7_type_gallery" class="dev7_type">

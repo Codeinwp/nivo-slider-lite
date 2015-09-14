@@ -98,7 +98,7 @@ class Dev7_Core_Images {
 			$defaults['custom'] = __( 'Custom Post Type', 'dev7core' );
 		}
 
-		return $defaults;
+		return apply_filters( $this->labels->post_type . '_image_sources_defaults', $defaults );
 	}
 
 	/**
@@ -128,7 +128,7 @@ class Dev7_Core_Images {
 			}
 		}
 
-		return $sources;
+		return apply_filters( $this->labels->post_type . '_get_image_sources', $sources );
 	}
 
 	/**
