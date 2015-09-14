@@ -1,0 +1,55 @@
+#edit-slug-box,
+#postimagediv,
+#minor-publishing,
+.dev7_type,
+.manual.description{
+    display:none;
+}
+
+.useful-links a {
+    float: right;
+}
+
+.dev7plugin-images li {
+    display: inline-block;
+    margin: 0;
+    position: relative;
+}
+
+.dev7plugin-images li .spinner {
+    float: left;
+    display: block;
+}
+
+.dev7plugin-images li img {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #DFDFDF;
+    margin: 0 10px 10px 0;
+    padding: 3px;
+}
+
+.dev7plugin-thumbs {
+    list-style: none outside none;
+    margin: 0;
+    padding: 3px 0 0;
+}
+
+.dev7plugin-thumbs li {
+    display: inline-block;
+    margin: 0;
+    position: relative;
+}
+
+.dev7plugin-thumbs li img {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #DFDFDF;
+    margin: 0 10px 5px 0;
+    padding: 2px;
+}
+
+#dev7license .spinner,
+#dev7license #deactivate-license,
+#dev7license #activate-license,
+.reattach-spinner {
+    float: left;
+}
