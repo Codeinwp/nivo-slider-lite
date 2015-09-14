@@ -1,13 +1,4 @@
 <?php
-/**
- * Nivo Slider Plugin
- *
- * @package     Nivo_Slider
- * @subpackage  Plugin
- * @copyright   Copyright (c) 2014, Dev7studios
- * @license     http://opensource.org/licenses/GPL-3.0 GNU Public License
- * @since       2.2
- */
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,15 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Dev7_Core_Plugin' ) ) {
-	require_once NIVO_SLIDER_PLUGIN_DIR . 'includes/core/plugin.php';
+	require_once NIVO_SLIDER_LITE_PLUGIN_DIR . 'includes/core/plugin.php';
 }
 
 /**
  * Main Plugin Class
- *
- * @since 2.2
  */
-class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
+class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 
 	/**
 	 * Plugin Version
@@ -62,12 +51,12 @@ class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
 	public function __construct( $version ) {
 		$this->version   = $version;
 		$this->labels    = array(
-			'dev7_item_name'  => 'Nivo Slider WordPress Plugin',
-			'plugin_name'     => 'Nivo Slider',
+			'dev7_item_name'  => 'Nivo Slider Lite WordPress Plugin',
+			'plugin_name'     => 'Nivo Slider Lite',
 			'plugin_version'  => $version,
-			'plugin_file'     => NIVO_SLIDER_PLUGIN_FILE,
-			'plugin_basename' => NIVO_SLIDER_PLUGIN_BASENAME,
-			'plugin_url'      => NIVO_SLIDER_PLUGIN_URL,
+			'plugin_file'     => NIVO_SLIDER_LITE_PLUGIN_FILE,
+			'plugin_basename' => NIVO_SLIDER_LITE_PLUGIN_BASENAME,
+			'plugin_url'      => NIVO_SLIDER_LITE_PLUGIN_URL,
 			'post_type'       => 'nivoslider',
 			'shortcode'       => 'nivoslider',
 			'function'        => 'nivo_slider',
@@ -86,19 +75,6 @@ class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
 		$this->add_actions();
 
 		parent::__construct( $this->labels );
-
-		$this->mmp_recommended();
-	}
-
-	/**
-	 * Adds Media Manager Plus as a recommended plugin
-	 *
-	 * @since  2.2
-	 * @access private
-	 */
-	private function mmp_recommended() {
-		require_once NIVO_SLIDER_PLUGIN_DIR . 'includes/class-tgm-plugin-activation.php';
-		add_action( 'tgmpa_nivoslider_register', array( $this, 'media_manager_plus' ) );
 	}
 
 	/**
@@ -112,8 +88,6 @@ class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
 		add_filter( $this->post_type . '_post_type_menu_icon', array( $this, 'post_type_menu_icon' ) );
 		add_filter( $this->post_type . '_settings_page_header', array( $this, 'settings_page_header' ) );
 		add_filter( $this->post_type . '_settings_intro', array( $this, 'settings_intro' ) );
-		add_filter( $this->post_type . '_get_license_constant', array( $this, 'get_license_constant' ) );
-		add_filter( $this->post_type . '_check_license_constant', array( $this, 'check_license_constant' ) );
 		add_filter( $this->post_type . '_admin_edit_settings', array( $this, 'admin_edit_settings' ) );
 		add_filter( $this->post_type . '_post_meta_save', array( $this, 'post_meta_save' ) );
 		add_filter( $this->post_type . '_script_settings', array( $this, 'script_settings' ) );
@@ -131,7 +105,16 @@ class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
 	 * @access private
 	 */
 	private function add_actions() {
+		add_action( 'admin_menu', array( $this, 'remove_settings_menu' ), 11 );
 		add_action( $this->post_type . '_admin_scripts', array( $this, 'admin_scripts' ) );
+	}
+
+	/**
+	 * Remove the settings page for the Lite plugin
+	 */
+	public function remove_settings_menu()
+	{
+		remove_submenu_page( 'edit.php?post_type=' . $this->post_type, 'nivoslider-settings' );
 	}
 
 	/**
@@ -254,7 +237,7 @@ class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
 	 * @return string $icon_url
 	 */
 	public function post_type_menu_icon( $icon_url ) {
-		return NIVO_SLIDER_PLUGIN_URL . 'assets/images/favicon.png';
+		return NIVO_SLIDER_LITE_PLUGIN_URL . 'assets/images/favicon.png';
 	}
 
 	/**
@@ -265,7 +248,7 @@ class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
 	 * @return string
 	 */
 	public function settings_page_header() {
-		return 'Nivo Slider Settings';
+		return 'Nivo Slider Lite Settings';
 	}
 
 	/**
@@ -277,28 +260,6 @@ class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
 	 */
 	public function settings_intro() {
 		return '';
-	}
-
-	/**
-	 * Checks if a license key has been defined
-	 *
-	 * @since  2.2
-	 * @access public
-	 * @return bool
-	 */
-	public function check_license_constant() {
-		return defined( 'NIVOSLIDER_LICENSE' );
-	}
-
-	/**
-	 * Gets the defined license key
-	 *
-	 * @since  2.2
-	 * @access public
-	 * @return string
-	 */
-	public function get_license_constant() {
-		return NIVOSLIDER_LICENSE;
 	}
 
 	/**
@@ -586,7 +547,7 @@ class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
 			'SupportsThumbs' => 'Supports Thumbs'
 		);
 
-		$plugin_themes = glob( NIVO_SLIDER_PLUGIN_DIR . '/assets/themes/*', GLOB_ONLYDIR );
+		$plugin_themes = glob( NIVO_SLIDER_LITE_PLUGIN_DIR . '/assets/themes/*', GLOB_ONLYDIR );
 
 		$upload_dir  = wp_upload_dir();
 		$upload_path = $upload_dir['basedir'];
@@ -615,7 +576,7 @@ class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
 					if ( strpos( $theme_dir, 'uploads/nivo-themes' ) !== false ) {
 						$theme_url = $upload_url . '/nivo-themes/' . $theme_name . '/' . $theme_name . '.css';
 					} else {
-						$theme_url = plugins_url( 'assets/themes/' . $theme_name . '/' . $theme_name . '.css', NIVO_SLIDER_PLUGIN_FILE );
+						$theme_url = plugins_url( 'assets/themes/' . $theme_name . '/' . $theme_name . '.css', NIVO_SLIDER_LITE_PLUGIN_FILE );
 					}
 					$themes[$theme_name] = array(
 						'theme_name'    => $theme_name,
@@ -778,55 +739,6 @@ class Dev7_Nivo_Slider extends Dev7_Core_Plugin {
 		}
 
 		return $output;
-	}
-
-	/**
-	 * Custom plugin call to setup recommended Media Manager Plus plugin
-	 *
-	 * @since  2.2
-	 * @access public
-	 */
-	public function media_manager_plus() {
-		$plugins = array(
-			array(
-				'name'     => 'Media Manager Plus',
-				'slug'     => 'uber-media',
-				'required' => false,
-			),
-		);
-
-		$config = array(
-			'domain'           => 'nivo-slider',
-			'default_path'     => '',
-			'parent_menu_slug' => 'edit.php?post_type=' . $this->post_type,
-			'parent_url_slug'  => 'edit.php?post_type=' . $this->post_type,
-			'menu'             => $this->post_type . '-install-plugins',
-			'has_notices'      => false,
-			'is_automatic'     => false,
-			'message'          => '',
-			'strings'          => array(
-				'page_title'                      => __( 'Install Recommended Plugins', 'nivo-slider' ),
-				'menu_title'                      => __( 'Recommended', 'nivo-slider' ),
-				'installing'                      => __( 'Installing Plugin: %s', 'nivo-slider' ),
-				'oops'                            => __( 'Something went wrong with the plugin API.', 'nivo-slider' ),
-				'notice_can_install_required'     => _n_noop( 'This plugin requires the following plugin: %1$s.', 'This plugin requires the following plugins: %1$s.' ),
-				'notice_can_install_recommended'  => _n_noop( 'This plugin recommends the following plugin: %1$s.', 'This plugin recommends the following plugins: %1$s.' ),
-				'notice_cannot_install'           => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.' ),
-				'notice_can_activate_required'    => _n_noop( 'The following required plugin is currently inactive: %1$s.', 'The following required plugins are currently inactive: %1$s.' ),
-				'notice_can_activate_recommended' => _n_noop( 'The following recommended plugin is currently inactive: %1$s.', 'The following recommended plugins are currently inactive: %1$s.' ),
-				'notice_cannot_activate'          => _n_noop( 'Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated.', 'Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated.' ),
-				'notice_ask_to_update'            => _n_noop( 'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this plugin: %1$s.', 'The following plugins need to be updated to their latest version to ensure maximum compatibility with this plugin: %1$s.' ),
-				'notice_cannot_update'            => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.' ),
-				'install_link'                    => _n_noop( 'Begin installing plugin', 'Begin installing plugins' ),
-				'activate_link'                   => _n_noop( 'Activate installed plugin', 'Activate installed plugins' ),
-				'return'                          => __( 'Return to recommended plugins', 'nivo-slider' ),
-				'plugin_activated'                => __( 'Plugin activated successfully.', 'nivo-slider' ),
-				'complete'                        => __( 'All plugins installed and activated successfully. %s', 'nivo-slider' ),
-				'nag_type'                        => 'updated',
-				'no_items_after'                  => __( 'Return to Nivo Slider', 'nivo-slider' ),
-			)
-		);
-		tgmpa_nivoslider( $plugins, $config );
 	}
 
 }
