@@ -84,6 +84,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 	 * @access private
 	 */
 	private function add_filters() {
+		add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 11, 2 );
 		add_filter( $this->post_type . '_post_type_labels', array( $this, 'post_type_labels' ) );
 		add_filter( $this->post_type . '_post_type_menu_icon', array( $this, 'post_type_menu_icon' ) );
 		add_filter( $this->post_type . '_settings_page_header', array( $this, 'settings_page_header' ) );
@@ -106,10 +107,21 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 	 * @access private
 	 */
 	private function add_actions() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'remove_settings_menu' ), 11 );
-		add_action( $this->post_type . '_admin_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
+		add_action( $this->post_type . '_admin_scripts', array( $this, 'admin_scripts' ) );
 		add_action( $this->post_type . '_manual_type_description', array( $this, 'manual_type_description' ) );
+	}
+
+	/**
+	 * Add Upgrade metabox to the edit screen
+	 */
+	public function admin_init() {
+		add_meta_box( $this->post_type . '_upgrade_box', __( 'Upgrade to Pro', 'nivo-slider' ), array(
+			$this,
+			'meta_box_upgrade',
+		), $this->post_type, 'side' );
 	}
 
 	/**
@@ -126,17 +138,19 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 	 * @access public
 	 */
 	public function admin_scripts() {
-		wp_register_script( $this->post_type . '-admin', plugins_url( 'assets/js/admin.js', dirname( __FILE__ ) ), array(
+		wp_register_script( $this->post_type . '-lite-admin', plugins_url( 'assets/js/admin.js', dirname( __FILE__ ) ), array(
 			'jquery',
 			$this->post_type . '-core-admin',
 		), $this->version );
-		wp_enqueue_script( $this->post_type . '-admin' );
+		wp_enqueue_script( $this->post_type . '-lite-admin' );
 	}
 
-	public function admin_styles()
-	{
-		wp_register_style( $this->post_type . '-admin', plugins_url( 'assets/css/admin.css', dirname( __FILE__ ) ), array(), $this->version );
-		wp_enqueue_style( $this->post_type . '-admin' );
+	/**
+	 * Registers and enqueues custom admin styles
+	 */
+	public function admin_styles() {
+		wp_register_style( $this->post_type . '-lite-admin', plugins_url( 'assets/css/admin.css', dirname( __FILE__ ) ), array(), $this->version );
+		wp_enqueue_style( $this->post_type . '-lite-admin' );
 	}
 
 	/**
@@ -587,15 +601,60 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 		return $themes;
 	}
 
+	/**
+	 * Remove link to the plugin settings on the plugin table list
+	 *
+	 * @since  2.2
+	 * @access public
+	 */
+	public function plugin_action_links( $links, $file ) {
+		if ( basename( $file, '.php' ) == 'nivo-slider-lite' ) {
+			if ( isset( $links[0] ) ) {
+				unset( $links[0] );
+			}
+		}
+
+		return $links;
+	}
+
+	/**
+	 * Override the type manual description
+	 */
 	public function manual_type_description() {
 		echo '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Automatically populate sliders from <strong>posts galleries</strong>, <strong>posts in categories</strong> and <strong>sticky posts</strong>.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=type_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>';
 	}
 
+	/**
+	 * Restrict image sources
+	 *
+	 * @param $sources
+	 *
+	 * @return array
+	 */
 	public function get_image_sources( $sources ) {
 		$new_sources   = array();
-		$new_sources[] = $sources['manual'];
+		$new_sources['manual'] = $sources['manual'];
 
 		return $new_sources;
+	}
+
+	/**
+	 * Adds the Upgrade meta box to the edit screen
+	 */
+	public function meta_box_upgrade() {
+		echo '<p>' . __( 'Get more awesome features by upgrading to the full plugin:', 'nivo-slider' ) . '</p>';
+		echo '<ul>';
+		echo '<li>' . __( 'Create sliders from Galleries, Categories and Sticky Posts', 'nivo-slider' ) . '</li>';
+		echo '<li>' . __( 'Responsive sliders', 'nivo-slider' ) . '</li>';
+		echo '<li>' . __( 'Pre-built and custom themes', 'nivo-slider' ) . '</li>';
+		echo '<li>' . __( 'All 16 transition effects', 'nivo-slider' ) . '</li>';
+		echo '<li>' . __( 'Thumbnail navigation', 'nivo-slider' ) . '</li>';
+		echo '<li>' . __( 'Random start slide', 'nivo-slider' ) . '</li>';
+		echo '<li>' . __( 'Nivo Slider Widget', 'nivo-slider' ) . '</li>';
+		echo '<li>' . __( 'Media Manager Plus integration', 'nivo-slider' ) . '</li>';
+		echo '<li>' . __( 'Access to our support Help Desk', 'nivo-slider' ) . '</li>';
+		echo '</ul>';
+		echo '<a href="https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=upgrade_metabox&utm_campaign=' . $this->post_type . '_lite_plugin" target="_blank" class="button-primary">' . __( 'Upgrade Now', 'nivo-slider' ) . '</a>';
 	}
 
 	/**

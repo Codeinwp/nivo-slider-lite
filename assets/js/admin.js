@@ -1,11 +1,7 @@
 jQuery(document).ready(function($){
 
-    $('.manual.description').show();
-    $('.dev7_non_manual').hide();
-    $('#manual_images_upload').show();
-
     var proFeatureDesc = $('.manual.description' ).find('.dev7-pro-feature');
-    $('.manual.description' ).html('' ).append(proFeatureDesc);
+    $('.manual.description' ).html('').append(proFeatureDesc);
 
     /**
     * Nivo Themes

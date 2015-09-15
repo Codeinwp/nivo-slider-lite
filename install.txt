@@ -1,6 +1,6 @@
 Simple Install
 1. Login to WordPress and go to Plugins > Add New > Upload
-2. Upload nivo-slider.zip and activate
+2. Upload nivo-slider-lite.zip and activate
 3. Start adding your sliders in the "Nivo Slider" menu that appears.
 
 Manual Install

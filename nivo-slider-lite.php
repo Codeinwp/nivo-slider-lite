@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Nivo Slider Lite
- * Plugin URI: http://dev7studios.com/plugins/nivo-slider/
+ * Plugin URI: https://dev7studios.com/products/nivo-slider-wordpress-plugin
  * Description: The official WordPress plugin for the Nivo Slider (Lite)
  * Version: 1.0.0
  * Author: Dev7studios
- * Author URI: http://dev7studios.com
+ * Author URI: https://dev7studios.com
  * Text Domain: nivo-slider
  * Domain Path: languages
  **/
