@@ -10,7 +10,7 @@ The official WordPress plugin for the Nivo Slider (Lite).
 
 == Description ==
 
-The Nivo Slider is the worlds most popular image slider plugin, downloaded over **3,000,000** since it's inception. This
+The Nivo Slider is the worlds most popular image slider plugin, downloaded over **3,000,000** times since it's inception. This
 is the "Lite" version of the official [Nivo Slider WordPress plugin](https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wordpress.org&utm_medium=web&utm_content=description_link&utm_campaign=nivoslider_lite_plugin)
 which comes with email support and more features.
 
