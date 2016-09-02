@@ -74,7 +74,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 		$this->add_filters();
 		$this->add_actions();
 
-		parent::__construct( $this->labels );
+		parent::__construct( $this->labels, true );
 	}
 
 	/**
