@@ -19,16 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.2
  */
-class Dev7_Core_Admin_Settings {
-
-	/**
-	 * Plugin labels
-	 *
-	 * @var object
-	 * @access private
-	 * @since  2.2
-	 */
-	private $labels;
+class Dev7_Core_Admin_Settings extends Dev7_Core {
 
 	/**
 	 * Plugin options
@@ -40,15 +31,9 @@ class Dev7_Core_Admin_Settings {
 	private $options;
 
 	/**
-	 * Main construct for the [gallery] settings page
-	 *
-	 * @since 2.2
-	 *
-	 * @param array $labels Specific plugin label data
+	 * "construct" for the [gallery] settings page
 	 */
-	public function __construct( $labels ) {
-
-		$this->labels  = $labels;
+	protected function core_init() {
 		$this->options = get_option( $this->labels->options_key );
 
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );

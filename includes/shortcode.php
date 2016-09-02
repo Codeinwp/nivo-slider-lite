@@ -19,16 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0
  */
-class Dev7_Core_Shortcode {
-
-	/**
-	 * Plugin labels
-	 *
-	 * @var object
-	 * @access private
-	 * @since  2.2
-	 */
-	private $labels;
+class Dev7_Core_Shortcode extends Dev7_Core {
 
 	/**
 	 * Shortcode core scripts
@@ -85,16 +76,10 @@ class Dev7_Core_Shortcode {
 	private $core_enqueued = false;
 
 	/**
-	 * Main construct for the Dev7 core Images class
-	 *
-	 * @since 2.2
-	 *
-	 * @param array $labels Specific plugin label data
+	 * "construct" for the Dev7 core Images class
 	 */
-	public function __construct( $labels ) {
-
-		$this->labels      = $labels;
-		$this->core_images = new Dev7_Core_Images( $this->labels );
+	protected function core_init() {
+		$this->core_images = new Dev7_Core_Images( $this->labels, $this->is_lite );
 
 		$this->core_scripts  = apply_filters( $this->labels->post_type . '_shortcode_core_scripts', array() );
 		$this->core_styles  = apply_filters( $this->labels->post_type . '_shortcode_core_styles', array() );

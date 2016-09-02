@@ -19,27 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.2
  */
-class Dev7_Core_Assets {
+class Dev7_Core_Assets extends Dev7_Core {
 
 	/**
-	 * Plugin labels
-	 *
-	 * @var object
-	 * @access private
-	 * @since  2.2
+	 * "construct" for the Dev7 core Assets class
 	 */
-	private $labels;
-
-	/**
-	 * Main construct for the Dev7 core Assets class
-	 *
-	 * @since 2.2
-	 *
-	 * @param array $labels Specific plugin label data
-	 */
-	public function __construct( $labels ) {
-		$this->labels = $labels;
-
+	protected function core_init() {
 		add_action( 'init', array( $this, 'init' ) );
 		add_action( 'admin_print_scripts', array( $this, 'admin_print_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );

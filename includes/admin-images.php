@@ -19,27 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.2
  */
-class Dev7_Core_Admin_Images {
+class Dev7_Core_Admin_Images extends Dev7_Core {
 
 	/**
-	 * Plugin labels
-	 *
-	 * @var object
-	 * @access private
-	 * @since  2.2
+	 * "construct" setting up the [gallery] images class
 	 */
-	private $labels;
-
-	/**
-	 * Main construct setting up the [gallery] images class
-	 *
-	 * @since 2.2
-	 *
-	 * @param array $labels Specific plugin label data
-	 */
-	public function __construct( $labels ) {
-		$this->labels = $labels;
-
+	protected function core_init() {
 		add_action( 'after_setup_theme', array( $this, 'theme_support_check' ), 999 );
 		add_filter( 'media_view_strings', array( $this, 'custom_media_string' ), 11, 2 );
 		add_filter( 'uber_media_pre_insert', array( $this, 'mmp_pre_insert' ) );

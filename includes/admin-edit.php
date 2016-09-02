@@ -19,16 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.2
  */
-class Dev7_Core_Admin_Edit {
-
-	/**
-	 * Plugin labels
-	 *
-	 * @var object
-	 * @access private
-	 * @since  2.2
-	 */
-	private $labels;
+class Dev7_Core_Admin_Edit extends Dev7_Core {
 
 	/**
 	 * Instance of Dev7 Images Core Class
@@ -40,15 +31,10 @@ class Dev7_Core_Admin_Edit {
 	private $core_images;
 
 	/**
-	 * Main construct setting up the [gallery] edit screen
-	 *
-	 * @since 2.2
-	 *
-	 * @param array $labels Specific plugin label data
+	 * "construct" setting up the [gallery] edit screen
 	 */
-	public function __construct( $labels ) {
-		$this->labels      = $labels;
-		$this->core_images = new Dev7_Core_Images( $this->labels );
+	protected function core_init() {
+		$this->core_images = new Dev7_Core_Images( $this->labels, $this->is_lite );
 
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'save_post', array( $this, 'save_post' ) );
@@ -119,10 +105,25 @@ class Dev7_Core_Admin_Edit {
 		echo '<div class="useful-links">';
 		echo '<p>' . __( 'Website:', 'dev7core' ) . ' <a href="' . DEV7_SITE_URL . '/products/' . $this->labels->slug . '/" target="_blank">' . $this->labels->plugin_name . '</a></p>';
 		echo '<p>' . __( 'Created by:', 'dev7core' ) . ' <a href="' . DEV7_SITE_URL . '" target="_blank">Dev7studios</a></p>';
-		echo '<p>' . __( 'Support:', 'dev7core' ) . ' <a href="' . DEV7_SITE_URL . '/support" target="_blank">Support</a></p>';
-		echo '<p>' . __( 'Documentation:', 'dev7core' ) . ' <a href="http://docs.dev7studios.com/wordpress-plugins/' . $this->labels->slug . '" target="_blank">Documentation</a></p>';
+		if ( ! $this->is_lite ) {
+			echo '<p>' . __( 'Support:', 'dev7core' ) . ' <a href="' . DEV7_SITE_URL . '/support" target="_blank">Support</a></p>';
+		}
+		echo '<p>' . __( 'Documentation:', 'dev7core' ) . ' <a href="' . $this->get_documentation_link() . '" target="_blank">Documentation</a></p>';
 		echo '<p>' . __( 'Changelog:', 'dev7core' ) . ' <a href="' . $this->labels->plugin_url . 'changelog.txt" target="_blank">Changelog</a></p>';
 		echo '</div>';
+	}
+
+	/**
+	 * Get the documentation link
+	 *
+	 * @return string
+	 */
+	private function get_documentation_link() {
+		if ( isset( $this->labels->documentation ) && $this->labels->documentation ) {
+			return $this->labels->documentation;
+		}
+
+		return 'http://docs.dev7studios.com';
 	}
 
 	/**
