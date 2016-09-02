@@ -19,16 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.2
  */
-class Dev7_Core_Admin_View {
-
-	/**
-	 * Plugin labels
-	 *
-	 * @var object
-	 * @access private
-	 * @since  2.2
-	 */
-	private $labels;
+class Dev7_Core_Admin_View extends Dev7_Core {
 
 	/**
 	 * Instance of Dev7 Images Core Class
@@ -40,15 +31,10 @@ class Dev7_Core_Admin_View {
 	private $core_images;
 
 	/**
-	 * Main construct for the [gallery] list page
-	 *
-	 * @since 2.2
-	 *
-	 * @param array $labels Specific plugin label data
+	 * "construct" for the [gallery] list page
 	 */
-	function __construct( $labels ) {
-		$this->labels      = $labels;
-		$this->core_images = new Dev7_Core_Images( $this->labels );
+	protected function core_init() {
+		$this->core_images = new Dev7_Core_Images( $this->labels, $this->is_lite );
 
 		add_action( 'manage_edit-' . $this->labels->post_type . '_columns', array( $this, 'edit_columns' ) );
 		add_action( 'manage_' . $this->labels->post_type . '_posts_custom_column', array( $this, 'custom_columns' ) );

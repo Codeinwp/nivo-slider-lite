@@ -107,6 +107,7 @@ abstract class Dev7_Core_Plugin {
 		if ( ! $this->is_lite ) {
 			require_once DEV7_CORE_DIR . '/includes/edd_sl_plugin_updater.php';
 		}
+		require_once DEV7_CORE_DIR . '/includes/core.php';
 		require_once DEV7_CORE_DIR . '/includes/functions.php';
 		require_once DEV7_CORE_DIR . '/includes/assets.php';
 		require_once DEV7_CORE_DIR . '/includes/post-type.php';
@@ -145,14 +146,14 @@ abstract class Dev7_Core_Plugin {
 	 * @since  2.2
 	 */
 	private function loader() {
-		new Dev7_Core_Assets( $this->labels );
-		new Dev7_Core_Post_Type( $this->labels );
-		$this->settings_class = new Dev7_Core_Admin_Settings( $this->labels );
-		new Dev7_Core_Admin_View( $this->labels );
-		new Dev7_Core_Admin_Edit( $this->labels );
-		new Dev7_Core_Admin_AJAX( $this->labels );
-		new Dev7_Core_Admin_Images( $this->labels );
-		new Dev7_Core_Shortcode( $this->labels );
+		new Dev7_Core_Assets( $this->labels, $this->is_lite );
+		new Dev7_Core_Post_Type( $this->labels, $this->is_lite );
+		$this->settings_class = new Dev7_Core_Admin_Settings( $this->labels, $this->is_lite );
+		new Dev7_Core_Admin_View( $this->labels, $this->is_lite );
+		new Dev7_Core_Admin_Edit( $this->labels, $this->is_lite );
+		new Dev7_Core_Admin_AJAX( $this->labels, $this->is_lite );
+		new Dev7_Core_Admin_Images( $this->labels, $this->is_lite );
+		new Dev7_Core_Shortcode( $this->labels, $this->is_lite );
 	}
 
 	/**

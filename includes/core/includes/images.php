@@ -19,27 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.2
  */
-class Dev7_Core_Images {
-
-	/**
-	 * Plugin labels
-	 *
-	 * @var object
-	 * @access private
-	 * @since  2.2
-	 */
-	private $labels;
-
-	/**
-	 * Main construct for the Dev7 core Images class
-	 *
-	 * @since 2.2
-	 *
-	 * @param array $labels Specific plugin label data
-	 */
-	public function __construct( $labels ) {
-		$this->labels = $labels;
-	}
+class Dev7_Core_Images extends Dev7_Core {
 
 	/**
 	 * Returns the images sizes for the site

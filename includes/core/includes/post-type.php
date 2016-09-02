@@ -20,27 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0
  */
-class Dev7_Core_Post_Type {
+class Dev7_Core_Post_Type extends Dev7_Core {
 
 	/**
-	 * Plugin labels
-	 *
-	 * @var object
-	 * @access private
-	 * @since  2.2
+	 * "construct" for the Dev7 core Post Type class
 	 */
-	private $labels;
-
-	/**
-	 * Main construct for the Dev7 core Post Type class
-	 *
-	 * @since 2.2
-	 *
-	 * @param array $labels Specific plugin label data
-	 */
-	public function __construct( $labels ) {
-		$this->labels = $labels;
-
+	protected function core_init() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'post_updated_messages', array( $this, 'post_updated_messages' ) );
 	}

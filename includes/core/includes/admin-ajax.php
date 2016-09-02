@@ -19,16 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 2.2
  */
-class Dev7_Core_Admin_AJAX {
-
-	/**
-	 * Plugin labels
-	 *
-	 * @var object
-	 * @access private
-	 * @since  2.2
-	 */
-	private $labels;
+class Dev7_Core_Admin_AJAX extends Dev7_Core {
 
 	/**
 	 * Instance of Dev7 Images Core Class
@@ -49,16 +40,11 @@ class Dev7_Core_Admin_AJAX {
 	private $options;
 
 	/**
-	 * Main construct setting up ajax action hooks
-	 *
-	 * @since 2.2
-	 *
-	 * @param array $labels Specific plugin label data
+	 * "construct" setting up ajax action hooks
 	 */
-	public function __construct( $labels ) {
-		$this->labels      = $labels;
+	protected function core_init() {
 		$this->options     = get_option( $this->labels->options_key );
-		$this->core_images = new Dev7_Core_Images( $this->labels );
+		$this->core_images = new Dev7_Core_Images( $this->labels, $this->is_lite );
 
 		add_action( 'wp_ajax_' . $this->labels->post_type . '_set_meta_link', array( $this, 'set_meta_link' ) );
 		add_action( 'wp_ajax_' . $this->labels->post_type . '_get_meta_link', array( $this, 'get_meta_link' ) );
