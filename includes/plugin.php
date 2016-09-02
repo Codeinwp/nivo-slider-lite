@@ -335,10 +335,10 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 		if ( ! is_numeric( $settings['startSlide'] ) || $settings['startSlide'] < 0 ) {
 			$settings['startSlide'] = 0;
 		}
-		if ( ! is_numeric( $settings['thumbSizeWidth'] ) || $settings['thumbSizeWidth'] <= 0 ) {
+		if ( ! isset( $settings['thumbSizeWidth'] ) || ! is_numeric( $settings['thumbSizeWidth'] ) || $settings['thumbSizeWidth'] <= 0 ) {
 			$settings['thumbSizeWidth'] = 70;
 		}
-		if ( ! is_numeric( $settings['thumbSizeHeight'] ) || $settings['thumbSizeHeight'] <= 0 ) {
+		if ( ! isset( $settings['thumbSizeHeight'] ) || ! is_numeric( $settings['thumbSizeHeight'] ) || $settings['thumbSizeHeight'] <= 0 ) {
 			$settings['thumbSizeHeight'] = 50;
 		}
 
