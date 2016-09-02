@@ -354,7 +354,7 @@ class Dev7_Core_Admin_Edit {
 									break;
 
 								case 'custom':
-									echo $setting->custom;
+									echo isset($setting->custom) ? $setting->custom : '';
 									break;
 
 							}
