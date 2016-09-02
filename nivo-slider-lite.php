@@ -3,7 +3,7 @@
  * Plugin Name: Nivo Slider Lite
  * Plugin URI: https://dev7studios.com/products/nivo-slider-wordpress-plugin
  * Description: The official WordPress plugin for the Nivo Slider (Lite)
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Dev7studios
  * Author URI: https://dev7studios.com
  * Text Domain: nivo-slider
@@ -26,7 +26,7 @@ class WordPress_Nivo_Slider_Lite {
 	 * @var string
 	 * @access private
 	 */
-	private $version = '1.0.0';
+	private $version = '1.0.1';
 
 	public function __construct() {
 		$this->setup_constants();

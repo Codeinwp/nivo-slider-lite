@@ -1,4 +1,7 @@
 *** Nivo Slider Lite WordPress Plugin Changelog ***
 
+2016.09.02 - version 1.0.1
+ * Various small bug fixes
+
 2015.09.15 - version 1.0.0
  * Initial release

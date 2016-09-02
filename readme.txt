@@ -2,8 +2,8 @@
 Contributors: dev7studios
 Tags: image, slider, nivo
 Requires at least: 3.0
-Tested up to: 4.3
-Stable tag: 1.0.0
+Tested up to: 4.6
+Stable tag: 1.0.1
 License: GPLv3
 
 The official WordPress plugin for the Nivo Slider (Lite).
@@ -49,6 +49,9 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 4. The final result
 
 == Changelog ==
+
+= 1.0.1 =
+ * Various small bug fixes
 
 = 1.0.0 =
  * Initial release
