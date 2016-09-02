@@ -68,6 +68,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'type_name'       => 'type',
 			'singular'        => __( 'Slider', 'nivo-slider' ),
 			'plural'          => __( 'Sliders', 'nivo-slider' ),
+			'documentation'   => 'http://docs.dev7studios.com/category/34-nivo-slider'
 		);
 		$this->post_type = $this->labels['post_type'];
 
