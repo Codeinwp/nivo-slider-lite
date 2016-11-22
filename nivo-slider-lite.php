@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Nivo Slider Lite
- * Plugin URI: https://dev7studios.com/products/nivo-slider-wordpress-plugin
+ * Plugin URI: https://themeisle.com/plugins/nivo-slider-lite
  * Description: The official WordPress plugin for the Nivo Slider (Lite)
- * Version: 1.0.1
- * Author: Dev7studios
- * Author URI: https://dev7studios.com
+ * Version: 1.0.5
+ * Author: ThemeIsle
+ * Author URI: https://themeisle.com/
  * Text Domain: nivo-slider
  * Domain Path: languages
  **/
@@ -26,7 +26,7 @@ class WordPress_Nivo_Slider_Lite {
 	 * @var string
 	 * @access private
 	 */
-	private $version = '1.0.1';
+	private $version = '1.0.5';
 
 	public function __construct() {
 		$this->setup_constants();
