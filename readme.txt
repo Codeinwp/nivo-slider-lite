@@ -48,6 +48,9 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 
 == Changelog ==
 
+= 1.0.3 =
+ * Added themeisle as author
+
 = 1.0.2 =
  * Fixed fatal error
  
