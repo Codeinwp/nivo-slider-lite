@@ -1,9 +1,9 @@
 === Nivo Slider Lite ===
-Contributors: dev7studios
+Contributors: themeisle, codeinwp
 Tags: image, slider, nivo
 Requires at least: 3.0
 Tested up to: 4.6
-Stable tag: 1.0.1
+Stable tag: trunk
 License: GPLv3
 
 The official WordPress plugin for the Nivo Slider (Lite).
@@ -11,7 +11,7 @@ The official WordPress plugin for the Nivo Slider (Lite).
 == Description ==
 
 The Nivo Slider is the worlds most popular image slider plugin, downloaded over **3,000,000** times since it's inception. This
-is the "Lite" version of the official [Nivo Slider WordPress plugin](https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wordpress.org&utm_medium=web&utm_content=description_link&utm_campaign=nivoslider_lite_plugin)
+is the "Lite" version of the official [Nivo Slider WordPress plugin](https://themeisle.com/plugins/nivo-slider?utm_source=wordpress.org&utm_medium=web&utm_content=description_link&utm_campaign=nivoslider_lite_plugin)
 which comes with email support and more features.
 
 **Get more awesome features by upgrading to the full plugin:**
@@ -23,10 +23,8 @@ which comes with email support and more features.
 * **Thumbnail** navigation
 * Random start slide
 * Nivo Slider **Widget**
-* [Media Manager Plus](https://dev7studios.com/media-manager-plus/?utm_source=wordpress.org&utm_medium=web&utm_content=mmp_link&utm_campaign=nivoslider_lite_plugin) integration
-* Access to our support [Help Desk](https://dev7studios.com/support/help-desk/?utm_source=wordpress.org&utm_medium=web&utm_content=support_link&utm_campaign=nivoslider_lite_plugin)
 
-**[Click here to purchase the full plugin](https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wordpress.org&utm_medium=web&utm_content=purchase_link&utm_campaign=nivoslider_lite_plugin)**
+**[Click here to purchase the full plugin](https://themeisle.com/plugins/nivo-slider?utm_source=wordpress.org&utm_medium=web&utm_content=purchase_link&utm_campaign=nivoslider_lite_plugin)**
 
 == Installation ==
 
@@ -37,8 +35,8 @@ which comes with email support and more features.
 
 = I'd like access to more features and support. How can I get them? =
 
-You can get access to more features and support by visiting the Dev7studios website and
-[purchasing a license](https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wordpress.org&utm_medium=web&utm_content=faq_link&utm_campaign=nivoslider_lite_plugin).
+You can get access to more features and support by visiting the Themeisle website and
+[purchasing a license](https://themeisle.com/plugins/nivo-slider?utm_source=wordpress.org&utm_medium=web&utm_content=faq_link&utm_campaign=nivoslider_lite_plugin).
 Purchasing a license gets you access to the full version of the Nivo Slider WordPress plugin, automatic updates and support.
 
 == Screenshots ==
@@ -50,6 +48,12 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 
 == Changelog ==
 
+= 1.0.3 =
+ * Added themeisle as author
+
+= 1.0.2 =
+ * Fixed fatal error
+ 
 = 1.0.1 =
  * Various small bug fixes
 
