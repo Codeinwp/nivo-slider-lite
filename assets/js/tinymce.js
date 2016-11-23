@@ -51,9 +51,9 @@
         getInfo : function() {
 			return {
 				longname : 'Nivo Slider Shortcode',
-                author : 'Dev7studios',
-                authorurl : 'http://www.dev7studios.me',
-                infourl : 'http://www.dev7studios.com/plugins/nivo-slider',
+                author : 'ThemeIsle',
+                authorurl : 'https://themeisle.com',
+                infourl : 'https://themeisle.com/plugins/nivo-slider',
                 version : '1.0'
             };
         }

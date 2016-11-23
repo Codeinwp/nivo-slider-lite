@@ -82,10 +82,10 @@ abstract class Dev7_Core_Plugin {
 	 */
 	private function setup_constants() {
 		if ( ! defined( 'DEV7_SITE_URL' ) ) {
-			define( 'DEV7_SITE_URL', 'https://dev7studios.com' );
+			define( 'DEV7_SITE_URL', 'https://themeisle.com' );
 		}
 		if ( ! defined( 'DEV7_STORE_URL' ) ) {
-			define( 'DEV7_STORE_URL', 'http://dev7studios.com' );
+			define( 'DEV7_STORE_URL', 'http://themeisle.com' );
 		}
 		// Core Folder Path
 		if ( ! defined( 'DEV7_CORE_DIR' ) ) {

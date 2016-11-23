@@ -68,7 +68,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'type_name'       => 'type',
 			'singular'        => __( 'Slider', 'nivo-slider' ),
 			'plural'          => __( 'Sliders', 'nivo-slider' ),
-			'documentation'   => 'http://docs.dev7studios.com/category/34-nivo-slider'
+			'documentation'   => 'http://docs.themeisle.com/'
 		);
 		$this->post_type = $this->labels['post_type'];
 
@@ -381,7 +381,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'default' => 'fixed',
 			'type'    => 'select',
 			'title'   => __( 'Slider Sizing', 'nivo-slider' ),
-			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Create fully <strong>responsive</strong> sliders.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=size_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
+			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Create fully <strong>responsive</strong> sliders.', 'nivo-slider' ), 'https://themeisle.com/plugins/nivo-slider/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=size_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
 			'options' => array(
 				'fixed' => __( 'Fixed Size', 'nivo-slider' ),
 			),
@@ -410,7 +410,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'default' => 'default',
 			'type'    => 'select',
 			'title'   => __( 'Slider Theme', 'nivo-slider' ),
-			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Select from our selection of beautiful <strong>pre-built themes</strong> or provide your own.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=themes_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
+			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Select from our selection of beautiful <strong>pre-built themes</strong> or provide your own.', 'nivo-slider' ), 'https://themeisle.com/plugins/nivo-slider/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=themes_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
 			'options' => array(
 				''        => __( 'None', 'nivo-slider' ),
 				'default' => __( 'Nivo Slider Default Theme', 'nivo-slider' ),
@@ -428,7 +428,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'default' => 'fade',
 			'type'    => 'select',
 			'title'   => __( 'Transition Effect', 'nivo-slider' ),
-			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Enable all <strong>16 stunning transition effects</strong>.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=transition_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
+			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Enable all <strong>16 stunning transition effects</strong>.', 'nivo-slider' ), 'https://themeisle.com/plugins/nivo-slider/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=transition_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
 			'options' => $effects,
 		);
 		$settings[] = array(
@@ -458,7 +458,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'default' => 'off',
 			'type'    => 'custom',
 			'title'   => __( 'Enable Thumbnail Navigation', 'nivo-slider' ),
-			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Enable <strong>thumbnail navigation</strong> and control thumb sizes.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=thumbnail_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
+			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Enable <strong>thumbnail navigation</strong> and control thumb sizes.', 'nivo-slider' ), 'https://themeisle.com/plugins/nivo-slider/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=thumbnail_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
 		);
 		$settings[] = array(
 			'name'    => 'pauseTime',
@@ -522,7 +522,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 			'default' => 'off',
 			'type'    => 'custom',
 			'title'   => __( 'Random Start Slide', 'nivo-slider' ),
-			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Enable <strong>random start slide</strong>.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=random_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
+			'descp'   => '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Enable <strong>random start slide</strong>.', 'nivo-slider' ), 'https://themeisle.com/plugins/nivo-slider/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=random_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>',
 		);
 
 		return $settings;
@@ -622,7 +622,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 	 * Override the type manual description
 	 */
 	public function manual_type_description() {
-		echo '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Automatically populate sliders from <strong>posts galleries</strong>, <strong>posts in categories</strong> and <strong>sticky posts</strong>.', 'nivo-slider' ), 'https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=type_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>';
+		echo '<span class="dev7-pro-feature">' . sprintf( '<strong>%s</strong> %s <a href="%s" target="_blank">%s</a>', __( 'Pro Feature:', 'nivo-slider' ), __( 'Automatically populate sliders from <strong>posts galleries</strong>, <strong>posts in categories</strong> and <strong>sticky posts</strong>.', 'nivo-slider' ), 'https://themeisle.com/plugins/nivo-slider/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=type_setting&utm_campaign=' . $this->post_type . '_lite_plugin', __( 'Upgrade to Pro', 'nivo-slider' ) ) . '</span>';
 	}
 
 	/**
@@ -655,7 +655,7 @@ class Dev7_Nivo_Slider_Lite extends Dev7_Core_Plugin {
 		echo '<li>' . __( 'Media Manager Plus integration', 'nivo-slider' ) . '</li>';
 		echo '<li>' . __( 'Access to our support Help Desk', 'nivo-slider' ) . '</li>';
 		echo '</ul>';
-		echo '<a href="https://dev7studios.com/products/nivo-slider-wordpress-plugin/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=upgrade_metabox&utm_campaign=' . $this->post_type . '_lite_plugin" target="_blank" class="button-primary">' . __( 'Upgrade Now', 'nivo-slider' ) . '</a>';
+		echo '<a href="https://themeisle.com/plugins/nivo-slider/?utm_source=wp_plugin&utm_medium=upgrade_link&utm_content=upgrade_metabox&utm_campaign=' . $this->post_type . '_lite_plugin" target="_blank" class="button-primary">' . __( 'Upgrade Now', 'nivo-slider' ) . '</a>';
 	}
 
 	/**

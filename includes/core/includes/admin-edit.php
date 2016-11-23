@@ -123,7 +123,7 @@ class Dev7_Core_Admin_Edit extends Dev7_Core {
 			return $this->labels->documentation;
 		}
 
-		return 'http://docs.dev7studios.com';
+		return 'http://docs.themeisle.com';
 	}
 
 	/**
