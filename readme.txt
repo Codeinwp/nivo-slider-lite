@@ -15,7 +15,7 @@ is the "Lite" version of the official [Nivo Slider WordPress plugin](https://the
 which comes with email support and more features.
 
 Why Choose Nivo Slider?
-Nivo Slider is the best choice for a WordPress slider plugin because it is fast, inyuitive and super easy to use. Is not the most feature-rich plugin on the market, but if you need just a responsive slider that works, check it out!
+Nivo Slider is the best choice for a WordPress slider plugin because it is fast, intuitive and super easy to use. Is not the most feature-rich plugin on the market, but if you need just a responsive slider that works, check it out!
 
 **Get more awesome features by upgrading to the full plugin:**
 
