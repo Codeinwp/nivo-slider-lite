@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Responsive WordPress Slider - Nivo Slider Lite
+ * Plugin Name: Slider by Nivo - Responsive Image Slider
  * Plugin URI: https://themeisle.com/plugins/nivo-slider-lite
- * Description: Most Popular And Easiest to Use WordPress Slider Plugin.
- * Version: 1.0.5
+ * Description: Nivo Slider is The Most Popular And Easiest to Use WordPress Slider Plugin.
+ * Version: 1.0.6
  * Author: ThemeIsle
  * Author URI: https://themeisle.com/
  * Text Domain: nivo-slider
