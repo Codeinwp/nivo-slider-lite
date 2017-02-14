@@ -1,12 +1,12 @@
-=== Nivo Slider Lite ===
+=== Slider by Nivo - Responsive Image Slider ===
 Contributors: themeisle, codeinwp
 Tags: image, slider, nivo,slider plugin, slideshow, slideshow plugin, template tag, wordpress gallery, wordpress image slider, wordpress photo gallery, wordpress picture gallery, wordpress picture slider, wordpress responsive slider, wordpress slider, wordpress slider plugin, wordpress slideshow, wp slider
 Requires at least: 3.0
-Tested up to: 4.7
+Tested up to: 4.7.2
 Stable tag: trunk
 License: GPLv3
 
-Most Popular And Easiest to Use WordPress Slider Plugin.
+Nivo Slider is The Most Popular And Easiest to Use WordPress Slider Plugin.
 
 == Description ==
 
