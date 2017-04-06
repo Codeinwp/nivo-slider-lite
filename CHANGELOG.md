@@ -1,4 +1,8 @@
 
+### 1.0.6 - 06/04/2017
+**Changes:** 
+- Improved description
+
 ### 1.0.6 - 14/02/2017
 **Changes:** 
 - Development
