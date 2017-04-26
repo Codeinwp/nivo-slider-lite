@@ -43,7 +43,8 @@ abstract class Nivo_Core_Abstract extends Nivo_Core_Settings_Abstract {
 	 */
 	public function __construct() {
 		$plugin_settings = self::get_plugin_settings();
-		if ( isset( $plugin_settings ) && ! empty( $plugin_settings->get_labels() ) ) {
+		$labels = $plugin_settings->get_labels();
+		if ( isset( $plugin_settings ) && ! empty( $labels ) ) {
 			$this->labels = $plugin_settings->get_labels();
 			$this->is_lite = $plugin_settings->get_lite();
 		}
