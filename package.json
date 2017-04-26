@@ -1,0 +1,31 @@
+{
+  "name": "nivo-slider-lite",
+  "version": "3.0.0",
+  "description": "Nivo Slider Lite",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codeinwp/nivo-slider-lite.git"
+  },
+  "keywords": [
+    "wordpress-plugin"
+  ],
+  "category": "plugins",
+  "textdomain": "nivo-slider",
+  "author": "ThemeIsle <friends@themeisle.com>",
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/Codeinwp/nivo-slider-lite/issues"
+  },
+  "pot": {
+    "reportmsgidbugsto": "https://github.com/Codeinwp/nivo-slider-lite/issues",
+    "languageteam": "Themeisle Translate <friends@themeisle.com>",
+    "lasttranslator": "Themeisle Translate Team <friends@themeisle.com>"
+  },
+  "devDependencies": {
+    "grunt-plugin-fleet": "codeinwp/grunt-plugin-fleet",
+    "load-project-config": "~0.2.0"
+  },
+  "wraithSlug": [
+    "nivo-slider"
+  ]
+}

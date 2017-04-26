@@ -9,123 +9,143 @@ Supports Thumbs: false
 */
 
 .theme-bar.slider-wrapper {
-    position: relative;
-    border: 1px solid #333;
-    overflow: hidden;
+	overflow: hidden;
+	position: relative;
+	border: 1px solid #333;
 }
+
 .theme-bar .nivoSlider {
-	position:relative;
-	background:#fff url(loading.gif) no-repeat 50% 50%;
+	position: relative;
+	background: #fff url(loading.gif) no-repeat 50% 50%;
 }
+
 .theme-bar .nivoSlider img {
-	position:absolute;
-	top:0px;
-	left:0px;
-	display:none;
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
 	max-width: none !important;
 }
+
 .theme-bar .nivoSlider a {
-	border:0;
-	display:block;
+	display: block;
+	border: 0;
 }
 
 .theme-bar .nivo-controlNav {
-    position: absolute;
-    left: 0;
-    bottom: -41px;
-    z-index: 10;
-    width: 100%;
-    height: 30px;
-	text-align: center;
+	position: absolute;
+	z-index: 10;
+	bottom: -41px;
+	left: 0;
+	width: 100%;
+	height: 30px;
 	padding: 5px 0;
 	border-top: 1px solid #333;
+	/* IE6-9 */
+	opacity: 0.5;
 	background: #333;
-    background: -moz-linear-gradient(top,  #565656 0%, #333333 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#565656), color-stop(100%,#333333)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #565656 0%,#333333 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #565656 0%,#333333 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #565656 0%,#333333 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #565656 0%,#333333 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#565656', endColorstr='#333333',GradientType=0 ); /* IE6-9 */
-    opacity: 0.5;
-    -webkit-transition: all 200ms ease-in-out;
-    -moz-transition: all 200ms ease-in-out;
-    -o-transition: all 200ms ease-in-out;
-    transition: all 200ms ease-in-out;
+	/* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#565656), color-stop(100%,#333));
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #565656 0%,#333 100%);
+	/* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+	background: -webkit-gradient(linear,  left top, left bottom,  from(#565656),to(#333));
+	background: linear-gradient(to bottom,  #565656 0%,#333 100%);
+	text-align: center;
+	-webkit-transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in-out;
+	/* W3C */
+
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#565656', endColorstr='#333333',GradientType=0 );
 }
+
 .theme-bar:hover .nivo-controlNav {
-    bottom: 0;
-    opacity: 1;
+	bottom: 0;
+	opacity: 1;
 }
+
 .theme-bar .nivo-controlNav a {
-	display:inline-block;
-	width:22px;
-	height:22px;
-	background:url(bullets.png) no-repeat;
-	text-indent:-9999px;
-	border:0;
+	display: inline-block;
+	width: 22px;
+	height: 22px;
 	margin: 5px 2px 0 2px;
+	border: 0;
+	background: url(bullets.png) no-repeat;
+	text-indent: -9999px;
 }
+
 .theme-bar .nivo-controlNav a.active {
-	background-position:0 -22px;
+	background-position: 0 -22px;
 }
 
 .theme-bar .nivo-directionNav a {
-	display:block;
-	border:0;
-	color: #fff;
-	text-transform: uppercase;
+	display: block;
+	z-index: 11;
 	top: auto;
 	bottom: 10px;
-	z-index: 11;
+	border: 0;
+	opacity: 0.5;
+	color: #fff;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	line-height: 20px;
-	opacity: 0.5;
-    -webkit-transition: all 200ms ease-in-out;
-    -moz-transition: all 200ms ease-in-out;
-    -o-transition: all 200ms ease-in-out;
-    transition: all 200ms ease-in-out;
+	text-transform: uppercase;
+	-webkit-transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in-out;
 }
-.theme-bar a.nivo-nextNav { right: -50px; }
-.theme-bar a.nivo-prevNav { left: -50px; }
-.theme-bar:hover a.nivo-nextNav { 
-    right: 15px; 
-    opacity: 1;
+
+.theme-bar a.nivo-nextNav {
+	right: -50px;
 }
-.theme-bar:hover a.nivo-prevNav { 
-    left: 15px; 
-    opacity: 1;
+
+.theme-bar a.nivo-prevNav {
+	left: -50px;
 }
-.theme-bar .nivo-directionNav a:hover { color: #ddd; }
+
+.theme-bar:hover a.nivo-nextNav {
+	right: 15px;
+	opacity: 1;
+}
+
+.theme-bar:hover a.nivo-prevNav {
+	left: 15px;
+	opacity: 1;
+}
+
+.theme-bar .nivo-directionNav a:hover {
+	color: #ddd;
+}
 
 .theme-bar .nivo-caption {
-    font-family: Helvetica, Arial, sans-serif;
-    -webkit-transition: all 200ms ease-in-out;
-    -moz-transition: all 200ms ease-in-out;
-    -o-transition: all 200ms ease-in-out;
-    transition: all 200ms ease-in-out;
+	font-family: Helvetica, Arial, sans-serif;
+	-webkit-transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in-out;
 }
+
 .theme-bar:hover .nivo-caption {
-    bottom: 41px;
+	bottom: 41px;
 }
+
 .theme-bar .nivo-caption a {
-    color:#fff;
-    border-bottom:1px dotted #fff;
+	border-bottom: 1px dotted #fff;
+	color: #fff;
 }
+
 .theme-bar .nivo-caption a:hover {
-    color:#fff;
+	color: #fff;
 }
 
 .theme-bar .nivo-controlNav.nivo-thumbs-enabled {
 	width: 100%;
 }
+
 .theme-bar .nivo-controlNav.nivo-thumbs-enabled a {
 	width: auto;
 	height: auto;
-	background: none;
 	margin-bottom: 5px;
+	background: none;
 }
+
 .theme-bar .nivo-controlNav.nivo-thumbs-enabled img {
 	display: block;
 	width: 120px;

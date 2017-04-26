@@ -1,17 +1,27 @@
 
-### 1.0.6 - 06/04/2017
-**Changes:** 
-- Improved description
+### 3.0.0 - 17/02/2017
 
-### 1.0.6 - 14/02/2017
-**Changes:** 
-- Development
+**Changes:**
 
-### 1.0.5 - 10/01/2017
-**Changes:** 
-- Development
+- Refactored code base
 
-### 1.0.5 - 23/11/2016
-**Changes:** 
-- Added themeisle as author
+### 2.5.1 - 12/12/2016
+
+**Changes:** 
+
+- added backward compat for license
+
+
+### 2.5.0 - 21/11/2016
+
+**Changes:** 
+
+- Added plugin to themeisle system
+
+
+### 2.5.0 - 21/11/2016
+
+**Changes:** 
+
+- Added plugin into themeisle system
 

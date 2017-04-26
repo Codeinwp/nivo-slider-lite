@@ -1,18 +1,56 @@
-/*
-* Version: 1.0.5
-*/
+#edit-slug-box,
+#postimagediv,
+#minor-publishing,
+.nivo_type,
+.manual.description {
+	display: none;
+}
 
-#nivoslider_settings_box .dev7-pro-feature {
+.useful-links a {
+	float: right;
+}
+
+.nivo-plugin-images li {
+	display: inline-block;
+	position: relative;
+	margin: 0;
+}
+
+.nivo-plugin-images li .spinner {
 	display: block;
-	font-size: 13px;
-	font-style: normal;
-	margin-top: 5px;
-}
-#nivoslider_settings_box .dev7-pro-feature a {
-	font-weight: bold;
+	float: left;
 }
 
-#nivoslider_upgrade_box ul {
-	list-style: disc;
-	margin: 0 0 20px 20px;
+.nivo-plugin-images li img {
+	max-width: 300px;
+	margin: 0 10px 10px 0;
+	padding: 3px;
+	border: 1px solid #dfdfdf;
+	background: none repeat scroll 0 0 #fff;
+}
+
+.nivo_plugin-thumbs {
+	margin: 0;
+	padding: 3px 0 0;
+	list-style: none outside none;
+}
+
+.nivo_plugin-thumbs li {
+	display: inline-block;
+	position: relative;
+	margin: 0;
+}
+
+.nivo_plugin-thumbs li img {
+	margin: 0 10px 5px 0;
+	padding: 2px;
+	border: 1px solid #dfdfdf;
+	background: none repeat scroll 0 0 #fff;
+}
+
+#nivo_license .spinner,
+#nivo_license #deactivate-license,
+#nivo_license #activate-license,
+.reattach-spinner {
+	float: left;
 }

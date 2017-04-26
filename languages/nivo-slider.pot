@@ -1,0 +1,607 @@
+# Copyright (C) 2017 ThemeIsle
+# This file is distributed under the no.
+msgid ""
+msgstr ""
+"Project-Id-Version: Slider by Nivo - Responsive Image Slider 1.0.6\n"
+"Report-Msgid-Bugs-To: https://github.com/Codeinwp/nivo-slider-lite/issues\n"
+"POT-Creation-Date: 2017-04-26 16:20:10+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Themeisle Translate Team <friends@themeisle.com>\n"
+"Language-Team: Themeisle Translate <friends@themeisle.com>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: includes/abstract/class-nivo-model-abstract.php:56
+msgid "Add New"
+msgstr ""
+
+#: includes/abstract/class-nivo-model-abstract.php:57
+msgid "Add New %1$s"
+msgstr ""
+
+#: includes/abstract/class-nivo-model-abstract.php:58
+#: includes/admin/libs/class-nivo-core-admin-images.php:59
+msgid "Edit %1$s"
+msgstr ""
+
+#: includes/abstract/class-nivo-model-abstract.php:59
+msgid "New %1$s"
+msgstr ""
+
+#: includes/abstract/class-nivo-model-abstract.php:60
+msgid "All %2$s"
+msgstr ""
+
+#: includes/abstract/class-nivo-model-abstract.php:61
+msgid "View %1$s"
+msgstr ""
+
+#: includes/abstract/class-nivo-model-abstract.php:62
+msgid "Search %2$s"
+msgstr ""
+
+#: includes/abstract/class-nivo-model-abstract.php:63
+msgid "No %2$s found"
+msgstr ""
+
+#: includes/abstract/class-nivo-model-abstract.php:64
+msgid "No %2$s found in Trash"
+msgstr ""
+
+#: includes/admin/class-nivo-slider-admin.php:91
+#: includes/admin/class-nivo-slider-admin.php:196
+#: includes/admin/libs/class-nivo-slider-widget.php:31
+msgid "Nivo Slider"
+msgstr ""
+
+#: includes/admin/class-nivo-slider-admin.php:92
+msgid "Nivo Sliders"
+msgstr ""
+
+#: includes/admin/class-nivo-slider-admin.php:261
+msgid "Save Changes"
+msgstr ""
+
+#: includes/admin/class-nivo-slider-admin.php:290
+msgid "Management Roles"
+msgstr ""
+
+#: includes/admin/class-nivo-slider-admin.php:491
+msgid "Active: "
+msgstr ""
+
+#: includes/admin/class-nivo-slider-admin.php:493
+msgid "Deactivate License"
+msgstr ""
+
+#: includes/admin/class-nivo-slider-admin.php:498
+msgid "Activate this license key to enable automatic upgrades"
+msgstr ""
+
+#: includes/admin/class-nivo-slider-admin.php:501
+msgid "Enter a valid license key to enable automatic upgrades"
+msgstr ""
+
+#: includes/admin/class-nivo-slider-admin.php:503
+msgid "Activate License"
+msgstr ""
+
+#: includes/admin/class-nivo-slider-admin.php:519
+#: includes/admin/class-nivo-slider-admin.php:543
+#: includes/admin/libs/class-nivo-core-admin-edit.php:279
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:66
+msgid "Enable Captions"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:67
+msgid "Enable automatic captions from post titles"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:75
+msgid "Number of Images"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:76
+msgid ""
+"The number of images to use in the slider. Leave blank for all images. "
+"External sources default to 20"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:85
+msgid "Slider Sizing"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:86
+msgid "Responsive sliders will fill the width of the container"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:88
+msgid "Responsive"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:89
+msgid "Fixed Size"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:96
+msgid "Image Size"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:97
+msgid "Select the size of image from the WordPress media library"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:105
+msgid "Slider Size"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:106
+msgid "(Size in px) Images will be cropped to these dimensions (eg 400 x 150)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:119
+msgid "Slider Theme"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:120
+msgid "Use a pre-built theme or provide your own styles."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:124
+msgid "Random"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:125
+msgid "Fade"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:126
+msgid "Fold"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:127
+msgid "Slice Down"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:128
+msgid "Slice Down (Left)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:129
+msgid "Slice Up"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:130
+msgid "Slice Up (Left)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:131
+msgid "Slice Up/Down"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:132
+msgid "Slice Up/Down (Left)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:133
+msgid "Slide In (Right)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:134
+msgid "Slide In (Left)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:135
+msgid "Box Random"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:136
+msgid "Box Rain"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:137
+msgid "Box Rain (Reverse)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:138
+msgid "Box Rain Grow"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:139
+msgid "Box Rain Grow (Reverse)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:145
+msgid "Transition Effect"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:152
+msgid "Slices"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:153
+msgid "The number of slices to use in the \"Slice\" transitions (eg 15)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:159
+msgid "Box (Cols x Rows)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:160
+msgid "The number of columns and rows to use in the \"Box\" transitions (eg 8 x 4)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:167
+msgid "Animation Speed"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:168
+msgid "The speed of the transition animation in milliseconds (eg 500)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:174
+msgid "Enable Thumbnail Navigation"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:181
+msgid "Thumbnail Size"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:182
+msgid "The width and height of the thumbnails"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:190
+msgid "Pause Time"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:191
+msgid "The amount of time to show each slide in milliseconds (eg 3000)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:197
+msgid "Start Slide"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:198
+msgid "Set which slide the slider starts from (zero based index: usually 0)"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:204
+msgid "Enable Direction Navigation"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:205
+msgid "Prev &amp; Next arrows"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:211
+msgid "Enable Control Navigation"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:212
+msgid "eg 1,2,3..."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:218
+msgid "Enable Images Links"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:219
+msgid ""
+"If a link has been added to an image when configuring, the image links to "
+"the url."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:225
+msgid "Open Links in New Window"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:226
+msgid "Open the links in a new window."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:234
+msgid "Pause the Slider on Hover"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:240
+msgid "Manual Transitions"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:241
+msgid "Slider is always paused"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:247
+msgid "Random Start Slide"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:248
+msgid "Overrides Start Slide value"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:273
+msgid "%1$s Images"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:286
+msgid "Using this %1$s"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:292
+msgid "Useful Links"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:307
+msgid "To use this %1$s in your posts or pages use the following shortcode:"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:313
+msgid "To use this %1$s in a theme template file use the following code:"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:329
+msgid "Website:"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:330
+msgid "Created by:"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:332
+msgid "Support:"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:334
+msgid "Documentation:"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:335
+msgid "Changelog:"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:369
+msgid "%1$s Type"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:385
+msgid "No Sources"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:390
+msgid "Choose to manually upload images or use images from the media library."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:394
+msgid ""
+"You can add images from external sources and use them as feeds with our "
+"free plugin %1$s Media Manager Plus %2$s"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:396
+msgid "Connect more sources using %1$s Media Manager Plus %2$s"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:404
+msgid "Gallery Location"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:434
+msgid "Select the post gallery you want to use"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:438
+#: includes/admin/libs/class-nivo-core-images.php:74
+msgid "Category"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:454
+msgid "Select the category you want to use for post thumbnails"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:458
+#: includes/admin/libs/class-nivo-core-images.php:85
+msgid "Custom Post Type"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:477
+msgid "Select the custom post type you want to use for post thumbnails"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:702
+#: includes/admin/libs/class-nivo-core-admin-images.php:142
+msgid "Title"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:703
+msgid "Shortcode"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:704
+msgid "Source"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:705
+msgid "Type"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:706
+msgid "Images"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:707
+msgid "Author"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-edit.php:708
+msgid "Date"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-images.php:55
+#: includes/admin/libs/class-nivo-core-admin-images.php:56
+msgid "Create %1$s"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-images.php:57
+#: includes/admin/libs/class-nivo-core-admin-images.php:58
+#: includes/admin/libs/class-nivo-core-admin-images.php:64
+msgid "Add to %1$s"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-images.php:60
+msgid "Save %1$s"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-images.php:61
+#: includes/admin/libs/class-nivo-core-admin-images.php:67
+msgid "Update %1$s"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-images.php:62
+#: includes/admin/libs/class-nivo-core-admin-images.php:90
+msgid "Slide Details"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-images.php:66
+msgid "Add from "
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-images.php:93
+msgid "Saved."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-images.php:111
+#: includes/admin/libs/class-nivo-core-admin-images.php:137
+msgid "Caption"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-images.php:116
+#: includes/admin/libs/class-nivo-core-admin-images.php:147
+msgid "Alt Text"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-admin-images.php:121
+msgid "Link"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-images.php:72
+msgid "Manual"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-images.php:73
+msgid "Gallery"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-images.php:75
+msgid "Sticky Posts"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-images.php:406
+msgid "File doesn't  exist"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-model.php:46
+#: includes/admin/libs/class-nivo-core-model.php:49
+msgid "%1$s updated."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-model.php:47
+msgid "Custom field updated."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-model.php:48
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-model.php:51
+msgid "%1$s published."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-model.php:52
+msgid "%1$s saved."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-model.php:53
+msgid "%1$s submitted."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-model.php:54
+msgid ""
+"%1$s scheduled for: <strong>%2$s</strong>. <a target=\"_blank\" "
+"href=\"%2$s\">Preview %1$s</a>"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-model.php:55
+msgid "%1$s draft updated."
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-model.php:60
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-model.php:64
+msgid "%1$s restored to revision from %2$s"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-shortcode.php:114
+msgid "Invalid %1$s"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-core-shortcode.php:122
+msgid "Invalid %1$s Slug"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-slider-widget.php:33
+msgid "Display a Nivo Slider"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-slider-widget.php:104
+msgid "Title:"
+msgstr ""
+
+#: includes/admin/libs/class-nivo-slider-widget.php:119
+msgid "Select Slider"
+msgstr ""
+
+#: vendor/codeinwp/themeisle-sdk/class-themeisle-sdk-licenser.php:453
+msgid ""
+"Updating this theme will lose any customizations you have made. Cancel to "
+"stop, OK to update."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Slider by Nivo - Responsive Image Slider"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://themeisle.com/plugins/nivo-slider-lite"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Nivo Slider is The Most Popular And Easiest to Use WordPress Slider Plugin."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "ThemeIsle"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://themeisle.com/"
+msgstr ""
