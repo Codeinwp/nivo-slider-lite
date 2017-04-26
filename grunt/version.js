@@ -16,7 +16,7 @@ module.exports = {
 			prefix: 'Version\\:\\s'
 		},
 		src: [
-			'nivo-slider.php',
+			'nivo-slider-lite.php',
 			'assets/css/nivo-slider.css',
 		]
 	},
@@ -25,7 +25,7 @@ module.exports = {
 			prefix: 'version\\s+=\\s+[\'"]'
 		},
 		src: [
-			'nivo-slider.php',
+			'includes/class-nivo-slider.php',
 		]
 	}
 };
