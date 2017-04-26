@@ -26,7 +26,7 @@ class Test_Nivo extends WP_UnitTestCase {
 	 */
 	public static function setUpBeforeClass() {
 		// Include Plugin
-		require_once 'nivo-slider.php';
+		require_once 'nivo-slider-lite.php';
 		$plugin_admin = new Nivo_Slider_Admin( 'nivo-slider', '3.0.0' );
 		self::set_plugin_admin( $plugin_admin );
 	}
