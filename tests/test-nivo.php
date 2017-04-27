@@ -136,7 +136,7 @@ class Test_Nivo extends WP_UnitTestCase {
 
 		// Test Create
 		$this->assertTrue( $plugin_model->save_post( $p->ID ) );
-		$post_meta = get_post_meta( $p->ID )[ $post_meta_key ][0];
+		$post_meta = get_post_meta( $p->ID ,  $post_meta_key, true );
 		$post_meta_settings = unserialize( $post_meta );
 		$this->assertEquals( $p->post_title,  $random_name );
 		$this->assertEquals( $p->post_type,  $post_type );
