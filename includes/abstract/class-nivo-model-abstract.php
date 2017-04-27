@@ -36,7 +36,8 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 	 */
 	public function __construct() {
 		$plugin_settings = self::get_plugin_settings();
-		if ( isset( $plugin_settings ) && ! empty( $plugin_settings->get_labels() ) ) {
+		$labels          = $plugin_settings->get_labels();
+		if ( isset( $plugin_settings ) && ! empty( $labels ) ) {
 			$this->labels = $plugin_settings->get_labels();
 		}
 	}
@@ -49,7 +50,6 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 	 */
 	public function register() {
 		$defaults = $this->labels;
-
 		$labels = array(
 			'name'               => '%2$s',
 			'singular_name'      => '%1$s',
@@ -65,16 +65,12 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 			'parent_item_colon'  => '',
 			'menu_name'          => '%2$s',
 		);
-
 		foreach ( $labels as $key => $value ) {
 			$labels[ $key ] = sprintf( $value, $defaults['singular'], $defaults['plural'] );
 		}
-
 		$labels = apply_filters( $defaults['post_type'] . '_post_type_labels', $labels );
-
 		$supports = array( 'title', 'thumbnail' );
 		$supports = array_merge( $supports, apply_filters( 'nivo_post_type_supports', array() ) );
-
 		$post_type_args = array(
 			'labels'        => $labels,
 			'public'        => false,
@@ -90,14 +86,13 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 				$post_type_args
 			)
 		);
-
 		register_taxonomy(
 			$defaults['taxonomy'],
 			$defaults['post_type'],
 			array(
-				'label' => $defaults['singular'],
-				'public' => false,
-				'rewrite' => false,
+				'label'        => $defaults['singular'],
+				'public'       => false,
+				'rewrite'      => false,
 				'hierarchical' => true,
 			)
 		);
@@ -106,10 +101,12 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 	/**
 	 * Amend the settings of the [gallery] post before saving
 	 *
-	 * @since	2.2.*
+	 * @since    2.2.*
 	 * @updated 3.0.0
-	 * @access	public
-	 * @param	integer $post_id Post ID.
+	 * @access    public
+	 *
+	 * @param    integer $post_id Post ID.
+	 *
 	 * @return boolean
 	 */
 	public function save_post( $post_id ) {
@@ -126,6 +123,7 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 			$settings = $_POST[ $this->labels['post_meta_key'] ];
 			$settings = apply_filters( $this->labels['post_type'] . '_post_meta_save', $settings );
 			update_post_meta( $post_id, $this->labels['post_meta_key'], $settings );
+
 			return true;
 		}
 	}
@@ -136,7 +134,9 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 	 *
 	 * @since   3.0.0
 	 * @access  public
-	 * @param   array   $settings   The settings array.
+	 *
+	 * @param   array $settings The settings array.
+	 *
 	 * @return array
 	 */
 	public function save_post_meta( $settings ) {
