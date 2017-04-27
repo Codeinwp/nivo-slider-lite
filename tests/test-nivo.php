@@ -75,12 +75,12 @@ class Test_Nivo extends WP_UnitTestCase {
 			'role' => 'administrator',
 		) );
 		wp_set_current_user( $user_id );
-		$p                                  = $this->factory->post->create_and_get( array(
+		$p = $this->factory->post->create_and_get( array(
 			'post_title'  => $random_name,
 			'post_type'   => $post_type,
 			'post_author' => $user_id,
 		) );
-		$settings                           = array(
+		$settings = array(
 			'manual_image_ids' => '139,22',
 			'source'           => 'manual',
 			'type_gallery'     => '1',
@@ -113,10 +113,12 @@ class Test_Nivo extends WP_UnitTestCase {
 		$_POST[ $post_type . '_noncename' ] = wp_create_nonce( $plugin_name );
 		$_POST['post_type']                 = $post_type;
 		$_POST[ $post_meta_key ]            = $settings;
-		$taxonomy_names                     = get_object_taxonomies( $p );
+		$taxonomy_names = get_object_taxonomies( $p );
 		// Test Create
 		$this->assertTrue( $plugin_model->save_post( $p->ID ) );
-		$post_meta_settings = get_post_meta( $p->ID, $post_meta_key, true );
+		$post_meta          = get_post_meta( $p->ID );
+		$post_meta          = $post_meta[ $post_meta_key ][0];
+		$post_meta_settings = unserialize( $post_meta );
 		$this->assertEquals( $p->post_title, $random_name );
 		$this->assertEquals( $p->post_type, $post_type );
 		$this->assertTrue( in_array( $taxonomy, $taxonomy_names ) );
@@ -126,8 +128,10 @@ class Test_Nivo extends WP_UnitTestCase {
 		$settings2['randomStart'] = 'on';
 		$_POST[ $post_meta_key ]  = $settings2;
 		$this->assertTrue( $plugin_model->save_post( $p->ID ) );
-		$post_meta = get_post_meta( $p->ID )[ $post_meta_key ][0];
-		$this->assertEqualSets( $settings2, $post_meta );
+		$post_meta          = get_post_meta( $p->ID );
+		$post_meta          = $post_meta[ $post_meta_key ][0];
+		$post_meta_settings = unserialize( $post_meta );
+		$this->assertEqualSets( $settings2, $post_meta_settings );
 	}
 
 	/**
