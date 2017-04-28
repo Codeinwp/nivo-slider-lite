@@ -1,4 +1,11 @@
 
+ ### v2.0.0 - 2017-04-28 
+ **Changes:** 
+ - Added more slider themes.
+- Added responsive option.
+- Added more transition effects.
+- Major code refactor.
+ 
 ### 3.0.0 - 17/02/2017
 
 **Changes:**
@@ -24,4 +31,3 @@
 **Changes:** 
 
 - Added plugin into themeisle system
-
