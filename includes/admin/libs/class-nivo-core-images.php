@@ -422,7 +422,7 @@ class Nivo_Core_Images extends Nivo_Core_Abstract implements Nivo_Library_Interf
 		$defaults['disabled-1'] = __( 'Gallery', 'nivo-slider' );
 		$defaults['disabled-2'] = __( 'Category', 'nivo-slider' );
 		$defaults['disabled-3'] = __( 'Sticky Posts', 'nivo-slider' );
-		$defaults['disabled-3'] = __( 'Custom Post Type', 'nivo-slider' );
+		$defaults['disabled-4'] = __( 'Custom Post Type', 'nivo-slider' );
 
 		return apply_filters( $this->labels['post_type'] . '_image_sources_defaults', $defaults );
 	}
