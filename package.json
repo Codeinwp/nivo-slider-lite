@@ -1,6 +1,6 @@
 {
   "name": "nivo-slider-lite",
-  "version": "3.0.0",
+  "version": "2.0.0",
   "description": "Nivo Slider Lite",
   "repository": {
     "type": "git",
@@ -26,6 +26,6 @@
     "load-project-config": "~0.2.0"
   },
   "wraithSlug": [
-    "nivo-slider"
+    "nivo-slider-lite"
   ]
 }

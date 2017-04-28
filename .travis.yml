@@ -1,11 +1,11 @@
 language: php
 php:
+    - "7.1"
     - "7.0"
     - "5.6"
     - "5.5"
     - "5.4"
     - "5.3"
-    - "5.2"
 matrix:
   include:
   - php: "5.6"
@@ -22,7 +22,7 @@ env:
   matrix:
   - WP_VERSION=latest WP_MULTISITE=0
   global:
-  - MASTER_BRANCH=production UPSTREAM_REPO=Codeinwp/feedzy-rss-feeds STORE_URL=https://themeisle.com
+  - MASTER_BRANCH=master UPSTREAM_REPO=Codeinwp/nivo-slider-lite STORE_URL=https://themeisle.com
 install:
 - chmod +x bin/install-dependencies.sh
 - ". ./bin/install-dependencies.sh"

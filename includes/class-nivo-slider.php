@@ -69,7 +69,7 @@ class Nivo_Slider {
 	public function __construct() {
 
 		$this->plugin_name = 'nivo-slider';
-		$this->version = '3.0.0';
+		$this->version = '2.0.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -143,6 +143,8 @@ class Nivo_Slider {
 		$this->loader->add_filter( $post_type . '_get_license_constant', $plugin_admin, 'get_license_constant' );
 		$this->loader->add_filter( $post_type . '_check_license_constant', $plugin_admin, 'check_license_constant' );
 		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links', 10, 2 );
+		$this->loader->add_filter( 'nivo_field_upsell', $plugin_admin, 'add_upsell', 10, 2 );
+		$this->loader->add_filter( 'nivo_slider_lite_logger_flag', $plugin_admin, 'check_logger', 10, 2 );
 
 		$plugin_admin_edit = new Nivo_Core_Admin_Edit();
 		// Actions Nivo_Core_Admin_Edit
@@ -158,6 +160,7 @@ class Nivo_Slider {
 		$this->loader->add_action( 'wp_ajax_' . $post_type . '_get_meta_link', $plugin_admin_ajax, 'get_meta_link' );
 		$this->loader->add_action( 'wp_ajax_' . $post_type . '_load_images', $plugin_admin_ajax, 'load_images' );
 		$this->loader->add_action( 'wp_ajax_' . $post_type . '_reattach_images', $plugin_admin_ajax, 'reattach_images' );
+		$this->loader->add_action( 'wp_ajax_track_url', $plugin_admin_ajax, 'track_url' );
 
 		$plugin_admin_images = new Nivo_Core_Admin_Images();
 		// Actions Nivo_Core_Admin_Images
@@ -182,6 +185,7 @@ class Nivo_Slider {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_shortcode, 'register_styles' );
 		// Filters Nivo_Core_Shortcode
 		$this->loader->add_filter( 'the_posts', $plugin_shortcode, 'shortcode_enqueue_core' );
+		$this->loader->add_filter( 'nivo_slider', $plugin_shortcode, 'shortcode_enqueue_core' );
 		$this->loader->add_filter( $post_type . '_shortcode_styles_enqueue', $plugin_shortcode, 'shortcode_styles_enqueue', 10, 2 );
 		$this->loader->add_filter( $post_type . '_shortcode_output', $plugin_shortcode, 'shortcode_output', 10, 5 );
 
