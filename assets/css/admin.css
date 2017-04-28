@@ -156,3 +156,10 @@ input:checked + .nivo-slider:before {
 	font-size: 14px;
 	font-weight: bold;
 }
+.nivo-plugin-thumbs li{
+
+	display: inline-block;
+	float: left;
+	margin-left: 3px;
+	border: 1px #ccc solid;
+}

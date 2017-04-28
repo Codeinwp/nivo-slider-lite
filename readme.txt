@@ -2,7 +2,7 @@
 Contributors: themeisle, codeinwp, nivoslider
 Tags: image, slider, nivo,slider plugin, slideshow, slideshow plugin, template tag, wordpress gallery, wordpress image slider, wordpress photo gallery, wordpress picture gallery, wordpress picture slider, wordpress responsive slider, wordpress slider, wordpress slider plugin, wordpress slideshow, wp slider
 Requires at least: 3.0
-Tested up to: 4.7.3
+Tested up to: 4.7.4
 Stable tag: trunk
 License: GPLv3
 
@@ -22,14 +22,22 @@ Nivo Slider is the best choice for a WordPress slider plugin because it is fast,
 **Get more awesome features by upgrading to the full plugin:**
 
 * Create sliders from **Galleries, Categories and Sticky Posts**
-* **Responsive** sliders
-* Pre-built and custom **themes**
-* All **16 transition effects**
-* **Thumbnail** navigation
-* Random start slide
-* Nivo Slider **Widget**
+* More custom **themes**
+* Upcoming carousels builders support.
+* Upcoming lightboxes support.
+* Automatic updates.
+* Priority support.
 
 **[Click here to purchase the full plugin](https://themeisle.com/plugins/nivo-slider?utm_source=wordpress.org&utm_medium=web&utm_content=purchase_link&utm_campaign=nivoslider_lite_plugin)**
+
+ = See how Nivo can integrate with your website  =
+
+* [ Slider with bar using fading transition  ](https://demo.themeisle.com/nivo-slider/slider-bar-fade)
+* [ Dark slider with slice transition ](https://demo.themeisle.com/nivo-slider/slider-dark-slice/)
+* [ Light slider with box transition ](https://demo.themeisle.com/nivo-slider/slider-light-box/)
+* [ Slider with thumbnail navigation ](https://demo.themeisle.com/nivo-slider/slider-thumbnail/)
+* [ Slider from category ](https://demo.themeisle.com/nivo-slider/slider-category/)
+* [ Slider from gallery posts ](https://demo.themeisle.com/nivo-slider/slider-gallery/)
 
 == Installation ==
 
@@ -37,6 +45,13 @@ Nivo Slider is the best choice for a WordPress slider plugin because it is fast,
 2. Start adding your sliders in the "Nivo Slider" menu that appears
 
 == Frequently Asked Questions ==
+
+= How to use  Custom Themes with the Nivo Slider =
+http://docs.themeisle.com/article/510-using-custom-themes-with-the-nivo-slider
+
+= How to use  Nivo Slider template tag =
+http://docs.themeisle.com/article/509-using-the-nivo-slider-template-tag
+
 
 = I'd like access to more features and support. How can I get them? =
 
