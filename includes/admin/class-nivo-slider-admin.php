@@ -293,7 +293,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 			$this->labels['post_type'] . '-settings', '', array(
 			$this,
 			'display_settings_intro',
-		), $this->labels['post_type'] . '-settings'
+			), $this->labels['post_type'] . '-settings'
 		);
 		$settings[] = array(
 			'slug'  => 'custom-roles',
@@ -307,7 +307,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 				$setting['slug'], $setting['title'], array(
 				$scope,
 				$function,
-			), $this->labels['post_type'] . '-settings', $this->labels['post_type'] . '-settings'
+				), $this->labels['post_type'] . '-settings', $this->labels['post_type'] . '-settings'
 			);
 		}
 	}
@@ -354,8 +354,8 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 				<input type="hidden" name="<?php echo $element_name; ?>" value="off"/>
 				<input type="checkbox" name="<?php echo $element_name; ?>"
 				       value="on"<?php if ( $element_value == 'on' ) {
-					echo ' checked="checked"';
-				} ?> class="<?php echo $element_class; ?> "/>
+							echo ' checked="checked"';
+} ?> class="<?php echo $element_class; ?> "/>
 				<?php
 				break;
 			case 'select':
@@ -366,7 +366,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 						?>
 						<option value="<?php echo $value; ?>"<?php if ( $value == $element_value ) {
 							echo ' selected="selected"';
-						} ?>><?php echo $name; ?></option>
+} ?>><?php echo $name; ?></option>
 					<?php } ?>
 				</select>
 				<?php
@@ -652,7 +652,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 	public function add_upsell( $type ) {
 		switch ( $type ) {
 			case 'slider_type':
-				return '<span class="nivo-field-upsell">' . sprintf( __( 'You can automatically build slider from post galleries, categories and sticky posts using the %s FULL%s version.', 'nivo-slider' ), '<a href="' . NIVO_PRO_UPSELL . '" target="_blank">', '</a>' ) . '</span>';
+				return '<span class="nivo-field-upsell">' . sprintf( __( 'You can automatically build slider from post galleries, categories and sticky posts using the %1$s FULL%2$s version.', 'nivo-slider' ), '<a href="' . NIVO_PRO_UPSELL . '" target="_blank">', '</a>' ) . '</span>';
 				break;
 		}
 	}

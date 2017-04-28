@@ -153,7 +153,9 @@ class Nivo_Core_Admin_Ajax extends Nivo_Core_Abstract implements Nivo_Library_In
 		} else {
 			update_option( 'nivo_logger_flag', 'no' );
 		}
-		wp_send_json_success( array( 'status' => $status ) );
+		wp_send_json_success( array(
+			'status' => $status,
+		) );
 	}
 
 	/**
@@ -172,7 +174,8 @@ class Nivo_Core_Admin_Ajax extends Nivo_Core_Abstract implements Nivo_Library_In
 		}
 		$ajax_response['error']   = false;
 		$ajax_response['message'] = '';
-		$options = get_post_meta( $_POST['post_id'], $this->labels['post_meta_key'], true );;
+		$options = get_post_meta( $_POST['post_id'], $this->labels['post_meta_key'], true );
+		;
 		$images = $this->nivo_get_attached_images( $_POST['post_id'], - 1 );
 		if ( ! $images || count( $images ) == 0 ) {
 			$ajax_response['error']   = true;

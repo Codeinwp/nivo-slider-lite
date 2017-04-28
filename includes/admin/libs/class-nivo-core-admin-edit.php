@@ -275,32 +275,32 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 			$this->labels['post_type'] . '_upload_box', sprintf( __( '%1$s Images', 'nivo-slider' ), $this->labels['singular'] ), array(
 			$this,
 			'meta_box_upload',
-		), $this->labels['post_type'], 'normal'
+			), $this->labels['post_type'], 'normal'
 		);
 		add_meta_box(
 			$this->labels['post_type'] . '_settings_box', __( 'Settings', 'nivo-slider' ), array(
 			$this,
 			'meta_box_settings',
-		), $this->labels['post_type'], 'normal'
+			), $this->labels['post_type'], 'normal'
 		);
 		add_meta_box(
 			$this->labels['post_type'] . '_shortcode_box', sprintf( __( 'Using this %1$s', 'nivo-slider' ), $this->labels['singular'] ), array(
 			$this,
 			'meta_box_shortcode',
-		), $this->labels['post_type'], 'side'
+			), $this->labels['post_type'], 'side'
 		);
 		if ( ! defined( 'NIVO_SLIDER_PRO' ) ) {
 			add_meta_box(
 				$this->labels['post_type'] . '_usefullinks_box', __( 'Full Version', 'nivo-slider' ), array(
 				$this,
 				'meta_box_full_version',
-			), $this->labels['post_type'], 'side'
+				), $this->labels['post_type'], 'side'
 			);
 			add_meta_box(
 				$this->labels['post_type'] . '_enable_tracking', __( 'Contribute to Nivo', 'nivo-slider' ), array(
 				$this,
 				'enable_tracking',
-			), $this->labels['post_type'], 'side'
+				), $this->labels['post_type'], 'side'
 			);
 		}
 
@@ -402,7 +402,7 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 		?>
 		<table id="<?php echo $this->labels['post_type']; ?>-settings" class="form-table">
 			<tr valign="top">
-				<th scope="row"><?php echo sprintf( __( ' %1$s Type', 'nivo - slider' ), $this->labels['singular'] ) ?></th>
+				<th scope="row"><?php echo sprintf( __( ' %1$s Type', 'nivo-slider' ), $this->labels['singular'] ) ?></th>
 				<td>
 					<select
 							name="<?php echo $this->labels['post_meta_key']; ?>[<?php echo $this->labels['source_name']; ?>]">
@@ -422,12 +422,12 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 								echo $disabled . ' > ' . $value . '</option > ';
 							}
 						} else {
-							echo '<option value="none" > ' . __( 'No Sources', 'nivo - slider' ) . ' </option > ';
+							echo '<option value="none" > ' . __( 'No Sources', 'nivo-slider' ) . ' </option > ';
 						} ?>
 					</select>
 					<br>
 					<span class="manual description">
-					<?php _e( 'Choose to manually upload images or use images from the media library . ', 'nivo - slider' ); ?>
+					<?php _e( 'Choose to manually upload images or use images from the media library . ', 'nivo-slider' ); ?>
 						<br>
 						<?php echo apply_filters( 'nivo_field_upsell', 'slider_type' ); ?>
 				</span></td>
@@ -585,8 +585,8 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 									<input id="<?php echo $element_id; ?>" type="checkbox"
 									       name="<?php echo $element_name; ?>"
 									       value="on"<?php if ( $element_value == 'on' ) {
-										echo ' checked="checked"';
-									} ?>/>
+												echo ' checked="checked"';
+} ?>/>
 									<?php
 									break;
 								case 'select':
@@ -598,7 +598,7 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 											?>
 											<option value="<?php echo $value; ?>"<?php if ( $value == $element_value ) {
 												echo ' selected="selected"';
-											} ?>><?php echo $name; ?></option>
+} ?>><?php echo $name; ?></option>
 										<?php } ?>
 									</select>
 									<?php
