@@ -53,6 +53,12 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 
 == Changelog ==
 
+= 2.0.0 =
+ * Added more slider themes.
+ * Added responsive option.
+ * Added more transition effects.
+ * Major code refactor.
+
 = 1.0.3 =
  * Added themeisle as author
 
