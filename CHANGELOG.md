@@ -1,7 +1,14 @@
+### v2.0.1 - 2017-05-02
 
- ### v2.0.0 - 2017-04-28 
- **Changes:** 
- - Added more slider themes.
+**Changes:**
+
+- Fixed an issue with style loading for other post types.
+
+### v2.0.0 - 2017-04-28  
+
+**Changes:** 
+ 
+- Added more slider themes.
 - Added responsive option.
 - Added more transition effects.
 - Major code refactor.
