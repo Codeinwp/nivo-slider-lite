@@ -618,7 +618,9 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		 * class.
 		 */
 		wp_enqueue_style( $this->plugin_name . '_nivo_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/nivo-slider.css', array(), $this->version, 'all' );
-		wp_enqueue_style( $this->plugin_name . '_admin_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/admin.css', array(), $this->version, 'all' );
+		if( get_post_type() == $this->labels['post_type'] ) {
+            		wp_enqueue_style( $this->plugin_name . '_admin_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/admin.css', array(), $this->version, 'all' );
+        	}
 
 	}
 
