@@ -43,9 +43,9 @@ abstract class Nivo_Core_Abstract extends Nivo_Core_Settings_Abstract {
 	 */
 	public function __construct() {
 		$plugin_settings = self::get_plugin_settings();
-		$labels = $plugin_settings->get_labels();
+		$labels          = $plugin_settings->get_labels();
 		if ( isset( $plugin_settings ) && ! empty( $labels ) ) {
-			$this->labels = $plugin_settings->get_labels();
+			$this->labels  = $plugin_settings->get_labels();
 			$this->is_lite = $plugin_settings->get_lite();
 		}
 		$this->after_core_construct();
@@ -57,7 +57,8 @@ abstract class Nivo_Core_Abstract extends Nivo_Core_Settings_Abstract {
 	 * @since   3.0.0
 	 * @access  public
 	 */
-	public function after_core_construct() {}
+	public function after_core_construct() {
+	}
 
 	/**
 	 * Checks if Media Manager Plus is installed and active
@@ -73,12 +74,28 @@ abstract class Nivo_Core_Abstract extends Nivo_Core_Settings_Abstract {
 	}
 
 	/**
+	 * Checks if a plugin is installed and active
+	 *
+	 * @since   2.2.*
+	 * @access  public
+	 *
+	 * @param   array $plugin The plugins array.
+	 *
+	 * @return boolean
+	 */
+	public function nivo_plugin_is_active( $plugin ) {
+		return in_array( $plugin, (array) get_option( 'active_plugins', array() ) );
+	}
+
+
+	/**
 	 * Default value helper function
 	 *
 	 * @since   2.2.*
 	 * @access  public
-	 * @param   array  $options The options array.
-	 * @param   mixed  $value   The value of options.
+	 *
+	 * @param   array $options The options array.
+	 * @param   mixed $value The value of options.
 	 * @param   string $default The default.
 	 *
 	 * @return string
@@ -92,104 +109,14 @@ abstract class Nivo_Core_Abstract extends Nivo_Core_Settings_Abstract {
 	}
 
 	/**
-	 * Checks if a plugin is installed and active
-	 *
-	 * @since   2.2.*
-	 * @access  public
-	 * @param   array   $plugin The plugins array.
-	 * @return boolean
-	 */
-	public function nivo_plugin_is_active( $plugin ) {
-		return in_array( $plugin, (array) get_option( 'active_plugins', array() ) );
-	}
-
-	/**
-	 * Checks if a license for the plugin has been set as a constant
-	 *
-	 * @since   2.2.*
-	 * @access  public
-	 * @return boolean
-	 */
-	public function nivo_license_constant( $post_type ) {
-		return apply_filters( $post_type . '_check_license_constant', false );
-	}
-
-	/**
-	 * Returns the license key for the plugin
-	 *
-	 * @since   2.2.*
-	 * @access  public
-	 * @param   string  $post_type  The post type slug.
-	 * @param   array   $options    The options array.
-	 * @return string
-	 */
-	public function nivo_get_license_key( $post_type, $options ) {
-		if ( $this->nivo_license_constant( $post_type ) ) {
-			$license = apply_filters( $post_type . '_get_license_constant', '' );
-		} else {
-			$license = $this->nivo_default_val( $options, 'license_key', '' );
-		}
-		return trim( $license );
-	}
-
-	/**
-	 * Checks to see if content has the plugin shortcode
-	 *
-	 * @since   2.2.*
-	 * @access  public
-	 * @param   string $content     The content to check.
-	 * @param   string $shortcode   The shortcode to look for.
-	 * @return boolean
-	 */
-	public function nivo_has_shortcode_wrap( $content, $shortcode = '' ) {
-
-		if ( function_exists( 'has_shortcode' ) ) {
-			return has_shortcode( $content, $shortcode );
-		}
-
-		$found = false;
-
-		if ( ! $shortcode ) {
-			return $found;
-		}
-
-		if ( stripos( $content, '[' . $shortcode ) !== false ) {
-			$found = true;
-		}
-
-		return $found;
-	}
-
-	/**
-	 * Returns the images attached to a [gallery] post
-	 *
-	 * @since   2.2.*
-	 * @access  public
-	 * @param   string   $post_id    The post ID.
-	 * @param   integer  $limit       The limit param.
-	 * @return array
-	 */
-	public function nivo_get_attached_images( $post_id, $limit ) {
-		$args = array(
-			'orderby'        => 'menu_order ID',
-			'order'          => 'ASC',
-			'post_type'      => 'attachment',
-			'post_parent'    => $post_id,
-			'post_mime_type' => 'image',
-			'post_status'    => null,
-			'numberposts'    => $limit,
-		);
-
-		return get_posts( $args );
-	}
-
-	/**
 	 * Gets the [gallery] images attached as a gallery or just attached the to the post
 	 *
 	 * @since   2.2.*
 	 * @access  public
-	 * @param   string  $post    The post ID.
-	 * @param   integer $limit   The limit param.
+	 *
+	 * @param   string $post The post ID.
+	 * @param   integer $limit The limit param.
+	 *
 	 * @return array
 	 */
 	public function nivo_grab_attachment_ids_from_gallery( $post, $limit ) {
@@ -227,11 +154,68 @@ abstract class Nivo_Core_Abstract extends Nivo_Core_Settings_Abstract {
 	}
 
 	/**
+	 * Checks to see if content has the plugin shortcode
+	 *
+	 * @since   2.2.*
+	 * @access  public
+	 *
+	 * @param   string $content The content to check.
+	 * @param   string $shortcode The shortcode to look for.
+	 *
+	 * @return boolean
+	 */
+	public function nivo_has_shortcode_wrap( $content, $shortcode = '' ) {
+
+		if ( function_exists( 'has_shortcode' ) ) {
+			return has_shortcode( $content, $shortcode );
+		}
+
+		$found = false;
+
+		if ( ! $shortcode ) {
+			return $found;
+		}
+
+		if ( stripos( $content, '[' . $shortcode ) !== false ) {
+			$found = true;
+		}
+
+		return $found;
+	}
+
+	/**
+	 * Returns the images attached to a [gallery] post
+	 *
+	 * @since   2.2.*
+	 * @access  public
+	 *
+	 * @param   string $post_id The post ID.
+	 * @param   integer $limit The limit param.
+	 *
+	 * @return array
+	 */
+	public function nivo_get_attached_images( $post_id, $limit ) {
+		$args = array(
+			'orderby'        => 'menu_order ID',
+			'order'          => 'ASC',
+			'post_type'      => 'attachment',
+			'post_parent'    => $post_id,
+			'post_mime_type' => 'image',
+			'post_status'    => null,
+			'numberposts'    => $limit,
+		);
+
+		return get_posts( $args );
+	}
+
+	/**
 	 * Get Nivo themes and any custom themes from uploads/nivo-themes/
 	 *
 	 * @since   2.2.*
 	 * @access  protected
-	 * @param   bool    $select     A flag to toggle select.
+	 *
+	 * @param   bool $select A flag to toggle select.
+	 *
 	 * @return array
 	 */
 	protected function get_themes( $select = false ) {

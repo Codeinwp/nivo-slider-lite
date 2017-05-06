@@ -68,6 +68,11 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 
 == Changelog ==
 
+= 2.0.2 =
+ * Removed redundant code
+ * Added future support for carousels.
+
+
 = 2.0.0 =
  * Added more slider themes.
  * Added responsive option.
