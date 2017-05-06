@@ -269,7 +269,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 				<?php do_settings_sections( $this->labels['post_type'] . '-settings' ); ?>
 				<p class="submit">
 					<input type="submit" name="submit" id="submit" class="button-primary"
-					       value="<?php _e( 'Save Changes', 'nivo-slider' ); ?>">
+						   value="<?php _e( 'Save Changes', 'nivo-slider' ); ?>">
 				</p>
 			</form>
 		</div>
@@ -331,7 +331,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 			case 'text':
 				?>
 				<input type="text" name="<?php echo $element_name; ?>" value="<?php echo $element_value; ?>"
-				       class="<?php echo $element_class; ?> "/>
+					   class="<?php echo $element_class; ?> "/>
 				<?php
 				break;
 			case 'textarea':
@@ -339,21 +339,21 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 				$cols    = ( isset( $args['cols'] ) ) ? $args['cols'] : 80;
 				?>
 				<textarea class="<?php echo $element_class; ?>" name="<?php echo $element_name; ?>"
-				          rows="<?php echo $rows; ?>"
-				          cols="<?php echo $cols; ?>"><?php echo $element_value; ?></textarea>
+						  rows="<?php echo $rows; ?>"
+						  cols="<?php echo $cols; ?>"><?php echo $element_value; ?></textarea>
 				<?php
 				break;
 			case 'number':
 				?>
 				<input type="number" name="<?php echo $element_name; ?>" value="<?php echo $element_value; ?>"
-				       class="<?php echo $element_class; ?> "/>
+					   class="<?php echo $element_class; ?> "/>
 				<?php
 				break;
 			case 'checkbox':
 				?>
 				<input type="hidden" name="<?php echo $element_name; ?>" value="off"/>
 				<input type="checkbox" name="<?php echo $element_name; ?>"
-				       value="on"<?php if ( $element_value == 'on' ) {
+					   value="on"<?php if ( $element_value == 'on' ) {
 							echo ' checked="checked"';
 } ?> class="<?php echo $element_class; ?> "/>
 				<?php
@@ -404,7 +404,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		$options = $this->options;
 		if ( $options && is_array( $options ) ) {
 			foreach ( $options as $key => $option ) {
-				if ( ! array_key_exists( $key, $input ) && $key != 'license_status' && $key != 'license_key' ) {
+				if ( ! array_key_exists( $key, $input ) ) {
 					$input[ $key ] = $option;
 				}
 			}
@@ -487,63 +487,6 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		endforeach;
 	}
 
-	/**
-	 * Renders setting for license
-	 *
-	 * @since    2.2.*
-	 * @access    public
-	 * @return mixed
-	 */
-	public function setting_license_settings() {
-		$license_key = $this->nivo_get_license_key( $this->labels['post_type'], $this->options );
-		$status      = $this->nivo_default_val( $this->options, 'license_status', false );
-		echo '<div id="nivo_license">';
-		echo '<input type="hidden" name="' . $this->labels['options_key'] . '[license_status]" value="' . $status . '">';
-		if ( $status !== false && $status == 'valid' ) {
-			echo '<input type="hidden" name="' . $this->labels['options_key'] . '[license_key]" value="' . $license_key . '">';
-			echo '<span style="color:green;">' . __( 'Active: ', 'nivo-slider' ) . '</span>';
-			echo '<span class="regular-text">' . $license_key . '</span><br>  ';
-			echo '<input id="deactivate-license" type="button" class="button-secondary" value="' . __( 'Deactivate License', 'nivo-slider' ) . '"/>';
-		} else {
-			if ( $this->nivo_license_constant( $this->labels['post_type'] ) ) {
-				echo '<input type="hidden" name="' . $this->labels['options_key'] . '[license_key]" value="' . $license_key . '">';
-				echo '<span class="regular-text">' . $license_key . '</span><br>  ';
-				echo '<label class="description">' . __( 'Activate this license key to enable automatic upgrades', 'nivo-slider' ) . '</label><br>';
-			} else {
-				echo '<input type="text" name="' . $this->labels['options_key'] . '[license_key]" class="regular-text" value="' . $license_key . '"><br>  ';
-				echo '<label class="description">' . __( 'Enter a valid license key to enable automatic upgrades', 'nivo-slider' ) . '</label><br>';
-			}
-			echo '<input id="activate-license" type="button" class="button-primary" value="' . __( 'Activate License', 'nivo-slider' ) . '"/>';
-		}
-		echo '<span class="spinner"></span></div>';
-	}
-
-	/**
-	 * Displays a custom message about license activation in the plugin table list
-	 *
-	 * @since    2.2.*
-	 * @access    public
-	 * @return mixed
-	 */
-	public function plugin_row() {
-		$license_key = $this->nivo_get_license_key( $this->labels['post_type'], $this->options );
-		$status      = $this->nivo_default_val( $this->options, 'license_status', 'invalid' );
-		if ( ( empty( $license_key ) || $license_key == '' ) || $status == 'invalid' ) {
-			$settings_link = sprintf( '<a href="%s">%s</a>', admin_url( 'edit.php?post_type=' . $this->labels['post_type'] . '&page=' . $this->labels['post_type'] . '-settings' ), __( 'Settings', 'nivo-slider' ) );
-			$message       = 'To finish activating ' . $this->labels['plugin_name'] . ', please go to ' . $settings_link . ' and enter your license key and activate it to enable automatic updates.';
-		} else {
-			return;
-		}
-		?>
-		<tr class="plugin-update-tr nivo-custom">
-			<td colspan="3" class="plugin-update">
-				<div class="update-message">
-					<?php echo $message; ?>
-				</div>
-			</td>
-		</tr>
-		<?php
-	}
 
 	/**
 	 * Adds a new link to the plugin settings on the plugin table list
@@ -578,28 +521,6 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 	}
 
 	/**
-	 * Checks if a license key has been defined
-	 *
-	 * @since   2.2.*
-	 * @access  public
-	 * @return boolean
-	 */
-	public function check_license_constant() {
-		return defined( 'NIVOSLIDER_LICENSE' );
-	}
-
-	/**
-	 * Gets the defined license key
-	 *
-	 * @since   2.2.*
-	 * @access  public
-	 * @return string
-	 */
-	public function get_license_constant() {
-		return NIVOSLIDER_LICENSE;
-	}
-
-	/**
 	 * Register the stylesheets for the admin area.
 	 *
 	 * @since   3.0.0
@@ -618,9 +539,9 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		 * class.
 		 */
 		wp_enqueue_style( $this->plugin_name . '_nivo_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/nivo-slider.css', array(), $this->version, 'all' );
-		if( get_post_type() == $this->labels['post_type'] ) {
-            		wp_enqueue_style( $this->plugin_name . '_admin_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/admin.css', array(), $this->version, 'all' );
-        	}
+		if ( get_post_type() == $this->labels['post_type'] ) {
+			wp_enqueue_style( $this->plugin_name . '_admin_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/admin.css', array(), $this->version, 'all' );
+		}
 
 	}
 

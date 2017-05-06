@@ -55,28 +55,31 @@
 	float: left;
 }
 
-.nivo-upsell-box  {
+.nivo-upsell-box {
 	text-align: center;
 }
-.nivo-upsell-box h3{
+
+.nivo-upsell-box h3 {
 	text-align: left;
 }
-.nivo-upsell-box ul{
+
+.nivo-upsell-box ul {
+	padding-left: 10px;
 	text-align: left;
 	list-style-type: disc;
-	padding-left: 10px;
 }
-.nivo-upsell-box{
-	padding-left:20px;
+
+.nivo-upsell-box {
+	padding-left: 20px;
 }
 
 /* The switch - the box around the slider */
 .nivo-switch {
-	margin-left: 20px;
 	display: inline-block;
 	position: relative;
 	width: 30px;
 	height: 18px;
+	margin-left: 20px;
 }
 
 /* Hide default HTML checkbox */
@@ -156,8 +159,8 @@ input:checked + .nivo-slider:before {
 	font-size: 14px;
 	font-weight: bold;
 }
-.nivo-plugin-thumbs li{
 
+.nivo-plugin-thumbs li {
 	display: inline-block;
 	float: left;
 	margin-left: 3px;

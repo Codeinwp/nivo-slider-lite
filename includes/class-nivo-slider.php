@@ -131,17 +131,13 @@ class Nivo_Slider {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'init', $plugin_admin, 'init_tinymce' );
 		$this->loader->add_action( 'admin_print_scripts', $plugin_admin, 'admin_print_scripts' );
-		$this->loader->add_action( 'after_plugin_row_' . $post_type, $plugin_admin, 'plugin_row', 11 );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'remove_admin_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
-		$this->loader->add_action( 'after_plugin_row_' . $this->get_plugin_name(), $plugin_admin, 'plugin_row', 11 );
 		// Filters Nivo_Slider_Admin
 		$this->loader->add_filter( $post_type . '_script_settings', $plugin_admin, 'script_settings' );
 		$this->loader->add_filter( $post_type . '_post_type_menu_icon', $plugin_admin, 'menu_icon' );
 		$this->loader->add_filter( $post_type . '_post_type_labels', $plugin_admin, 'plugin_labels' );
-		$this->loader->add_filter( $post_type . '_get_license_constant', $plugin_admin, 'get_license_constant' );
-		$this->loader->add_filter( $post_type . '_check_license_constant', $plugin_admin, 'check_license_constant' );
 		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links', 10, 2 );
 		$this->loader->add_filter( 'nivo_field_upsell', $plugin_admin, 'add_upsell', 10, 2 );
 		$this->loader->add_filter( 'nivo_slider_lite_logger_flag', $plugin_admin, 'check_logger', 10, 2 );
