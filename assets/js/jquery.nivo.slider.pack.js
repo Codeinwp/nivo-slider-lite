@@ -6,7 +6,7 @@
  * Free to use and abuse under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
  */
-/*global jQuery, console*/
+/* global jQuery, console */
 (function (e) {
     "use strict";
     var t = function (t, n) {
@@ -37,7 +37,7 @@
             if (n !== "") {
                 n.css("display", "none");
             }
-            t.css({ position: "relative", display: "none"});
+            t.css("display", "none");
             i.totalSlides++;
         });
         if (r.randomStart) {
@@ -63,17 +63,17 @@
         e(window).resize(function () {
             s.children("img").width(s.width());
             u.attr("src", i.currentImage.attr("src"));
-            u.stop().height( 'auto' );
+            u.stop().height("auto");
             e(".nivo-slice").remove();
             e(".nivo-box").remove();
         });
         s.append(e('<div class="nivo-caption"></div>'));
         var a = function (t) {
             var n = e(".nivo-caption", s);
-            if (i.currentImage.attr("title") !== "" && i.currentImage.attr("title") !== undefined) {
+            if (i.currentImage.attr("title") != "" && i.currentImage.attr("title") != undefined) {
                 var r = i.currentImage.attr("title");
-                if (r.substr(0, 1) === "#") { r = e(r).html(); }
-                if (n.css("display") === "block") {
+                if (r.substr(0, 1) == "#") { r = e(r).html(); }
+                if (n.css("display") == "block") {
                     setTimeout(function () {
                         n.html(r);
                     }, t.animSpeed);
@@ -172,14 +172,12 @@
         });
         var h = function (t, n, r) {
             if (e(r.currentImage).parent().is("a")) { e(r.currentImage).parent().css("display", "block"); }
-            e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").width(t.width()).css({visibility: "hidden", display: "none"}).hide();
+            e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").width(t.width()).css("visibility", "hidden").show();
             var i = e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").parent().is("a") ? e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").parent().height() : e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").height();
             for (var s = 0; s < n.slices; s++) {
                 var o = Math.round(t.width() / n.slices);
                 if (s === n.slices - 1) {
                     t.append(e('<div class="nivo-slice" name="' + s + '"><img src="' + r.currentImage.attr("src") + '" style="position:absolute; width:' + t.width() + "px; height:auto; display:block !important; top:0; left:-" + (o + s * o - o) + 'px;" /></div>').css({
-                        position: "absolute",
-                        top: 0,
                         left: o * s + "px",
                         width: t.width() - o * s + "px",
                         height: i + "px",
@@ -188,8 +186,6 @@
                     }));
                 } else {
                     t.append(e('<div class="nivo-slice" name="' + s + '"><img src="' + r.currentImage.attr("src") + '" style="position:absolute; width:' + t.width() + "px; height:auto; display:block !important; top:0; left:-" + (o + s * o - o) + 'px;" /></div>').css({
-                        position: "absolute",
-                        top: 0,
                         left: o * s + "px",
                         width: o + "px",
                         height: i + "px",
@@ -199,18 +195,17 @@
                 }
             }
             e(".nivo-slice", t).height(i);
-            console.log( i );
             u.stop().animate({height: e(r.currentImage).height()}, n.animSpeed);
         };
         var p = function (t, n, r) {
             if (e(r.currentImage).parent().is("a")) { e(r.currentImage).parent().css("display", "block"); }
-            e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").width(t.width()).css({visibility: "hidden", display: "none"}).show();
+            e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").width(t.width()).css("visibility", "hidden").show();
             var i = Math.round(t.width() / n.boxCols),
                 s = Math.round(e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").height() / n.boxRows);
             for (var o = 0; o < n.boxRows; o++) {
                 for (var a = 0; a < n.boxCols; a++) {
                     if (a === n.boxCols - 1) {
-                        t.append(e('<div class="nivo-box" name="' + a + '" rel="' + o + '"><img src="' + r.currentImage.attr("src") + '" style="position:absolute; width:' + t.width() + "px; height:auto; display:none; top:-" + s * o + "px; left:-" + i * a + 'px;" /></div>').css({
+                        t.append(e('<div class="nivo-box" name="' + a + '" rel="' + o + '"><img src="' + r.currentImage.attr("src") + '" style="position:absolute; width:' + t.width() + "px; height:auto; display:block; top:-" + s * o + "px; left:-" + i * a + 'px;" /></div>').css({
                             opacity: 0,
                             left: i * a + "px",
                             top: s * o + "px",
@@ -218,7 +213,7 @@
                         }));
                         e('.nivo-box[name="' + a + '"]', t).height(e('.nivo-box[name="' + a + '"] img', t).height() + "px");
                     } else {
-                        t.append(e('<div class="nivo-box" name="' + a + '" rel="' + o + '"><img src="' + r.currentImage.attr("src") + '" style="position:absolute; width:' + t.width() + "px; height:auto; display:none; top:-" + s * o + "px; left:-" + i * a + 'px;" /></div>').css({
+                        t.append(e('<div class="nivo-box" name="' + a + '" rel="' + o + '"><img src="' + r.currentImage.attr("src") + '" style="position:absolute; width:' + t.width() + "px; height:auto; display:block; top:-" + s * o + "px; left:-" + i * a + 'px;" /></div>').css({
                             opacity: 0,
                             left: i * a + "px",
                             top: s * o + "px",
@@ -448,7 +443,7 @@
                 S[w] = [];
                 y = e(".nivo-box", t);
                 if (o === "boxRainReverse" || o === "boxRainGrowReverse") {
-                    y = e(".nivo-box", t)._reverse();
+                    y = e(".nivo-box", t)._reverse()
                 }
                 y.each(function () {
                     S[w][E] = e(this);
@@ -495,9 +490,8 @@
             }
         };
         var v = function (e) {
-            for (var t, n, r = e.length; r; t = parseInt(Math.random() * r, 10), n = e[--r], e[r] = e[t], e[t] = n) {
-                return e;
-            }
+            for (var t, n, r = e.length; r; t = parseInt(Math.random() * r, 10), n = e[--r], e[r] = e[t], e[t] = n);
+            return e;
         };
         var m = function (e) {
             if (this.console && typeof console.log !== "undefined") {
@@ -557,4 +551,4 @@
         }
     };
     e.fn._reverse = [].reverse;
-})(jQuery);
+})(jQuery)
