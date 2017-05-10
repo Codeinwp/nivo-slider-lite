@@ -1,4 +1,9 @@
 
+ ### v2.0.3 - 2017-05-10 
+ **Changes:** 
+ - Small changes to .js for better integration with Shop-Isle-Pro
+- Fixes height calculations.
+ 
  ### v2.0.2 - 2017-05-06 
  **Changes:** 
  - Removed redundant code.
