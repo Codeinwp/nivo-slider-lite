@@ -25,7 +25,7 @@ env:
   - MASTER_BRANCH=master UPSTREAM_REPO=Codeinwp/nivo-slider-lite STORE_URL=https://themeisle.com DEPLOY_BUILD=7.0
 before_install:
   - mkdir -p bin && cd bin
-  - wget $PIRATE_FLEET"load.sh"
+  - wget "$PIRATE_FLEET"load.sh
   - cd .. && chmod +x bin/load.sh
   - ". ./bin/load.sh"
 install:
