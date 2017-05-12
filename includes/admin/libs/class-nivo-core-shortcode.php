@@ -136,11 +136,8 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 
 		$images = $this->core_images->get_images( $sc['id'] );
 
-		// Force enqueue of core scripts (good for do_shortcode() in templates).
-		if ( $sc['template'] || $sc['force'] ) {
-			$this->enqueue_core_scripts( true );
-			$this->enqueue_core_styles( true );
-		}
+		$this->enqueue_core_scripts( true );
+		$this->enqueue_core_styles( true );
 
 		$this->enqueue_scripts( $options );
 		$this->enqueue_styles( $options );

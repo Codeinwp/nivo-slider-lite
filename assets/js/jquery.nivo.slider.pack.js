@@ -172,7 +172,7 @@
         });
         var h = function (t, n, r) {
             if (e(r.currentImage).parent().is("a")) { e(r.currentImage).parent().css("display", "block"); }
-            e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").width(t.width()).css("visibility", "hidden").show();
+            e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").width(t.width()).css( { "visibility": "hidden" } ).show();
             var i = e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").parent().is("a") ? e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").parent().height() : e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").height();
             for (var s = 0; s < n.slices; s++) {
                 var o = Math.round(t.width() / n.slices);
@@ -199,7 +199,7 @@
         };
         var p = function (t, n, r) {
             if (e(r.currentImage).parent().is("a")) { e(r.currentImage).parent().css("display", "block"); }
-            e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").width(t.width()).css("visibility", "hidden").show();
+            e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").width(t.width()).css( { "visibility": "hidden" } ).show();
             var i = Math.round(t.width() / n.boxCols),
                 s = Math.round(e('img[src="' + r.currentImage.attr("src") + '"]', t).not(".nivo-main-image,.nivo-control img").height() / n.boxRows);
             for (var o = 0; o < n.boxRows; o++) {
