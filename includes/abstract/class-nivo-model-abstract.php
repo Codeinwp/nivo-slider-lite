@@ -53,7 +53,7 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 		$labels = array(
 			'name'               => '%2$s',
 			'singular_name'      => '%1$s',
-			'add_new'            => __( 'Add New', 'nivo-slider' ),
+			'add_new'            => __( 'Add Slider', 'nivo-slider' ),
 			'add_new_item'       => __( 'Add New %1$s', 'nivo-slider' ),
 			'edit_item'          => __( 'Edit %1$s', 'nivo-slider' ),
 			'new_item'           => __( 'New %1$s', 'nivo-slider' ),
@@ -78,7 +78,18 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 			'menu_position' => apply_filters( $defaults['post_type'] . '_post_type_menu_position', 100 ),
 			'supports'      => $supports,
 			'menu_icon'     => apply_filters( $defaults['post_type'] . '_post_type_menu_icon', '' ),
+            'taxonomies' => array(  $defaults['taxonomy'] ),
 		);
+        register_taxonomy(
+            $defaults['taxonomy'],
+            $defaults['post_type'],
+            array(
+                'label'        => $defaults['singular'],
+                'public'       => false,
+                'rewrite'      => false,
+                'hierarchical' => true,
+            )
+        );
 		register_post_type(
 			$this->labels['post_type'],
 			apply_filters(
@@ -86,16 +97,7 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 				$post_type_args
 			)
 		);
-		register_taxonomy(
-			$defaults['taxonomy'],
-			$defaults['post_type'],
-			array(
-				'label'        => $defaults['singular'],
-				'public'       => false,
-				'rewrite'      => false,
-				'hierarchical' => true,
-			)
-		);
+
 	}
 
 	/**
@@ -123,6 +125,8 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 			$settings = $_POST[ $this->labels['post_meta_key'] ];
 			$settings = apply_filters( $this->labels['post_type'] . '_post_meta_save', $settings );
 			update_post_meta( $post_id, $this->labels['post_meta_key'], $settings );
+            $taxonomy = ( isset( $_POST['taxonomy'] ) ) ? $_POST['taxonomy'] : 'slider';
+            wp_set_object_terms( $post_id, $taxonomy, $this->labels['taxonomy'] );
 
 			return true;
 		}

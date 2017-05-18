@@ -61,6 +61,10 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		$this->options = get_option( $this->labels['options_key'] );
 	}
 
+	public function get_nivo_settings() {
+	    return $this::get_plugin_settings();
+    }
+
 	private function default_labels() {
 		// TODO maybe simplify the labels array?
 		return array(
@@ -74,7 +78,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 			'shortcode'       => 'nivoslider',
 			'function'        => 'nivo_slider',
 			'slug'            => 'nivo-slider',
-			'taxonomy'        => 'nivo-slider',
+			'taxonomy'        => 'nivo_slider',
 			'post_meta_key'   => 'nivo_settings',
 			'options_key'     => 'nivoslider_settings',
 			'source_name'     => 'type',
