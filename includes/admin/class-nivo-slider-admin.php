@@ -63,7 +63,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 
 	public function get_nivo_settings() {
 	    return $this::get_plugin_settings();
-    }
+	}
 
 	private function default_labels() {
 		// TODO maybe simplify the labels array?

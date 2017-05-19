@@ -151,7 +151,7 @@ class Nivo_Slider {
 		$this->loader->add_action( 'manage_' . $post_type . '_posts_custom_column', $plugin_admin_edit, 'custom_columns' );
 		// Filters Nivo_Core_Admin_Edit
 		$this->loader->add_filter( $post_type . '_admin_edit_settings', $plugin_admin_edit, 'admin_edit_settings' );
-        $this->loader->add_filter( 'get_image_source_details', $plugin_admin_edit, 'get_image_source_details', 10, 2 );
+		$this->loader->add_filter( 'get_image_source_details', $plugin_admin_edit, 'get_image_source_details', 10, 2 );
 
 		$plugin_admin_ajax = new Nivo_Core_Admin_Ajax();
 		// Actions Nivo_Core_Admin_Ajax
