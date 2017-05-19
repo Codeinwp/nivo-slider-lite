@@ -788,9 +788,8 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 				}
 				break;
 			case 'type':
-				echo 'slider';
-				// TODO add custom switch for custom taxonomy `nivo_type`
-                var_dump( wp_get_post_terms( $post->ID, 'nivo_slider' ) );
+			    $taxonomy = wp_get_post_terms( $post->ID, 'nivo_slider', array('fields' => 'names') );
+				echo ( isset( $taxonomy[0] ) ) ? $taxonomy[0] : 'slider';
 				break;
 			case 'source':
 				echo isset( $types[ $type ] ) ? $types[ $type ] : 'Manual';
