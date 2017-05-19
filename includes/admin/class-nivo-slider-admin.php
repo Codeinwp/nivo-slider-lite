@@ -217,13 +217,13 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 	 * Adds a new menu item under the plugin post type
 	 *
 	 * @since    2.2.*
-     * @updated  3.0.3
+	 * @updated  3.0.3
 	 * @access    public
 	 */
 	public function admin_menu() {
-        if ( ! class_exists( 'Nivo_Slider_PRO_Admin' ) ) {
-            add_submenu_page( 'edit.php?post_type=' . $this->labels['post_type'], __( 'More Features', 'nivo-slider' ), __( 'More Features', 'nivo-slider' ), 'manage_options', 'nivo-slider-admin-menu-pro-upsell', array( $this, 'render_upsell' ) );
-        }
+		if ( ! class_exists( 'Nivo_Slider_PRO_Admin' ) ) {
+			add_submenu_page( 'edit.php?post_type=' . $this->labels['post_type'], __( 'More Features', 'nivo-slider' ), __( 'More Features', 'nivo-slider' ), 'manage_options', 'nivo-slider-admin-menu-pro-upsell', array( $this, 'render_upsell' ) );
+		}
 		add_submenu_page(
 			'edit.php?post_type=' . $this->labels['post_type'], 'Settings', 'Settings', 'manage_options', $this->labels['post_type'] . '-settings', array(
 				$this,
@@ -232,28 +232,28 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		);
 	}
 
-    /**
-     * Method used to render upsell page.
-     *
-     * @since   3.0.3
-     * @access  public
-     */
-    public function render_upsell() {
-        $this->load_layout( 'nivo-upsell' );
-    }
+	/**
+	 * Method used to render upsell page.
+	 *
+	 * @since   3.0.3
+	 * @access  public
+	 */
+	public function render_upsell() {
+		$this->load_layout( 'nivo-upsell' );
+	}
 
-    /**
-     * Method used to render pages
-     *
-     * @since   3.0.3
-     * @access  public
-     * @param   string $layout_name The name of the layout.
-     * @return mixed
-     */
-    public function load_layout( $layout_name ) {
-        wp_enqueue_style( 'nivo-upsell', NIVO_SLIDER_PLUGIN_URL . '/includes/layouts/css/upsell.css' );
-        include( NIVO_SLIDER_PLUGIN_DIR . '/includes/layouts/' . $layout_name . '.php' );
-    }
+	/**
+	 * Method used to render pages
+	 *
+	 * @since   3.0.3
+	 * @access  public
+	 * @param   string $layout_name The name of the layout.
+	 * @return mixed
+	 */
+	public function load_layout( $layout_name ) {
+		wp_enqueue_style( 'nivo-upsell', NIVO_SLIDER_PLUGIN_URL . '/includes/layouts/css/upsell.css' );
+		include( NIVO_SLIDER_PLUGIN_DIR . '/includes/layouts/' . $layout_name . '.php' );
+	}
 
 	/**
 	 * Controls the visibility of the plugin menu. Can be filtered.

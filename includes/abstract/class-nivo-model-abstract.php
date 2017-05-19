@@ -53,7 +53,7 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 		$labels = array(
 			'name'               => '%2$s',
 			'singular_name'      => '%1$s',
-			'add_new'            => __( 'Add Slider', 'nivo-slider' ),
+			'add_new'            => __( 'Add new Slider', 'nivo-slider' ),
 			'add_new_item'       => __( 'Add New %1$s', 'nivo-slider' ),
 			'edit_item'          => __( 'Edit %1$s', 'nivo-slider' ),
 			'new_item'           => __( 'New %1$s', 'nivo-slider' ),
