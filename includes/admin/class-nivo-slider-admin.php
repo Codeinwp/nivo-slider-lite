@@ -78,7 +78,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 			'shortcode'       => 'nivoslider',
 			'function'        => 'nivo_slider',
 			'slug'            => 'nivo-slider',
-			'taxonomy'        => 'nivo_slider',
+			'taxonomy'        => 'nivo-slider',
 			'post_meta_key'   => 'nivo_settings',
 			'options_key'     => 'nivoslider_settings',
 			'source_name'     => 'type',
