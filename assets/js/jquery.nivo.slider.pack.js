@@ -501,13 +501,13 @@
         this.stop = function () {
             if (!e(t).data("nivo:vars").stop) {
                 e(t).data("nivo:vars").stop = true;
-                m("Stop Slider");
+                //m("Stop Slider");
             }
         };
         this.start = function () {
             if (e(t).data("nivo:vars").stop) {
                 e(t).data("nivo:vars").stop = false;
-                m("Start Slider");
+                //m("Start Slider");
             }
         };
         r.afterLoad.call(this);
