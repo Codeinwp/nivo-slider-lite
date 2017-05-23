@@ -150,28 +150,28 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 		if ( ! is_numeric( $settings['dim_y'] ) || $settings['dim_y'] <= 0 ) {
 			$settings['dim_y'] = 150;
 		}
-		if ( ! is_numeric( $settings['slices'] ) || $settings['slices'] <= 0 ) {
+		if ( ! isset( $settings['slices'] ) || ( ! is_numeric( $settings['slices'] ) || $settings['slices'] <= 0 ) ) {
 			$settings['slices'] = 15;
 		}
-		if ( ! is_numeric( $settings['boxCols'] ) || $settings['boxCols'] <= 0 ) {
+		if ( ! isset( $settings['boxCols'] ) || ( ! is_numeric( $settings['boxCols'] ) || $settings['boxCols'] <= 0 ) ) {
 			$settings['boxCols'] = 8;
 		}
-		if ( ! is_numeric( $settings['boxRows'] ) || $settings['boxRows'] <= 0 ) {
+		if ( ! isset( $settings['boxRows'] ) || ( ! is_numeric( $settings['boxRows'] ) || $settings['boxRows'] <= 0 ) ) {
 			$settings['boxRows'] = 4;
 		}
-		if ( ! is_numeric( $settings['animSpeed'] ) || $settings['animSpeed'] <= 0 ) {
+		if ( ! isset( $settings['animSpeed'] ) || ( ! is_numeric( $settings['animSpeed'] ) || $settings['animSpeed'] <= 0 ) ) {
 			$settings['animSpeed'] = 500;
 		}
-		if ( ! is_numeric( $settings['pauseTime'] ) || $settings['pauseTime'] <= 0 ) {
+		if ( ! isset( $settings['pauseTime'] ) || ( ! is_numeric( $settings['pauseTime'] ) || $settings['pauseTime'] <= 0 ) ) {
 			$settings['pauseTime'] = 3000;
 		}
-		if ( ! is_numeric( $settings['startSlide'] ) || $settings['startSlide'] < 0 ) {
+		if ( ! isset( $settings['startSlide'] ) || ( ! is_numeric( $settings['startSlide'] ) || $settings['startSlide'] < 0 ) ) {
 			$settings['startSlide'] = 0;
 		}
-		if ( ! is_numeric( $settings['thumbSizeWidth'] ) || $settings['thumbSizeWidth'] <= 0 ) {
+		if ( ! isset( $settings['thumbSizeWidth'] ) || ( ! is_numeric( $settings['thumbSizeWidth'] ) || $settings['thumbSizeWidth'] <= 0 ) ) {
 			$settings['thumbSizeWidth'] = 70;
 		}
-		if ( ! is_numeric( $settings['thumbSizeHeight'] ) || $settings['thumbSizeHeight'] <= 0 ) {
+		if ( ! isset( $settings['thumbSizeHeight'] ) || ( ! is_numeric( $settings['thumbSizeHeight'] ) || $settings['thumbSizeHeight'] <= 0 ) ) {
 			$settings['thumbSizeHeight'] = 50;
 		}
 

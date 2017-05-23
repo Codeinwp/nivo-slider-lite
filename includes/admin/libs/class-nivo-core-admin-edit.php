@@ -791,7 +791,8 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 			    $taxonomy = wp_get_post_terms( $post->ID, 'nivo_slider', array(
 					'fields' => 'names',
 				) );
-				echo ( isset( $taxonomy[0] ) ) ? $taxonomy[0] : 'slider';
+
+				echo ( ! is_wp_error( $taxonomy ) && isset( $taxonomy[0] ) ) ? $taxonomy[0] : 'slider';
 				break;
 			case 'source':
 				echo isset( $types[ $type ] ) ? $types[ $type ] : 'Manual';

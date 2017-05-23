@@ -443,7 +443,7 @@
                 S[w] = [];
                 y = e(".nivo-box", t);
                 if (o === "boxRainReverse" || o === "boxRainGrowReverse") {
-                    y = e(".nivo-box", t)._reverse()
+                    y = e(".nivo-box", t)._reverse();
                 }
                 y.each(function () {
                     S[w][E] = e(this);
@@ -551,4 +551,4 @@
         }
     };
     e.fn._reverse = [].reverse;
-})(jQuery)
+})(jQuery);
