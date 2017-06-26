@@ -69,6 +69,9 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 
 == Changelog ==
 
+= 2.0.4 =
+ * Changed required core style loading.
+
 = 2.0.3 =
  * Improved integration with themes.
 

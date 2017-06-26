@@ -1,4 +1,8 @@
 
+ ### v2.0.4 - 2017-05-12 
+ **Changes:** 
+ - Changed required core style loading
+ 
  ### v2.0.3 - 2017-05-10 
  **Changes:** 
  - Small changes to .js for better integration with Shop-Isle-Pro
