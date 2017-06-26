@@ -7,18 +7,16 @@
  */
 
 #pro-features .pro-features-header {
-	background: #fff;
-	border-top: 5px solid #252b37;
 	padding: 20px 10px;
+	border-top: 5px solid #252b37;
+	background: #fff;
 }
 
 #pro-features .logo {
 	display: inline-block;
 	margin: 0 0 0 20px;
-	padding: 0 0 0 70px;
+	padding: 0 0 0 0;
 	color: #3c3c3c;
-	background: url(../../../assets/images/nivo.png) no-repeat left center;
-	background-size: 48px;
 	font-family: "Open Sans", sans-serif;
 	font-size: 2em;
 	font-weight: 700;
@@ -62,17 +60,17 @@
 }
 
 #pro-features .header-btns .buy-now {
-	background: #e33b3f;
+	display: inline-block;
+	margin-top: 2px;
+	margin-right: 5px;
+	padding: 15px 25px;
 	border-radius: 3px;
 	border-radius: 3px;
 	color: #fff;
-	display: inline-block;
+	background: #e33b3f;
 	font-family: "Open Sans", sans-serif;
 	font-size: 18px;
 	font-weight: bold;
-	margin-right: 5px;
-	margin-top: 2px;
-	padding: 15px 25px;
 	text-decoration: none;
 	text-transform: uppercase;
 	-webkit-transition: all 0.250s ease-in-out;
@@ -88,16 +86,16 @@
 }
 
 #pro-features .pro-features-header,
-#pro-features .pro-feature{
-	background-color: #fff;
-	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
-	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+#pro-features .pro-feature {
 	display: block;
 	margin: 30px 15px 0;
+	background-color: #fff;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 #pro-features .pro-feature .pro-feature-features,
-#pro-features .pro-feature .pro-feature-image{
+#pro-features .pro-feature .pro-feature-image {
 	display: table-cell;
 	margin: 0;
 	vertical-align: middle;
@@ -114,36 +112,49 @@
 }
 
 #pro-features .pro-feature .pro-feature-features h2 {
-	font-size: 28px;
 	margin: 0 0 20px;
+	font-size: 28px;
 }
 
 #pro-features .pro-feature .pro-feature-features h4 {
-	font-size: 20px;
 	margin: 0 0 10px;
+	font-size: 20px;
 }
 
 #pro-features .pro-feature .pro-feature-features p {
+	margin: 0 0 15px;
 	font-size: 16px;
 	line-height: 1.5;
-	margin: 0 0 15px;
 }
 
 #pro-features .pro-feature .pro-feature-image img {
-	height: auto;
 	width: 100%;
+	height: auto;
+	padding: 20px 0;
+}
+
+#pro-features .subtitle-pro {
+	margin: 0 0 0 20px;
+	padding: 0;
+	color: #858585;
+	font-family: "Open Sans", sans-serif;
+	font-size: 16px;
+	font-size: 17px;
+	line-height: 1.5;
 }
 
 @media screen and (max-width: 1200px) {
 	#pro-features .pro-feature .pro-feature-features,
-	#pro-features .pro-feature .pro-feature-image{
+	#pro-features .pro-feature .pro-feature-image {
 		display: block;
 	}
+
 	#pro-features .pro-feature .pro-feature-image {
+		width: 470px;
 		margin: 0 auto 20px;
 		text-align: center;
-		width: 470px;
 	}
+
 	#pro-features .slogan {
 		display: none;
 	}
