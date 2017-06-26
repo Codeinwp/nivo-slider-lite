@@ -131,7 +131,7 @@ class Nivo_Slider {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'init', $plugin_admin, 'init_tinymce' );
 		$this->loader->add_action( 'admin_print_scripts', $plugin_admin, 'admin_print_scripts' );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu', 999 );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'remove_admin_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
 		// Filters Nivo_Slider_Admin
@@ -141,6 +141,8 @@ class Nivo_Slider {
 		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links', 10, 2 );
 		$this->loader->add_filter( 'nivo_field_upsell', $plugin_admin, 'add_upsell', 10, 2 );
 		$this->loader->add_filter( 'nivo_slider_lite_logger_flag', $plugin_admin, 'check_logger', 10, 2 );
+		$this->loader->add_filter( 'get_nivo_settings', $plugin_admin, 'get_nivo_settings' );
+		$this->loader->add_filter( 'nivo_default_val', $plugin_admin, 'nivo_default_val', 10, 3 );
 
 		$plugin_admin_edit = new Nivo_Core_Admin_Edit();
 		// Actions Nivo_Core_Admin_Edit
@@ -149,6 +151,7 @@ class Nivo_Slider {
 		$this->loader->add_action( 'manage_' . $post_type . '_posts_custom_column', $plugin_admin_edit, 'custom_columns' );
 		// Filters Nivo_Core_Admin_Edit
 		$this->loader->add_filter( $post_type . '_admin_edit_settings', $plugin_admin_edit, 'admin_edit_settings' );
+		$this->loader->add_filter( 'get_image_source_details', $plugin_admin_edit, 'get_image_source_details', 10, 2 );
 
 		$plugin_admin_ajax = new Nivo_Core_Admin_Ajax();
 		// Actions Nivo_Core_Admin_Ajax

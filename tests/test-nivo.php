@@ -53,7 +53,7 @@ class Test_Nivo extends WP_UnitTestCase {
 		$plugin_model = new Nivo_Core_Model();
 		$plugin_model->register();
 		$this->assertTrue( post_type_exists( 'nivoslider' ) );
-		$this->assertTrue( taxonomy_exists( 'nivo-slider' ) );
+		$this->assertTrue( taxonomy_exists( 'nivo_slider' ) );
 	}
 
 	/**

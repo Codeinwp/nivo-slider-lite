@@ -256,6 +256,7 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 	 * @access  public
 	 */
 	public function register_scripts() {
+		$this->scripts = apply_filters( 'nivo_external_shortcode_scripts', $this->scripts );
 		if ( $this->scripts && count( $this->scripts ) > 0 ) {
 			$required = array( 'jquery' );
 			foreach ( $this->scripts as $name => $url ) {
@@ -272,6 +273,7 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 	 * @access  public
 	 */
 	public function register_styles() {
+		$this->styles = apply_filters( 'nivo_external_shortcode_styles', $this->styles );
 		if ( $this->styles && count( $this->styles ) > 0 ) {
 			foreach ( $this->styles as $name => $url ) {
 				wp_register_style( $name, $url, array(), $this->labels['plugin_version'] );
@@ -370,134 +372,148 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 	 * @return string
 	 */
 	public function shortcode_output( $id, $output, $options, $images, $slider_type ) {
-
-		if ( isset( $options[ $this->labels['source_name'] ] ) ) {
-			$type = $options[ $this->labels['source_name'] ];
+	    $module = false;
+		list( $prefix, $post_id ) = explode( '-', $id );
+		if ( get_post_type( $post_id ) == $this->labels['post_type'] ) {
+			$taxonomy = wp_get_post_terms( $post_id, 'nivo_slider', array(
+				'fields' => 'names',
+			) );
+			if ( isset( $taxonomy[0] ) && in_array( $taxonomy[0], array( 'carousel' ) ) ) {
+				$module = true;
+				$module_name = $taxonomy[0];
+			}
+		}
+		if ( $module && isset( $module_name ) ) {
+			$output = apply_filters( $this->labels['post_type'] . '_' . $module_name, $id, $output, $options, $images, $slider_type );
 		} else {
-			$type = $options[ $this->labels['type_name'] ]; // backwards compatibility for < v3.0.0
-		}
-
-		$captions = array();
-		$output .= '<div class="slider-wrapper';
-		if ( isset( $options['theme'] ) && $options['theme'] != '' ) {
-			$output .= ' theme-' . $options['theme'];
-		}
-		if ( isset( $options['controlNavThumbs'] ) && $options['controlNavThumbs'] == 'on' ) {
-			$output .= ' controlnav-thumbs';
-		}
-		$output .= '"><div class="ribbon"></div>';
-		$output .= '<div id="nivoslider-' . $id . '" class="nivoSlider"';
-		if ( $options['sizing'] == 'fixed' ) {
-			$output .= ' style="width:' . $options['dim_x'] . 'px;height:' . $options['dim_y'] . 'px;"';
-		}
-		$output .= '>';
-		$i = 0;
-		foreach ( $images as $image ) {
-
-			$image_link   = $this->nivo_default_val( $options, 'imageLink', 'on' );
-			$target_blank = $this->nivo_default_val( $options, 'targetBlank', 'on' );
-			if ( ( isset( $image['post_permalink'] ) && $image['post_permalink'] != '' ) && $image_link == 'on' ) {
-				$target = ( $target_blank == 'on' ) ? ' target="_blank"' : '';
-				$output .= '<a ' . $target . ' href="' . $image['post_permalink'] . '">';
-			}
-
-			if ( $options['sizing'] == 'fixed' && isset( $image['attachment_id'] ) ) {
-				$resized_image = $this->core_images->resize_image( $image['attachment_id'], '', $options['dim_x'], $options['dim_y'], true );
-				if ( is_wp_error( $resized_image ) ) {
-					echo '<p>Error: ' . $resized_image->get_error_message() . '</p>';
-					$output .= '<img src="" ';
-				} else {
-					$output .= '<img src="' . $resized_image['url'] . '" ';
-				}
+			if ( isset( $options[ $this->labels['source_name'] ] ) ) {
+				$type = $options[ $this->labels['source_name'] ];
 			} else {
-				$output .= '<img src="' . $image['image_src'] . '" ';
+				$type = $options[ $this->labels['type_name'] ]; // backwards compatibility for < v3.0.0
 			}
 
-			if ( ( $type == 'manual' || $type == 'gallery' ) && isset( $image['post_title'] ) && $image['post_title'] != '' ) {
-				$captions[] = $image['post_title'];
-				$output .= 'title="#nivoslider-' . $id . '-caption-' . $i . '" ';
-				$i ++;
+			$captions = array();
+			$output .= '<div class="slider-wrapper';
+			if ( isset( $options['theme'] ) && $options['theme'] != '' ) {
+				$output .= ' theme-' . $options['theme'];
 			}
-			if ( ( $type == 'category' || $type == 'sticky' || $type == 'custom' ) && $options['enable_captions'] == 'on' && isset( $image['post_title'] ) && $image['post_title'] != '' ) {
-				$captions[] = $image['post_title'];
-				$output .= 'title="#nivoslider-' . $id . '-caption-' . $i . '" ';
-				$i ++;
-			}
-
 			if ( isset( $options['controlNavThumbs'] ) && $options['controlNavThumbs'] == 'on' ) {
-				if ( isset( $image['thumbnail'] ) ) {
-					$output .= 'data-thumb="' . $image['thumbnail'] . '" ';
-				} else {
-					$resized_image = $this->core_images->resize_image( $image['attachment_id'], '', $options['thumbSizeWidth'], $options['thumbSizeHeight'], true );
+				$output .= ' controlnav-thumbs';
+			}
+			$output .= '"><div class="ribbon"></div>';
+			$output .= '<div id="nivoslider-' . $id . '" class="nivoSlider"';
+			if ( isset( $options['sizing'] ) && $options['sizing'] == 'fixed' ) {
+				$output .= ' style="width:' . $options['dim_x'] . 'px;height:' . $options['dim_y'] . 'px;"';
+			}
+			$output .= '>';
+			$i = 0;
+			foreach ( $images as $image ) {
+
+				$image_link   = $this->nivo_default_val( $options, 'imageLink', 'on' );
+				$target_blank = $this->nivo_default_val( $options, 'targetBlank', 'on' );
+				if ( ( isset( $image['post_permalink'] ) && $image['post_permalink'] != '' ) && $image_link == 'on' ) {
+					$target = ( $target_blank == 'on' ) ? ' target="_blank"' : '';
+					$output .= '<a ' . $target . ' href="' . $image['post_permalink'] . '">';
+				}
+
+				if ( isset( $options['sizing'] ) && $options['sizing'] == 'fixed' && isset( $image['attachment_id'] ) ) {
+					$resized_image = $this->core_images->resize_image( $image['attachment_id'], '', $options['dim_x'], $options['dim_y'], true );
 					if ( is_wp_error( $resized_image ) ) {
 						echo '<p>Error: ' . $resized_image->get_error_message() . '</p>';
-						$output .= 'data-thumb="" ';
+						$output .= '<img src="" ';
 					} else {
-						$output .= 'data-thumb="' . $resized_image['url'] . '" ';
+						$output .= '<img src="' . $resized_image['url'] . '" ';
+					}
+				} else {
+					$output .= '<img src="' . $image['image_src'] . '" ';
+				}
+
+				if ( ( $type == 'manual' || $type == 'gallery' ) && isset( $image['post_title'] ) && $image['post_title'] != '' ) {
+					$captions[] = $image['post_title'];
+					$output .= 'title="#nivoslider-' . $id . '-caption-' . $i . '" ';
+					$i ++;
+				}
+				if ( ( $type == 'category' || $type == 'sticky' || $type == 'custom' ) && $options['enable_captions'] == 'on' && isset( $image['post_title'] ) && $image['post_title'] != '' ) {
+					$captions[] = $image['post_title'];
+					$output .= 'title="#nivoslider-' . $id . '-caption-' . $i . '" ';
+					$i ++;
+				}
+
+				if ( isset( $options['controlNavThumbs'] ) && $options['controlNavThumbs'] == 'on' ) {
+					if ( isset( $image['thumbnail'] ) ) {
+						$output .= 'data-thumb="' . $image['thumbnail'] . '" ';
+					} else {
+						$resized_image = $this->core_images->resize_image( $image['attachment_id'], '', $options['thumbSizeWidth'], $options['thumbSizeHeight'], true );
+						if ( is_wp_error( $resized_image ) ) {
+							echo '<p>Error: ' . $resized_image->get_error_message() . '</p>';
+							$output .= 'data-thumb="" ';
+						} else {
+							$output .= 'data-thumb="' . $resized_image['url'] . '" ';
+						}
 					}
 				}
+
+				$output .= 'alt="' . $image['alt_text'] . '" />';
+				if ( isset( $image['post_permalink'] ) && $image['post_permalink'] != '' ) {
+					$output .= '</a>';
+				}
+			}
+			$output .= '</div></div>';
+
+			if ( isset( $options['controlNavThumbs'] ) && 'on' == $options['controlNavThumbs'] ) {
+
+				// Get the height and width.
+				$thumbnail_height = $options['thumbSizeHeight'];
+				$thumbnail_width  = $options['thumbSizeWidth'];
+
+				// Force the height/width of thumbnails set in slider settings.
+				$output .= "<style type='text/css' media='screen'> \n";
+				$output .= ".theme-default .nivo-controlNav.nivo-thumbs-enabled img, \n";
+				$output .= ".nivo-thumbs-enabled img { \n";
+				$output .= "	width: {$thumbnail_width}px !important; \n";
+				$output .= "	height: {$thumbnail_height}px !important; \n";
+				$output .= "} \n";
+				$output .= "</style> \n";
 			}
 
-			$output .= 'alt="' . $image['alt_text'] . '" />';
-			if ( isset( $image['post_permalink'] ) && $image['post_permalink'] != '' ) {
-				$output .= '</a>';
+			$i = 0;
+			foreach ( $captions as $caption ) {
+				$output .= '<div id="nivoslider-' . $id . '-caption-' . $i . '" class="nivo-html-caption">';
+				$output .= $caption ;
+				$output .= '</div>';
+				$i ++;
 			}
-		}
-		$output .= '</div></div>';
 
-		if ( isset( $options['controlNavThumbs'] ) && 'on' == $options['controlNavThumbs'] ) {
-
-			// Get the height and width.
-			$thumbnail_height = $options['thumbSizeHeight'];
-			$thumbnail_width  = $options['thumbSizeWidth'];
-
-			// Force the height/width of thumbnails set in slider settings.
-			$output .= "<style type='text/css' media='screen'> \n";
-			$output .= ".theme-default .nivo-controlNav.nivo-thumbs-enabled img, \n";
-			$output .= ".nivo-thumbs-enabled img { \n";
-			$output .= "	width: {$thumbnail_width}px !important; \n";
-			$output .= "	height: {$thumbnail_height}px !important; \n";
-			$output .= "} \n";
-			$output .= "</style> \n";
-		}
-
-		$i = 0;
-		foreach ( $captions as $caption ) {
-			$output .= '<div id="nivoslider-' . $id . '-caption-' . $i . '" class="nivo-html-caption">';
-			$output .= $caption ;
-			$output .= '</div>';
-			$i ++;
-		}
-
-		if ( count( $images ) > 1 ) {
-			$output .= '<script type="text/javascript">' . "\n";
-			$output .= 'jQuery(window).load(function(){' . "\n";
-			$output .= '    jQuery("#nivoslider-' . $id . '").nivoSlider({' . "\n";
-			$output .= '        effect:"' . $options['effect'] . '",' . "\n";
-			$output .= '        slices:' . $options['slices'] . ',' . "\n";
-			$output .= '        boxCols:' . $options['boxCols'] . ',' . "\n";
-			$output .= '        boxRows:' . $options['boxRows'] . ',' . "\n";
-			$output .= '        animSpeed:' . $options['animSpeed'] . ',' . "\n";
-			$output .= '        pauseTime:' . $options['pauseTime'] . ',' . "\n";
-			if ( isset( $options['randomStart'] ) && $options['randomStart'] == 'on' ) {
-				$output .= '        startSlide:' . floor( rand( 0, count( $images ) ) ) . ',' . "\n";
+			if ( count( $images ) > 1 ) {
+				$output .= '<script type="text/javascript">' . "\n";
+				$output .= 'jQuery(window).load(function(){' . "\n";
+				$output .= '    jQuery("#nivoslider-' . $id . '").nivoSlider({' . "\n";
+				$output .= '        effect:"' . $options['effect'] . '",' . "\n";
+				$output .= '        slices:' . $options['slices'] . ',' . "\n";
+				$output .= '        boxCols:' . $options['boxCols'] . ',' . "\n";
+				$output .= '        boxRows:' . $options['boxRows'] . ',' . "\n";
+				$output .= '        animSpeed:' . $options['animSpeed'] . ',' . "\n";
+				$output .= '        pauseTime:' . $options['pauseTime'] . ',' . "\n";
+				if ( isset( $options['randomStart'] ) && $options['randomStart'] == 'on' ) {
+					$output .= '        startSlide:' . floor( rand( 0, count( $images ) ) ) . ',' . "\n";
+				} else {
+					$output .= '        startSlide:' . $options['startSlide'] . ',' . "\n";
+				}
+				$output .= '        directionNav:' . ( ( $options['directionNav'] == 'on' ) ? 'true' : 'false' ) . ',' . "\n";
+				$output .= '        controlNav:' . ( ( $options['controlNav'] == 'on' ) ? 'true' : 'false' ) . ',' . "\n";
+				$output .= '        controlNavThumbs:' . ( ( isset( $options['controlNavThumbs'] ) && $options['controlNavThumbs'] == 'on' ) ? 'true' : 'false' ) . ',' . "\n";
+				$output .= '        pauseOnHover:' . ( ( $options['pauseOnHover'] == 'on' ) ? 'true' : 'false' ) . ',' . "\n";
+				$output .= '        manualAdvance:' . ( ( $options['manualAdvance'] == 'on' ) ? 'true' : 'false' ) . "\n";
+				$output .= '    });' . "\n";
+				$output .= '});' . "\n";
+				$output .= '</script>' . "\n";
 			} else {
-				$output .= '        startSlide:' . $options['startSlide'] . ',' . "\n";
+				$output .= '<script type="text/javascript">' . "\n";
+				$output .= 'jQuery(window).load(function(){' . "\n";
+				$output .= '    jQuery("#nivoslider-' . $id . ' img").css("position","relative").show();' . "\n";
+				$output .= '});' . "\n";
+				$output .= '</script>' . "\n";
 			}
-			$output .= '        directionNav:' . ( ( $options['directionNav'] == 'on' ) ? 'true' : 'false' ) . ',' . "\n";
-			$output .= '        controlNav:' . ( ( $options['controlNav'] == 'on' ) ? 'true' : 'false' ) . ',' . "\n";
-			$output .= '        controlNavThumbs:' . ( ( isset( $options['controlNavThumbs'] ) && $options['controlNavThumbs'] == 'on' ) ? 'true' : 'false' ) . ',' . "\n";
-			$output .= '        pauseOnHover:' . ( ( $options['pauseOnHover'] == 'on' ) ? 'true' : 'false' ) . ',' . "\n";
-			$output .= '        manualAdvance:' . ( ( $options['manualAdvance'] == 'on' ) ? 'true' : 'false' ) . "\n";
-			$output .= '    });' . "\n";
-			$output .= '});' . "\n";
-			$output .= '</script>' . "\n";
-		} else {
-			$output .= '<script type="text/javascript">' . "\n";
-			$output .= 'jQuery(window).load(function(){' . "\n";
-			$output .= '    jQuery("#nivoslider-' . $id . ' img").css("position","relative").show();' . "\n";
-			$output .= '});' . "\n";
-			$output .= '</script>' . "\n";
 		}
 
 		return $output;
