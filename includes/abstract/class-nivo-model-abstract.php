@@ -53,7 +53,7 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 		$labels = array(
 			'name'               => '%2$s',
 			'singular_name'      => '%1$s',
-			'add_new'            => __( 'Add New', 'nivo-slider' ),
+			'add_new'            => __( 'Add new Slider', 'nivo-slider' ),
 			'add_new_item'       => __( 'Add New %1$s', 'nivo-slider' ),
 			'edit_item'          => __( 'Edit %1$s', 'nivo-slider' ),
 			'new_item'           => __( 'New %1$s', 'nivo-slider' ),
@@ -78,13 +78,7 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 			'menu_position' => apply_filters( $defaults['post_type'] . '_post_type_menu_position', 100 ),
 			'supports'      => $supports,
 			'menu_icon'     => apply_filters( $defaults['post_type'] . '_post_type_menu_icon', '' ),
-		);
-		register_post_type(
-			$this->labels['post_type'],
-			apply_filters(
-				$defaults['post_type'] . '_post_type_args',
-				$post_type_args
-			)
+			'taxonomies' => array( $defaults['taxonomy'] ),
 		);
 		register_taxonomy(
 			$defaults['taxonomy'],
@@ -96,6 +90,14 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 				'hierarchical' => true,
 			)
 		);
+		register_post_type(
+			$this->labels['post_type'],
+			apply_filters(
+				$defaults['post_type'] . '_post_type_args',
+				$post_type_args
+			)
+		);
+
 	}
 
 	/**
@@ -123,6 +125,8 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 			$settings = $_POST[ $this->labels['post_meta_key'] ];
 			$settings = apply_filters( $this->labels['post_type'] . '_post_meta_save', $settings );
 			update_post_meta( $post_id, $this->labels['post_meta_key'], $settings );
+			$taxonomy = ( isset( $_POST['taxonomy'] ) ) ? $_POST['taxonomy'] : 'slider';
+			wp_set_object_terms( $post_id, $taxonomy, $this->labels['taxonomy'] );
 
 			return true;
 		}
@@ -146,28 +150,28 @@ abstract class Nivo_Model_Abstract extends Nivo_Core_Settings_Abstract {
 		if ( ! is_numeric( $settings['dim_y'] ) || $settings['dim_y'] <= 0 ) {
 			$settings['dim_y'] = 150;
 		}
-		if ( ! is_numeric( $settings['slices'] ) || $settings['slices'] <= 0 ) {
+		if ( ! isset( $settings['slices'] ) || ( ! is_numeric( $settings['slices'] ) || $settings['slices'] <= 0 ) ) {
 			$settings['slices'] = 15;
 		}
-		if ( ! is_numeric( $settings['boxCols'] ) || $settings['boxCols'] <= 0 ) {
+		if ( ! isset( $settings['boxCols'] ) || ( ! is_numeric( $settings['boxCols'] ) || $settings['boxCols'] <= 0 ) ) {
 			$settings['boxCols'] = 8;
 		}
-		if ( ! is_numeric( $settings['boxRows'] ) || $settings['boxRows'] <= 0 ) {
+		if ( ! isset( $settings['boxRows'] ) || ( ! is_numeric( $settings['boxRows'] ) || $settings['boxRows'] <= 0 ) ) {
 			$settings['boxRows'] = 4;
 		}
-		if ( ! is_numeric( $settings['animSpeed'] ) || $settings['animSpeed'] <= 0 ) {
+		if ( ! isset( $settings['animSpeed'] ) || ( ! is_numeric( $settings['animSpeed'] ) || $settings['animSpeed'] <= 0 ) ) {
 			$settings['animSpeed'] = 500;
 		}
-		if ( ! is_numeric( $settings['pauseTime'] ) || $settings['pauseTime'] <= 0 ) {
+		if ( ! isset( $settings['pauseTime'] ) || ( ! is_numeric( $settings['pauseTime'] ) || $settings['pauseTime'] <= 0 ) ) {
 			$settings['pauseTime'] = 3000;
 		}
-		if ( ! is_numeric( $settings['startSlide'] ) || $settings['startSlide'] < 0 ) {
+		if ( ! isset( $settings['startSlide'] ) || ( ! is_numeric( $settings['startSlide'] ) || $settings['startSlide'] < 0 ) ) {
 			$settings['startSlide'] = 0;
 		}
-		if ( ! is_numeric( $settings['thumbSizeWidth'] ) || $settings['thumbSizeWidth'] <= 0 ) {
+		if ( ! isset( $settings['thumbSizeWidth'] ) || ( ! is_numeric( $settings['thumbSizeWidth'] ) || $settings['thumbSizeWidth'] <= 0 ) ) {
 			$settings['thumbSizeWidth'] = 70;
 		}
-		if ( ! is_numeric( $settings['thumbSizeHeight'] ) || $settings['thumbSizeHeight'] <= 0 ) {
+		if ( ! isset( $settings['thumbSizeHeight'] ) || ( ! is_numeric( $settings['thumbSizeHeight'] ) || $settings['thumbSizeHeight'] <= 0 ) ) {
 			$settings['thumbSizeHeight'] = 50;
 		}
 

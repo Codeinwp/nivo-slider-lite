@@ -23,7 +23,7 @@ Nivo Slider is the best choice for a WordPress slider plugin because it is fast,
 
 * Create sliders from **Galleries, Categories and Sticky Posts**
 * More custom **themes**
-* Upcoming carousels builders support.
+* Build carousels.
 * Upcoming lightboxes support.
 * Automatic updates.
 * Priority support.
@@ -38,6 +38,7 @@ Nivo Slider is the best choice for a WordPress slider plugin because it is fast,
 * [ Slider with thumbnail navigation ](https://demo.themeisle.com/nivo-slider/slider-thumbnail/)
 * [ Slider from category ](https://demo.themeisle.com/nivo-slider/slider-category/)
 * [ Slider from gallery posts ](https://demo.themeisle.com/nivo-slider/slider-gallery/)
+* [ Circular carousel ](https://demo.themeisle.com/nivo-slider/circular-carousel/)
 
 == Installation ==
 

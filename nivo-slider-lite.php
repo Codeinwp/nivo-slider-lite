@@ -3,13 +3,14 @@
  * Plugin Name: Slider by Nivo - Responsive Image Slider
  * Plugin URI: https://themeisle.com/plugins/nivo-slider-lite
  * Description: Nivo Slider is The Most Popular And Easiest to Use WordPress Slider Plugin.
- * Version: 2.0.4
+ * Version: 2.1.0
  * Author: ThemeIsle
  * Author URI: https://themeisle.com/
  * Text Domain: nivo-slider
  * Domain Path: languages
  * WordPress Available:  yes
  * Requires License:    no
+ * Pro Slug:    nivo-slider
  **/
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -114,8 +115,12 @@ function run_nivo_slider() {
 	$vendor_file = NIVO_SLIDER_PLUGIN_DIR . '/vendor/autoload_52.php';
 	if ( is_readable( $vendor_file ) ) {
 		require_once $vendor_file;
-		ThemeIsle_SDK_Loader::init_product( NIVO_SLIDER_PLUGIN_FILE );
 	}
+	add_filter( 'themeisle_sdk_products', function ( $products ) {
+		$products[] = NIVO_SLIDER_PLUGIN_FILE;
+
+		return $products;
+	} );
 
 }
 

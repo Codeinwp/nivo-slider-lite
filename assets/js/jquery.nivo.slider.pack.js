@@ -443,7 +443,7 @@
                 S[w] = [];
                 y = e(".nivo-box", t);
                 if (o === "boxRainReverse" || o === "boxRainGrowReverse") {
-                    y = e(".nivo-box", t)._reverse()
+                    y = e(".nivo-box", t)._reverse();
                 }
                 y.each(function () {
                     S[w][E] = e(this);
@@ -501,13 +501,13 @@
         this.stop = function () {
             if (!e(t).data("nivo:vars").stop) {
                 e(t).data("nivo:vars").stop = true;
-                m("Stop Slider");
+                //m("Stop Slider");
             }
         };
         this.start = function () {
             if (e(t).data("nivo:vars").stop) {
                 e(t).data("nivo:vars").stop = false;
-                m("Start Slider");
+                //m("Start Slider");
             }
         };
         r.afterLoad.call(this);
@@ -551,4 +551,4 @@
         }
     };
     e.fn._reverse = [].reverse;
-})(jQuery)
+})(jQuery);

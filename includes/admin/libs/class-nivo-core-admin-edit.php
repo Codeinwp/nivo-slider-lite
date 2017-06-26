@@ -59,7 +59,7 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 	 *
 	 * @return array
 	 */
-	public function admin_edit_settings( $settings ) {
+	public function admin_edit_settings( $settings = array() ) {
 		$settings   = array();
 		$settings[] = array(
 			'name'     => 'enable_captions',
@@ -399,6 +399,7 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 		global $post;
 		$options = get_post_meta( $post->ID, $this->labels['post_meta_key'], true );
 		wp_nonce_field( $this->labels['plugin_name'], $this->labels['post_type'] . '_noncename' );
+		echo '<input type="hidden" name="taxonomy" value="' . ( ( isset( $_GET['taxonomy'] ) ) ? $_GET['taxonomy'] : 'slider' ) . '" />';
 		?>
 		<table id="<?php echo $this->labels['post_type']; ?>-settings" class="form-table">
 			<tr valign="top">
@@ -787,8 +788,11 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 				}
 				break;
 			case 'type':
-				echo 'slider';
-				// TODO add custom switch for custom taxonomy `nivo_type`
+			    $taxonomy = wp_get_post_terms( $post->ID, 'nivo_slider', array(
+					'fields' => 'names',
+				) );
+
+				echo ( ! is_wp_error( $taxonomy ) && isset( $taxonomy[0] ) ) ? $taxonomy[0] : 'slider';
 				break;
 			case 'source':
 				echo isset( $types[ $type ] ) ? $types[ $type ] : 'Manual';
