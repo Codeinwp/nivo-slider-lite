@@ -1,4 +1,10 @@
 
+ ### v2.1.0 - 2017-06-26 
+ **Changes:** 
+ * Added carousel compatibility
+* Fixed warnings with taxonomy name change.
+* Added upsell page.
+ 
  ### v2.0.4 - 2017-05-12 
  **Changes:** 
  - Changed required core style loading

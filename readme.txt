@@ -68,6 +68,13 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 4. The final result
 
 == Changelog ==
+= 2.1.0 - 2017-06-26  = 
+
+* Added carousel compatibility
+* Fixed warnings with taxonomy name change.
+* Added upsell page.
+
+
 
 = 2.0.4 =
  * Changed required core style loading.
