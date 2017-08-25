@@ -1,6 +1,6 @@
 === Slider by Nivo - Responsive WordPress Image Slider ===
 Contributors: themeisle, codeinwp, nivoslider
-Tags: image, slider, nivo,slider plugin, slideshow, slideshow plugin, template tag, wordpress gallery, wordpress image slider, wordpress photo gallery, wordpress picture gallery, wordpress picture slider, wordpress responsive slider, wordpress slider, wordpress slider plugin, wordpress slideshow, wp slider
+Tags: slider, nivo,slider plugin, slideshow, slideshow plugin, template tag, wordpress gallery, wordpress image slider, wordpress photo gallery
 Requires at least: 3.0
 Tested up to: 4.8
 Stable tag: trunk
