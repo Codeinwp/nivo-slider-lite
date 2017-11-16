@@ -2,7 +2,7 @@
 Contributors: themeisle, codeinwp, nivoslider
 Tags: slider, nivo,slider plugin, slideshow, slideshow plugin, template tag, wordpress gallery, wordpress image slider, wordpress photo gallery
 Requires at least: 3.0
-Tested up to: 4.8
+Tested up to: 4.9
 Stable tag: trunk
 License: GPLv3
 
