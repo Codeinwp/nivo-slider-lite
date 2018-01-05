@@ -1,14 +1,14 @@
-=== Slider by Nivo - Responsive WordPress Image Slider ===
-Contributors: themeisle, codeinwp, nivoslider
-Tags: slider, nivo,slider plugin, slideshow, slideshow plugin, template tag, wordpress gallery, wordpress image slider, wordpress photo gallery
-Requires at least: 3.0
-Tested up to: 4.9
-Stable tag: trunk
-License: GPLv3
+# Slider by Nivo - Responsive WordPress Image Slider #
+**Contributors:** [themeisle](https://profiles.wordpress.org/themeisle), [codeinwp](https://profiles.wordpress.org/codeinwp), [nivoslider](https://profiles.wordpress.org/nivoslider)  
+**Tags:** slider, nivo,slider plugin, slideshow, slideshow plugin, template tag, wordpress gallery, wordpress image slider, wordpress photo gallery  
+**Requires at least:** 3.0  
+**Tested up to:** 4.9  
+**Stable tag:** trunk  
+**License:** GPLv3  
 
 Nivo Slider is The Most Popular And Easiest to Use Responsive WordPress Slider Plugin.
 
-== Description ==
+## Description ##
 
 The Nivo Slider is the worlds most popular jquery image slider plugin, downloaded over **3,000,000** times since it's inception. This
 is the "Lite" version of the official [Nivo Slider WordPress plugin](https://themeisle.com/plugins/nivo-slider?utm_source=wordpress.org&utm_medium=web&utm_content=description_link&utm_campaign=nivoslider_lite_plugin)
@@ -40,41 +40,41 @@ Nivo Slider is the best choice for a WordPress slider plugin because it is fast,
 * [ Slider from gallery posts ](https://demo.themeisle.com/nivo-slider/slider-gallery/)
 * [ Circular carousel ](https://demo.themeisle.com/nivo-slider/circular-carousel/)
 
-== Installation ==
+## Installation ##
 
 1. Use WordPress' built-in installer
 2. Start adding your sliders in the "Nivo Slider" menu that appears
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions ##
 
-= How to use  Custom Themes with the Nivo Slider =
+### How to use  Custom Themes with the Nivo Slider ###
 http://docs.themeisle.com/article/510-using-custom-themes-with-the-nivo-slider
 
-= How to use  Nivo Slider template tag =
+### How to use  Nivo Slider template tag ###
 http://docs.themeisle.com/article/509-using-the-nivo-slider-template-tag
 
 
-= I'd like access to more features and support. How can I get them? =
+### I'd like access to more features and support. How can I get them? ###
 
 You can get access to more features and support by visiting the Themeisle website and
 [purchasing a license](https://themeisle.com/plugins/nivo-slider?utm_source=wordpress.org&utm_medium=web&utm_content=faq_link&utm_campaign=nivoslider_lite_plugin).
 Purchasing a license gets you access to the full version of the Nivo Slider WordPress plugin, automatic updates and support.
 
-== Screenshots ==
+## Screenshots ##
 
 1. Slider list screen
 2. Edit slider screen
 3. Configuring images
 4. The final result
 
-== Changelog ==
-= 2.1.1 - 2018-01-05  = 
+## Changelog ##
+### 2.1.1 - 2018-01-05  ###
 
 * Adds compatibility with latest WordPress standards.
 * Sync ThemeIsle SDK.
 
 
-= 2.1.0 - 2017-06-26  = 
+### 2.1.0 - 2017-06-26  ###
 
 * Added carousel compatibility
 * Fixed warnings with taxonomy name change.
@@ -82,31 +82,31 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 
 
 
-= 2.0.4 =
+### 2.0.4 ###
  * Changed required core style loading.
 
-= 2.0.3 =
+### 2.0.3 ###
  * Improved integration with themes.
 
-= 2.0.2 =
+### 2.0.2 ###
  * Removed redundant code
  * Added future support for carousels.
 
 
-= 2.0.0 =
+### 2.0.0 ###
  * Added more slider themes.
  * Added responsive option.
  * Added more transition effects.
  * Major code refactor.
 
-= 1.0.3 =
+### 1.0.3 ###
  * Added themeisle as author
 
-= 1.0.2 =
+### 1.0.2 ###
  * Fixed fatal error
  
-= 1.0.1 =
+### 1.0.1 ###
  * Various small bug fixes
 
-= 1.0.0 =
+### 1.0.0 ###
  * Initial release

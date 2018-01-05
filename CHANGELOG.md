@@ -1,4 +1,9 @@
 
+ ### v2.1.1 - 2018-01-05 
+ **Changes:** 
+ * Adds compatibility with latest WordPress standards.
+* Sync ThemeIsle SDK.
+ 
  ### v2.1.0 - 2017-06-26 
  **Changes:** 
  * Added carousel compatibility
