@@ -13,6 +13,8 @@
         <exclude name="Generic.Files.LowercasedFilename" />
         <exclude name="Generic.NamingConventions.UpperCaseConstantName" />
         <exclude name="Generic.PHP.NoSilencedErrors" />
+        <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
+        <exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" />
         <exclude name="Generic.Commenting.DocComment" />
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
         <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
@@ -20,7 +22,11 @@
         <exclude name="Squiz.Commenting.FileComment" />
         <exclude name="Squiz.PHP.DisallowMultipleAssignments" />
         <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
-        <exclude name="WordPress.NamingConvention.ValidVariableName.StringNotSnakeCase" />
+        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
+        <exclude name="Generic.Formatting.MultipleStatementAlignment.IncorrectWarning" />
+        <exclude name="WordPress.Arrays.ArrayIndentation" />
+        <exclude name="WordPress.WhiteSpace" />
+        <exclude name="Squiz.PHP.EmbeddedPhp" />
         <exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCase" />
         <exclude name="Squiz.Commenting" />
         <exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid" />

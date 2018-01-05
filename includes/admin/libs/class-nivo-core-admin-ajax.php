@@ -153,9 +153,11 @@ class Nivo_Core_Admin_Ajax extends Nivo_Core_Abstract implements Nivo_Library_In
 		} else {
 			update_option( 'nivo_logger_flag', 'no' );
 		}
-		wp_send_json_success( array(
-			'status' => $status,
-		) );
+		wp_send_json_success(
+			array(
+				'status' => $status,
+			)
+		);
 	}
 
 	/**

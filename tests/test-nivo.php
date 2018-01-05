@@ -71,15 +71,19 @@ class Test_Nivo extends WP_UnitTestCase {
 		$taxonomy      = $plugin_admin::get_plugin_settings()->get_label( 'taxonomy' );
 		$post_meta_key = $plugin_admin::get_plugin_settings()->get_label( 'post_meta_key' );
 		$plugin_name   = $plugin_admin::get_plugin_settings()->get_label( 'plugin_name' );
-		$user_id       = $this->factory->user->create( array(
-			'role' => 'administrator',
-		) );
+		$user_id       = $this->factory->user->create(
+			array(
+				'role' => 'administrator',
+			)
+		);
 		wp_set_current_user( $user_id );
-		$p = $this->factory->post->create_and_get( array(
-			'post_title'  => $random_name,
-			'post_type'   => $post_type,
-			'post_author' => $user_id,
-		) );
+		$p = $this->factory->post->create_and_get(
+			array(
+				'post_title'  => $random_name,
+				'post_type'   => $post_type,
+				'post_author' => $user_id,
+			)
+		);
 		$settings = array(
 			'manual_image_ids' => '139,22',
 			'source'           => 'manual',

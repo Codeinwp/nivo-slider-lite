@@ -121,7 +121,6 @@ input:checked + .nivo-slider {
 }
 
 input:focus + .nivo-slider {
-	-webkit-box-shadow: 0 0 1px #0085ba;
 	box-shadow: 0 0 1px #0085ba;
 }
 

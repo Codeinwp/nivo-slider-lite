@@ -31,8 +31,8 @@ class Nivo_Core_Admin_Images extends Nivo_Core_Abstract implements Nivo_Library_
 	/**
 	 * Checks for themes that haven't added 'post-thumbnails' support required and adds it.
 	 *
-	 * @since	2.3.2
-	 * @access	public
+	 * @since   2.3.2
+	 * @access  public
 	 */
 	public function theme_support_check() {
 		$support = get_theme_support( 'post-thumbnails' );
@@ -44,10 +44,10 @@ class Nivo_Core_Admin_Images extends Nivo_Core_Abstract implements Nivo_Library_
 	/**
 	 * Apply custom strings to the Media View for integrating with Media Manager Plus
 	 *
-	 * @since	2.2.*
-	 * @access	public
-	 * @param	array  $strings Media View strings
-	 * @param	object $post    Current Post
+	 * @since   2.2.*
+	 * @access  public
+	 * @param   array  $strings Media View strings
+	 * @param   object $post    Current Post
 	 * @return array
 	 */
 	public function custom_media_string( $strings, $post ) {
@@ -76,9 +76,9 @@ class Nivo_Core_Admin_Images extends Nivo_Core_Abstract implements Nivo_Library_
 	/**
 	 * Print custom media templates for integrating with Media Manager Plus
 	 *
-	 * @since	2.2.*
-	 * @access	public
-	 * @global	object $post WordPress Post
+	 * @since   2.2.*
+	 * @access  public
+	 * @global  object $post WordPress Post
 	 * @return mixed
 	 */
 	public function print_media_templates() {
@@ -155,9 +155,9 @@ class Nivo_Core_Admin_Images extends Nivo_Core_Abstract implements Nivo_Library_
 	/**
 	 * Upload to the media library and attach images added to [gallery] via Media Manager Plus
 	 *
-	 * @since	2.2.*
-	 * @access	public
-	 * @param	array	$response MMP response
+	 * @since   2.2.*
+	 * @access  public
+	 * @param   array   $response MMP response
 	 * @return array $response
 	 */
 	public function mmp_pre_insert( $response ) {
@@ -181,12 +181,12 @@ class Nivo_Core_Admin_Images extends Nivo_Core_Abstract implements Nivo_Library_
 	/**
 	 * Upload to the media library and attach images added to [gallery] via Media Manager Plus
 	 *
-	 * @since	2.2.*
-	 * @access	private
-	 * @param	string	$url		external image url
-	 * @param	string	$title		external image caption
-	 * @param	int		$post_id	ID of [gallery] post to attach it to
-	 * @param	bool	$return_src	default false. True returns $src, false returns $id
+	 * @since   2.2.*
+	 * @access  private
+	 * @param   string  $url        external image url
+	 * @param   string  $title      external image caption
+	 * @param   int     $post_id    ID of [gallery] post to attach it to
+	 * @param   bool    $return_src default false. True returns $src, false returns $id
 	 * @return mixed
 	 */
 	private function attach_image( $url, $title, $post_id, $return_src = true ) {

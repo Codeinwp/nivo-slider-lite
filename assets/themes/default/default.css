@@ -12,7 +12,6 @@ Supports Thumbs: true
 	position: relative;
 	margin-bottom: 10px;
 	background: #fff url(loading.gif) no-repeat 50% 50%;
-	-webkit-box-shadow: 0 1px 5px 0 #4a4a4a;
 	box-shadow: 0 1px 5px 0 #4a4a4a;
 }
 

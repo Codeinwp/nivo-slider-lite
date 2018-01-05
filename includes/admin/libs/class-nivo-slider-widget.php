@@ -22,8 +22,8 @@ class Nivo_Slider_Widget extends WP_Widget {
 
 	/**
 	 * Nivo_Slider_Widget constructor.
-	 * @since	3.0.0
-	 * @access	public
+	 * @since   3.0.0
+	 * @access  public
 	 */
 	public function __construct() {
 		parent::__construct(
@@ -38,8 +38,8 @@ class Nivo_Slider_Widget extends WP_Widget {
 	/**
 	 * Register widget utility method.
 	 *
-	 * @since	3.0.0
-	 * @access	public
+	 * @since   3.0.0
+	 * @access  public
 	 */
 	public function register_widget() {
 		register_widget( 'nivo_slider_widget' );
@@ -48,10 +48,10 @@ class Nivo_Slider_Widget extends WP_Widget {
 	/**
 	 * Method to render widget.
 	 *
-	 * @since	3.0.0
-	 * @access	public
-	 * @param	array	$args		The widget arguments.
-	 * @param	object	$instance	The widget instance.
+	 * @since   3.0.0
+	 * @access  public
+	 * @param   array   $args       The widget arguments.
+	 * @param   object  $instance   The widget instance.
 	 * @return mixed
 	 */
 	public function widget( $args, $instance ) {
@@ -75,10 +75,10 @@ class Nivo_Slider_Widget extends WP_Widget {
 	/**
 	 * Utility method to update widget.
 	 *
-	 * @since	3.0.0
-	 * @access	public
-	 * @param	object	$new_instance	The widget instance.
-	 * @param	object	$old_instance	The widget instance.
+	 * @since   3.0.0
+	 * @access  public
+	 * @param   object  $new_instance   The widget instance.
+	 * @param   object  $old_instance   The widget instance.
 	 * @return mixed
 	 */
 	public function update( $new_instance, $old_instance ) {
@@ -92,9 +92,9 @@ class Nivo_Slider_Widget extends WP_Widget {
 	/**
 	 * Method to render widget form.
 	 *
-	 * @since	3.0.0
-	 * @acces	public
-	 * @param	object	$instance	The widget instance.
+	 * @since   3.0.0
+	 * @acces   public
+	 * @param   object  $instance   The widget instance.
 	 * @return mixed
 	 */
 	public function form( $instance ) {
@@ -117,8 +117,10 @@ class Nivo_Slider_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'nivo_slider_id' ); ?>">Nivo Slider</label>
 			<select class="widefat" name="<?php echo $this->get_field_name( 'nivo_slider_id' ); ?>" id="<?php echo $this->get_field_id( 'nivo_slider_id' ); ?>">
 				<option value=""><?php _e( 'Select Slider', 'nivo-slider' ); ?></option>
-				<?php foreach ( $galleries as $gallery ) {
-					$selected = ( isset( $instance['nivo_slider_id'] ) ) ? $instance['nivo_slider_id'] : ''; ?>
+				<?php
+				foreach ( $galleries as $gallery ) {
+					$selected = ( isset( $instance['nivo_slider_id'] ) ) ? $instance['nivo_slider_id'] : '';
+					?>
 					<option <?php selected( $selected, $gallery->ID ); ?> value="<?php echo $gallery->ID; ?>"><?php echo ( $gallery->post_title ) ? $gallery->post_title : $gallery->ID; ?></option>
 				<?php } ?>
 			</select>

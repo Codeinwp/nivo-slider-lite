@@ -111,9 +111,11 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 			'visible' => 'fixed',
 		);
 		$themes     = $this->get_themes( true );
-		$themes     = array_merge( array(
-			'' => 'None',
-		), (array) $themes );
+		$themes     = array_merge(
+			array(
+				'' => 'None',
+			), (array) $themes
+		);
 		$settings[] = array(
 			'name'    => 'theme',
 			'default' => '',
@@ -273,33 +275,33 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 	public function admin_init() {
 		add_meta_box(
 			$this->labels['post_type'] . '_upload_box', sprintf( __( '%1$s Images', 'nivo-slider' ), $this->labels['singular'] ), array(
-			$this,
-			'meta_box_upload',
+				$this,
+				'meta_box_upload',
 			), $this->labels['post_type'], 'normal'
 		);
 		add_meta_box(
 			$this->labels['post_type'] . '_settings_box', __( 'Settings', 'nivo-slider' ), array(
-			$this,
-			'meta_box_settings',
+				$this,
+				'meta_box_settings',
 			), $this->labels['post_type'], 'normal'
 		);
 		add_meta_box(
 			$this->labels['post_type'] . '_shortcode_box', sprintf( __( 'Using this %1$s', 'nivo-slider' ), $this->labels['singular'] ), array(
-			$this,
-			'meta_box_shortcode',
+				$this,
+				'meta_box_shortcode',
 			), $this->labels['post_type'], 'side'
 		);
 		if ( ! defined( 'NIVO_SLIDER_PRO' ) ) {
 			add_meta_box(
 				$this->labels['post_type'] . '_usefullinks_box', __( 'Full Version', 'nivo-slider' ), array(
-				$this,
-				'meta_box_full_version',
+					$this,
+					'meta_box_full_version',
 				), $this->labels['post_type'], 'side'
 			);
 			add_meta_box(
 				$this->labels['post_type'] . '_enable_tracking', __( 'Contribute to Nivo', 'nivo-slider' ), array(
-				$this,
-				'enable_tracking',
+					$this,
+					'enable_tracking',
 				), $this->labels['post_type'], 'side'
 			);
 		}
@@ -363,8 +365,13 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 				<div class="nivo-slider visualizer-round"></div>
 			</label><span><?php _e( 'Enable Tracking', 'nivo-slider' ); ?> <sup>*</sup></span>
 			<p>
-				<small><sup>*</sup><?php _e( 'Allow Nivo to anonymously track how this plugin is used and help us make the
-					plugin better. No sensitive data is tracked.', 'nivo-slider' ); ?>
+				<small><sup>*</sup>
+				<?php
+				_e(
+					'Allow Nivo to anonymously track how this plugin is used and help us make the
+					plugin better. No sensitive data is tracked.', 'nivo-slider'
+				);
+?>
 				</small>
 			</p>
 		</div>
@@ -383,8 +390,8 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 		?>
 		<a id="manual_images_upload" href="#" class="button">Configure</a>
 		<input type="hidden" id="_manual_image_ids"
-		       name="<?php echo $this->labels['post_meta_key']; ?>[manual_image_ids]"
-		       value="<?php echo $this->nivo_default_val( $options, 'manual_image_ids', '' ); ?>">
+			   name="<?php echo $this->labels['post_meta_key']; ?>[manual_image_ids]"
+			   value="<?php echo $this->nivo_default_val( $options, 'manual_image_ids', '' ); ?>">
 		<ul id="<?php echo $this->labels['post_type']; ?>-images" class="nivo-plugin-images"></ul>
 		<?php
 	}
@@ -403,7 +410,7 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 		?>
 		<table id="<?php echo $this->labels['post_type']; ?>-settings" class="form-table">
 			<tr valign="top">
-				<th scope="row"><?php echo sprintf( __( ' %1$s Type', 'nivo-slider' ), $this->labels['singular'] ) ?></th>
+				<th scope="row"><?php echo sprintf( __( ' %1$s Type', 'nivo-slider' ), $this->labels['singular'] ); ?></th>
 				<td>
 					<select
 							name="<?php echo $this->labels['post_meta_key']; ?>[<?php echo $this->labels['source_name']; ?>]">
@@ -424,7 +431,8 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 							}
 						} else {
 							echo '<option value="none" > ' . __( 'No Sources', 'nivo-slider' ) . ' </option > ';
-						} ?>
+						}
+						?>
 					</select>
 					<br>
 					<span class="manual description">
@@ -448,10 +456,12 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 								continue;
 							}
 							echo '<optgroup label="' . $post_type->labels->name . '">';
-							$posts = get_posts( array(
-								'numberposts' => - 1,
-								'post_type'   => $post_key,
-							) );
+							$posts = get_posts(
+								array(
+									'numberposts' => - 1,
+									'post_type'   => $post_key,
+								)
+							);
 							foreach ( $posts as $post_item ) {
 								echo '<option value="' . $post_item->ID . '"';
 								if ( $this->nivo_default_val( $options, $this->labels['type_name'] . '_gallery' ) == $post_item->ID ) {
@@ -493,10 +503,12 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 					<select
 							name="<?php echo $this->labels['post_meta_key']; ?>[<?php echo $this->labels['type_name']; ?>_custom]">
 						<?php
-						$post_types = get_post_types( array(
-							'public'   => true,
-							'_builtin' => false,
-						), 'objects' );
+						$post_types = get_post_types(
+							array(
+								'public'   => true,
+								'_builtin' => false,
+							), 'objects'
+						);
 						foreach ( $post_types as $post_type ) {
 							echo '<option value="' . $post_type->name . '"';
 							if ( $this->nivo_default_val( $options, $this->labels['type_name'] . '_custom' ) == $post_type->name ) {
@@ -562,13 +574,13 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 								case 'text':
 									?>
 									<input type="text" name="<?php echo $element_name; ?>"
-									       value="<?php echo $element_value; ?>" class="<?php echo $element_class; ?>"/>
+										   value="<?php echo $element_value; ?>" class="<?php echo $element_class; ?>"/>
 									<?php
 									break;
 								case 'number':
 									?>
 									<input type="number" name="<?php echo $element_name; ?>"
-									       value="<?php echo $element_value; ?>" class="<?php echo $element_class; ?>"/>
+										   value="<?php echo $element_value; ?>" class="<?php echo $element_class; ?>"/>
 									<?php
 									break;
 								case 'textarea':
@@ -576,30 +588,38 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 									$cols    = ( isset( $setting->cols ) ) ? $setting->cols : 80;
 									?>
 									<textarea class="<?php echo $element_class; ?>" name="<?php echo $element_name; ?>"
-									          rows="<?php echo $rows; ?>"
-									          cols="<?php echo $cols; ?>"><?php echo $element_value; ?></textarea>
+											  rows="<?php echo $rows; ?>"
+											  cols="<?php echo $cols; ?>"><?php echo $element_value; ?></textarea>
 									<?php
 									break;
 								case 'checkbox':
 									?>
 									<input type="hidden" name="<?php echo $element_name; ?>" value="off"/>
 									<input id="<?php echo $element_id; ?>" type="checkbox"
-									       name="<?php echo $element_name; ?>"
-									       value="on"<?php if ( $element_value == 'on' ) {
+										   name="<?php echo $element_name; ?>"
+										   value="on"
+											<?php
+											if ( $element_value == 'on' ) {
 												echo ' checked="checked"';
-} ?>/>
+											}
+?>
+/>
 									<?php
 									break;
 								case 'select':
 									?>
 									<select id="<?php echo $element_id; ?>" name="<?php echo $element_name; ?>"
-									        class="<?php echo $element_class; ?>">
+											class="<?php echo $element_class; ?>">
 										<?php
 										foreach ( $setting->options as $value => $name ) {
 											?>
-											<option value="<?php echo $value; ?>"<?php if ( $value == $element_value ) {
-												echo ' selected="selected"';
-} ?>><?php echo $name; ?></option>
+											<option value="<?php echo $value; ?>"
+																		<?php
+																		if ( $value == $element_value ) {
+																			echo ' selected="selected"';
+																		}
+?>
+><?php echo $name; ?></option>
 										<?php } ?>
 									</select>
 									<?php
@@ -788,9 +808,11 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 				}
 				break;
 			case 'type':
-			    $taxonomy = wp_get_post_terms( $post->ID, 'nivo_slider', array(
-					'fields' => 'names',
-				) );
+				$taxonomy = wp_get_post_terms(
+					$post->ID, 'nivo_slider', array(
+						'fields' => 'names',
+					)
+				);
 
 				echo ( ! is_wp_error( $taxonomy ) && isset( $taxonomy[0] ) ) ? $taxonomy[0] : 'slider';
 				break;

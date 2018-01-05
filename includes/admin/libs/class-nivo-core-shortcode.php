@@ -372,12 +372,14 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 	 * @return string
 	 */
 	public function shortcode_output( $id, $output, $options, $images, $slider_type ) {
-	    $module = false;
+		$module = false;
 		list( $prefix, $post_id ) = explode( '-', $id );
 		if ( get_post_type( $post_id ) == $this->labels['post_type'] ) {
-			$taxonomy = wp_get_post_terms( $post_id, 'nivo_slider', array(
-				'fields' => 'names',
-			) );
+			$taxonomy = wp_get_post_terms(
+				$post_id, 'nivo_slider', array(
+					'fields' => 'names',
+				)
+			);
 			if ( isset( $taxonomy[0] ) && in_array( $taxonomy[0], array( 'carousel' ) ) ) {
 				$module = true;
 				$module_name = $taxonomy[0];
@@ -479,7 +481,7 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 			$i = 0;
 			foreach ( $captions as $caption ) {
 				$output .= '<div id="nivoslider-' . $id . '-caption-' . $i . '" class="nivo-html-caption">';
-				$output .= $caption ;
+				$output .= $caption;
 				$output .= '</div>';
 				$i ++;
 			}
