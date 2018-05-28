@@ -68,6 +68,12 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 4. The final result
 
 ## Changelog ##
+### 2.1.2 - 2018-05-28  ###
+
+* Removes redundant files present in distribution.
+* Sync ThemeIsle SDK code.
+
+
 ### 2.1.1 - 2018-01-05  ###
 
 * Adds compatibility with latest WordPress standards.

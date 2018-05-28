@@ -1,4 +1,9 @@
 
+ ### v2.1.2 - 2018-05-28 
+ **Changes:** 
+ * Removes redundant files present in distribution.
+* Sync ThemeIsle SDK code.
+ 
  ### v2.1.1 - 2018-01-05 
  **Changes:** 
  * Adds compatibility with latest WordPress standards.
