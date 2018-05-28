@@ -16,4 +16,5 @@ npm-debug.log
 dist
 artifact
 composer.json
+key.enc
 composer.lock

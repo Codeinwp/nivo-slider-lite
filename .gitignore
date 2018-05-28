@@ -6,3 +6,4 @@ composer.lock
 artifact/
 dist/
 bin/
+package-lock.json
