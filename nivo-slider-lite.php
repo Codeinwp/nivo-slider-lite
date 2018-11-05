@@ -117,7 +117,8 @@ function run_nivo_slider() {
 		require_once $vendor_file;
 	}
 	add_filter(
-		'themeisle_sdk_products', function ( $products ) {
+		'themeisle_sdk_products',
+        function ( $products ) {
 			$products[] = NIVO_SLIDER_PLUGIN_FILE;
 
 			return $products;

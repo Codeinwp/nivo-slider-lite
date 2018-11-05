@@ -120,9 +120,8 @@ class Nivo_Slider_Optml {
 			</p>
 			<div class="clear"></div>
 
-			<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( array(
-				'optml_upsell' => 'yes'
-			) ), 'remove_upsell_confirmation', 'remove_upsell' ) ); ?>" class="  notice-dismiss"><span
+			<a href="<?php echo wp_nonce_url( add_query_arg( array( 'optml_upsell' => 'yes' ) ), 'remove_upsell_confirmation', 'remove_upsell' ) ?>"
+			   class=" notice-dismiss"><span
 						class="screen-reader-text">Dismiss this notice.</span></a>
 		</div>
 		<?php
@@ -138,7 +137,7 @@ class Nivo_Slider_Optml {
 			'no_found_rows'          => true,
 			'update_post_meta_cache' => false,
 			'update_post_term_cache' => false,
-			'fields'                 => 'ids'
+			'fields'                 => 'ids',
 		);
 		$image_check       = new WP_Query( $query_images_args );
 		if ( count( $image_check->posts ) < 10 ) {
