@@ -69,7 +69,7 @@ class Nivo_Slider {
 	public function __construct() {
 
 		$this->plugin_name = 'nivo-slider';
-		$this->version     = '2.1.2';
+		$this->version     = '2.2.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
