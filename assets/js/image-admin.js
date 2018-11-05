@@ -270,8 +270,11 @@ jQuery( document ).ready(function($){
 					text: editing ? wp.media.view.l10n.updateGallery : wp.media.view.l10n.insertGallery,
 
 					click: function() {
-						var models = frame.state().get( 'library' ),
+						var state = frame.state(),
+							models = state.get('library'),
 							ids = '';
+
+						state.trigger( 'update', models );
 
 						models.each( function( attachment ) {
 							ids += attachment.id + ','
