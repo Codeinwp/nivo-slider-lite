@@ -107,7 +107,8 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 				// To force the enqueue of core scripts, pass [... force="true"].
 				'force'     => false,
 				'slug'      => '',
-			), $atts
+			),
+            $atts
 		);
 
 		if ( ! $sc['id'] && ! $sc['slug'] ) {
@@ -376,7 +377,9 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 		list( $prefix, $post_id ) = explode( '-', $id );
 		if ( get_post_type( $post_id ) == $this->labels['post_type'] ) {
 			$taxonomy = wp_get_post_terms(
-				$post_id, 'nivo_slider', array(
+				$post_id,
+                'nivo_slider',
+                array(
 					'fields' => 'names',
 				)
 			);
