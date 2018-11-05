@@ -35,7 +35,7 @@ class Nivo_Slider {
 	 *
 	 * @since    3.0.0
 	 * @access   protected
-	 * @var      Nivo_Slider_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Nivo_Slider_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,7 +44,7 @@ class Nivo_Slider {
 	 *
 	 * @since    3.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
@@ -53,7 +53,7 @@ class Nivo_Slider {
 	 *
 	 * @since    3.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -69,7 +69,7 @@ class Nivo_Slider {
 	public function __construct() {
 
 		$this->plugin_name = 'nivo-slider';
-		$this->version = '2.1.2';
+		$this->version     = '2.1.2';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -123,8 +123,8 @@ class Nivo_Slider {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
-		$plugin_admin = new Nivo_Slider_Admin( $this->get_plugin_name(), $this->get_version() );
-		$post_type = $plugin_admin::get_plugin_settings()->get_label( 'post_type' );
+		$plugin_admin           = new Nivo_Slider_Admin( $this->get_plugin_name(), $this->get_version() );
+		$post_type              = $plugin_admin::get_plugin_settings()->get_label( 'post_type' );
 		$plugin_shortcode_label = $plugin_admin::get_plugin_settings()->get_label( 'shortcode' );
 		// Actions Nivo_Slider_Admin
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
@@ -191,6 +191,47 @@ class Nivo_Slider {
 		$plugin_widget = new Nivo_Slider_Widget();
 		// Actions Nivo_Core_Shortcode
 		$this->loader->add_action( 'widgets_init', $plugin_widget, 'register_widget' );
+		$this->loader->add_action( 'plugins_loaded', 'Nivo_Slider_Optml', 'instance' );
+	}
+
+	/**
+	 * The name of the plugin used to uniquely identify it within the context of
+	 * WordPress and to define internationalization functionality.
+	 *
+	 * @since     3.0.0
+	 * @return    string    The name of the plugin.
+	 */
+	public function get_plugin_name() {
+		return $this->plugin_name;
+	}
+
+	/**
+	 * Retrieve the version number of the plugin.
+	 *
+	 * @since     3.0.0
+	 * @return    string    The version number of the plugin.
+	 */
+	public function get_version() {
+		return $this->version;
+	}
+
+	/**
+	 * Run the loader to execute all of the hooks with WordPress.
+	 *
+	 * @since    3.0.0
+	 */
+	public function run() {
+		$this->loader->run();
+	}
+
+	/**
+	 * The reference to the class that orchestrates the hooks with the plugin.
+	 *
+	 * @since     3.0.0
+	 * @return    Nivo_Slider_Loader    Orchestrates the hooks of the plugin.
+	 */
+	public function get_loader() {
+		return $this->loader;
 	}
 
 	/**
@@ -206,46 +247,6 @@ class Nivo_Slider {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-	}
-
-	/**
-	 * Run the loader to execute all of the hooks with WordPress.
-	 *
-	 * @since    3.0.0
-	 */
-	public function run() {
-		$this->loader->run();
-	}
-
-	/**
-	 * The name of the plugin used to uniquely identify it within the context of
-	 * WordPress and to define internationalization functionality.
-	 *
-	 * @since     3.0.0
-	 * @return    string    The name of the plugin.
-	 */
-	public function get_plugin_name() {
-		return $this->plugin_name;
-	}
-
-	/**
-	 * The reference to the class that orchestrates the hooks with the plugin.
-	 *
-	 * @since     3.0.0
-	 * @return    Nivo_Slider_Loader    Orchestrates the hooks of the plugin.
-	 */
-	public function get_loader() {
-		return $this->loader;
-	}
-
-	/**
-	 * Retrieve the version number of the plugin.
-	 *
-	 * @since     3.0.0
-	 * @return    string    The version number of the plugin.
-	 */
-	public function get_version() {
-		return $this->version;
 	}
 
 }
