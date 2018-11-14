@@ -13,6 +13,12 @@ class Nivo_Slider_Optml {
 	 * @var null Instance object.
 	 */
 	protected static $instance = null;
+	/**
+	 * Dismiss option key.
+	 *
+	 * @var string Dismiss option key.
+	 */
+	protected static $dismiss_key = 'optml_upsell_off';
 
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -47,7 +53,7 @@ class Nivo_Slider_Optml {
 		if ( ! wp_verify_nonce( $_GET['remove_upsell'], 'remove_upsell_confirmation' ) ) {
 			return;
 		}
-		update_option( 'optml_upsell_off', 'yes' );
+		update_option( self::$dismiss_key, 'yes' );
 	}
 
 	/**
@@ -67,16 +73,27 @@ class Nivo_Slider_Optml {
 			return;
 		}
 		$screen = get_current_screen();
-		if ( ! isset( $screen->parent_file ) ) {
-			return;
-		}
-		if ( $screen->parent_file !== 'edit.php?post_type=nivoslider' ) {
+		static $parent_whitelist = array(
+			'edit.php?post_type=nivoslider' => true,
+			'upload.php'                    => true,
+		);
+		static $base_whitelist = array(
+			'upload' => true,
+		);
+		if (
+			( ! isset( $screen->parent_file )
+			  || ! isset( $parent_whitelist[ $screen->parent_file ] )
+			) &&
+			( ! isset( $screen->base )
+			  || ! isset( $base_whitelist[ $screen->base ] )
+			)
+		) {
 			return;
 		}
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		if ( get_option( 'optml_upsell_off', 'no' ) === 'yes' ) {
+		if ( get_option( self::$dismiss_key, 'no' ) === 'yes' ) {
 			return;
 		}
 		?>
@@ -85,17 +102,20 @@ class Nivo_Slider_Optml {
 			a.button.optml-upsell-try {
 				float: right;
 				margin-top: -10px;
+				padding: 0 10px 1px !important;
 			}
 
-			.post-type-nivoslider #wpbody-content > *:not(#screen-meta):not(#screen-meta-links):not(.wrap):not(#pro-features) {
+			.post-type-nivoslider #wpbody-content > *:not(#screen-meta):not(#screen-meta-links):not(.wrap):not(#pro-features),
+			.upload-php #wpbody-content > *:not(#screen-meta):not(#screen-meta-links):not(.wrap):not(#pro-features),
+			.media-new-php #wpbody-content > *:not(#screen-meta):not(#screen-meta-links):not(.wrap):not(#pro-features) {
 				display: none;
 			}
 
-			.post-type-nivoslider #wpbody-content .optimole-notice-upsell .notice-dismiss {
+			#wpbody-content .optimole-notice-upsell .notice-dismiss {
 				text-decoration: none;
 			}
 
-			.post-type-nivoslider #wpbody-content .optimole-notice-upsell {
+			#wpbody-content .optimole-notice-upsell {
 				margin-top: 20px;
 				display: block !important;
 				padding-right: 40px;
@@ -110,12 +130,27 @@ class Nivo_Slider_Optml {
 				display: block;
 			}
 
+			.optimole-notice-upsell p a {
+				text-decoration: none;
+			}
+
+			.optimole-notice-upsell .optml-logo {
+				background: url("<?php echo esc_url( NIVO_SLIDER_PLUGIN_URL . 'assets/images/optimole-logo.png' ); ?>");
+				float: left;
+				width: 60px;
+				height: 60px;
+				background-size: cover;
+				display: block;
+				margin-right: 10px;
+			}
 		</style>
 		<div class="notice notice-success  optimole-notice-upsell">
-			<p> Improve your website loading speed by up to 2 seconds using <strong>Optimole - Image Optimization
-					Service</strong>. <br/>Optimole compress and delivers in average 70% smaller images and is fully
-				integrated with <strong> Nivo Slider</strong>. Try for out for free or get a 40% early adopter discount
-				with this code: <code>NIVOEARLY40</code>
+			<div class="optml-logo"></div>
+			<p>Improve your website loading speed by up to 2 seconds using <strong><a href="http://optimole.com"
+			                                                                          target="_blank">Optimole - Image
+						Optimization Service</a></strong>. <br/>Optimole compress and delivers in average 70% smaller
+				images and is fully integrated with <strong> Nivo Slider</strong>. Try for out for <strong>free</strong>
+				or get a 40% early adopter discount with this code: <code>NIVOEARLY40</code>
 				<?php echo wp_kses_post( $this->get_the_right_cta() ) ?>
 			</p>
 			<div class="clear"></div>
