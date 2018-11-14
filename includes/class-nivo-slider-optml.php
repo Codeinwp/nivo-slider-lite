@@ -33,8 +33,8 @@ class Nivo_Slider_Optml {
 	 * Drop-in actions
 	 */
 	public function init() {
-		add_action( 'admin_notices', array( $this, 'admin_notice' ), PHP_INT_MIN );
-		add_action( 'admin_init', array( $this, 'remove_notice' ), PHP_INT_MIN );
+		add_action( 'admin_notices', array( $this, 'admin_notice' ), defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : 99999 );
+		add_action( 'admin_init', array( $this, 'remove_notice' ), defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : 99999 );
 	}
 
 	/**
@@ -175,7 +175,7 @@ class Nivo_Slider_Optml {
 			'fields'                 => 'ids',
 		);
 		$image_check       = new WP_Query( $query_images_args );
-		if ( count( $image_check->posts ) < 10 ) {
+		if ( count( $image_check->posts ) < 5 ) {
 			return $this->get_plugin_install_btn();
 		}
 		$site_url = get_site_url();
