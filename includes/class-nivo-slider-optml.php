@@ -99,11 +99,7 @@ class Nivo_Slider_Optml {
 		?>
 		<style type="text/css">
 
-			a.button.optml-upsell-try {
-				float: right;
-				margin-top: -10px;
-				padding: 0 10px 1px !important;
-			}
+
 
 			.post-type-nivoslider #wpbody-content > *:not(#screen-meta):not(#screen-meta-links):not(.wrap):not(#pro-features),
 			.upload-php #wpbody-content > *:not(#screen-meta):not(#screen-meta-links):not(.wrap):not(#pro-features),
@@ -117,9 +113,10 @@ class Nivo_Slider_Optml {
 
 			#wpbody-content .optimole-notice-upsell {
 				margin-top: 20px;
-				display: block !important;
+				display: flex !important;
 				padding-right: 40px;
 				position: relative;
+				flex-wrap: wrap;
 			}
 
 			.nivoslider_page * #wpbody-content .optimole-notice-upsell ~ * {
@@ -136,23 +133,40 @@ class Nivo_Slider_Optml {
 
 			.optimole-notice-upsell .optml-logo {
 				background: url("<?php echo esc_url( NIVO_SLIDER_PLUGIN_URL . 'assets/images/optimole-logo.png' ); ?>");
-				float: left;
+				flex: 0 0 60px;
 				width: 60px;
 				height: 60px;
 				background-size: cover;
 				display: block;
 				margin-right: 10px;
 			}
+			a.button.optml-upsell-try {
+				padding: 0 10px 1px !important;
+				margin-top:10px;
+				width: 100px;
+				flex: 0 0 100px;
+			}
+			.optml-upsell-text{
+				flex: 1;
+			}
+			@media (max-width: 800px) {
+				a.button.optml-upsell-try{
+					width:100%;
+					flex: 0 0 100%;
+					padding:5px !important;
+					text-align: center;
+				}
+			}
 		</style>
 		<div class="notice notice-success  optimole-notice-upsell">
 			<div class="optml-logo"></div>
-			<p>Improve your website loading speed by up to 2 seconds using <strong><a href="http://optimole.com"
+			<p class="optml-upsell-text">Improve your website loading speed by up to 2 seconds using <strong><a href="http://optimole.com"
 			                                                                          target="_blank">Optimole - Image
 						Optimization Service</a></strong>. <br/>Optimole compress and delivers in average 70% smaller
 				images and is fully integrated with <strong> Nivo Slider</strong>. Try for out for <strong>free</strong>
 				or get a 40% early adopter discount with this code: <code>NIVOEARLY40</code>
-				<?php echo wp_kses_post( $this->get_the_right_cta() ) ?>
 			</p>
+			<?php echo wp_kses_post( $this->get_the_right_cta() ) ?>
 			<div class="clear"></div>
 
 			<a href="<?php echo wp_nonce_url( add_query_arg( array( 'optml_upsell' => 'yes' ) ), 'remove_upsell_confirmation', 'remove_upsell' ) ?>"
