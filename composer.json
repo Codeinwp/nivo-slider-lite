@@ -6,12 +6,6 @@
     "slider",
     "plugin"
   ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/Codeinwp/themeisle-sdk"
-    }
-  ],
   "homepage": "https://themeisle.com/plugins/nivo-slider-lite/",
   "license": "GPL-2.0+",
   "authors": [
@@ -27,20 +21,7 @@
     "source": "https://github.com/Codeinwp/nivo-slider-lite"
   },
   "require": {
-    "codeinwp/themeisle-sdk": "master",
-    "xrstf/composer-php52": "^1.0.20"
+    "codeinwp/themeisle-sdk": "master"
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "scripts": {
-    "post-install-cmd": [
-      "xrstf\\Composer52\\Generator::onPostInstallCmd"
-    ],
-    "post-update-cmd": [
-      "xrstf\\Composer52\\Generator::onPostInstallCmd"
-    ],
-    "post-autoload-dump": [
-      "xrstf\\Composer52\\Generator::onPostInstallCmd"
-    ]
-  }
+  "minimum-stability": "dev"
 }

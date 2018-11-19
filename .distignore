@@ -18,3 +18,5 @@ artifact
 composer.json
 key.enc
 composer.lock
+docker-compose.yml
+package-lock.json

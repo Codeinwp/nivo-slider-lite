@@ -2,8 +2,9 @@
 Contributors: themeisle, codeinwp, nivoslider
 Tags: slider, nivo,slider plugin, slideshow, slideshow plugin, template tag, wordpress gallery, wordpress image slider, wordpress photo gallery
 Requires at least: 3.0
-Tested up to: 4.9
+Tested up to: 5.0
 Stable tag: trunk
+Requires PHP: 5.3
 License: GPLv3
 
 Nivo Slider is The Most Popular And Easiest to Use Responsive WordPress Slider Plugin.

@@ -107,7 +107,8 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 				// To force the enqueue of core scripts, pass [... force="true"].
 				'force'     => false,
 				'slug'      => '',
-			), $atts
+			),
+            $atts
 		);
 
 		if ( ! $sc['id'] && ! $sc['slug'] ) {
@@ -376,7 +377,9 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 		list( $prefix, $post_id ) = explode( '-', $id );
 		if ( get_post_type( $post_id ) == $this->labels['post_type'] ) {
 			$taxonomy = wp_get_post_terms(
-				$post_id, 'nivo_slider', array(
+				$post_id,
+                'nivo_slider',
+                array(
 					'fields' => 'names',
 				)
 			);
@@ -488,7 +491,7 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 
 			if ( count( $images ) > 1 ) {
 				$output .= '<script type="text/javascript">' . "\n";
-				$output .= 'jQuery(window).load(function(){' . "\n";
+				$output .= 'window.onload = function(){' . "\n";
 				$output .= '    jQuery("#nivoslider-' . $id . '").nivoSlider({' . "\n";
 				$output .= '        effect:"' . $options['effect'] . '",' . "\n";
 				$output .= '        slices:' . $options['slices'] . ',' . "\n";
@@ -507,13 +510,13 @@ class Nivo_Core_Shortcode extends Nivo_Core_Abstract implements Nivo_Library_Int
 				$output .= '        pauseOnHover:' . ( ( $options['pauseOnHover'] == 'on' ) ? 'true' : 'false' ) . ',' . "\n";
 				$output .= '        manualAdvance:' . ( ( $options['manualAdvance'] == 'on' ) ? 'true' : 'false' ) . "\n";
 				$output .= '    });' . "\n";
-				$output .= '});' . "\n";
+				$output .= '};' . "\n";
 				$output .= '</script>' . "\n";
 			} else {
 				$output .= '<script type="text/javascript">' . "\n";
-				$output .= 'jQuery(window).load(function(){' . "\n";
+				$output .= 'window.onload = function(){' . "\n";
 				$output .= '    jQuery("#nivoslider-' . $id . ' img").css("position","relative").show();' . "\n";
-				$output .= '});' . "\n";
+				$output .= '}' . "\n";
 				$output .= '</script>' . "\n";
 			}
 		}
