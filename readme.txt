@@ -69,6 +69,12 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 4. The final result
 
 == Changelog ==
+= 2.2.0 - 2018-11-19  = 
+
+* Improve compatibility with Wordpress 5.0 + Gutenberg Editor. 
+* Adds integration with  Optimole - Image optimization service.
+
+
 = 2.1.2 - 2018-05-28  = 
 
 * Removes redundant files present in distribution.
