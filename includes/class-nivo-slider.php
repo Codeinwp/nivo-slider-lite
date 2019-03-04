@@ -139,7 +139,6 @@ class Nivo_Slider {
 		$this->loader->add_filter( $post_type . '_post_type_menu_icon', $plugin_admin, 'menu_icon' );
 		$this->loader->add_filter( $post_type . '_post_type_labels', $plugin_admin, 'plugin_labels' );
 		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links', 10, 2 );
-		$this->loader->add_filter( 'nivo_field_upsell', $plugin_admin, 'add_upsell', 10, 2 );
 		$this->loader->add_filter( 'nivo_slider_lite_logger_flag', $plugin_admin, 'check_logger', 10, 2 );
 		$this->loader->add_filter( 'get_nivo_settings', $plugin_admin, 'get_nivo_settings' );
 		$this->loader->add_filter( 'nivo_default_val', $plugin_admin, 'nivo_default_val', 10, 3 );

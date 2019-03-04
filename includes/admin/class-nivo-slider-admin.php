@@ -226,20 +226,6 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 	 * @access    public
 	 */
 	public function admin_menu() {
-		if ( ! class_exists( 'Nivo_Slider_PRO_Admin' ) ) {
-			add_submenu_page(
-                'edit.php?post_type=' . $this->labels['post_type'],
-                __( 'More Features', 'nivo-slider' ),
-                __( 'More Features', 'nivo-slider' ) . '<span class="dashicons 
-		dashicons-star-filled more-features-icon" style="   width: 17px;  height: 17px;  margin-left: 4px;  color: #ffca54;  font-size: 17px; vertical-align: -3px;"></span>',
-                'manage_options',
-                'nivo-slider-admin-menu-pro-upsell',
-                array(
-				$this,
-				'render_upsell',
-                )
-            );
-		}
 		add_submenu_page(
 			'edit.php?post_type=' . $this->labels['post_type'],
             'Settings',
@@ -251,31 +237,6 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 				'settings_page',
 			)
 		);
-	}
-
-	/**
-	 * Method used to render upsell page.
-	 *
-	 * @since   3.0.3
-	 * @access  public
-	 */
-	public function render_upsell() {
-		$this->load_layout( 'nivo-upsell' );
-	}
-
-	/**
-	 * Method used to render pages
-	 *
-	 * @since   3.0.3
-	 * @access  public
-	 *
-	 * @param   string $layout_name The name of the layout.
-	 *
-	 * @return mixed
-	 */
-	public function load_layout( $layout_name ) {
-		wp_enqueue_style( 'nivo-upsell', NIVO_SLIDER_PLUGIN_URL . '/includes/layouts/css/upsell.css' );
-		include( NIVO_SLIDER_PLUGIN_DIR . '/includes/layouts/' . $layout_name . '.php' );
 	}
 
 	/**
@@ -630,17 +591,6 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		//wp_enqueue_script( $this->plugin_name . '_admin', NIVO_SLIDER_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( $this->plugin_name . '_image_admin', NIVO_SLIDER_PLUGIN_URL . 'assets/js/image-admin.js', array( 'jquery' ), $this->version, false );
 
-	}
-
-	/**
-	 *  Returns the upsell message for specific area.
-	 */
-	public function add_upsell( $type ) {
-		switch ( $type ) {
-			case 'slider_type':
-				return '<span class="nivo-field-upsell">' . sprintf( __( 'You can automatically build slider from post galleries, categories and sticky posts using the %1$s FULL%2$s version.', 'nivo-slider' ), '<a href="' . NIVO_PRO_UPSELL . '" target="_blank">', '</a>' ) . '</span>';
-				break;
-		}
 	}
 
 }
