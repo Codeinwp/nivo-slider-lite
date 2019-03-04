@@ -411,7 +411,24 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 	 * @return string
 	 */
 	public function display_settings_intro() {
+		echo $this->display_upsell();
 		echo apply_filters( $this->labels['post_type'] . '_settings_intro', '' );
+	}
+
+	/**
+	 * Displays the upsell sidebar.
+	 *
+	 * @since    2.2.1
+	 * @access    public
+	 */
+	private function display_upsell() {
+		do_action(
+			NIVO_SLIDER_PLUGIN_NAME . '_upsell_products', array(
+				'otter-blocks' => 'Gutenberg Blocks',
+				'optimole-wp' => 'OptiMole',
+				'visualizer' => 'Visualizer',
+			), array(), array( 'install' => __( 'Install', 'nivo-slider' ) ), array( 'image' => 'icon' )
+		);
 	}
 
 	/**
@@ -562,8 +579,23 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+
+		$load_css = get_post_type() == $this->labels['post_type'];
+
+		if ( ! $load_css ) {
+			$screen = get_current_screen();
+
+			if ( ! isset( $screen->id ) ) {
+				return;
+			}
+
+			if ( 'nivoslider_page_nivoslider-settings' === $screen->id ) {
+				$load_css = true;
+			}
+		}
+
 		wp_enqueue_style( $this->plugin_name . '_nivo_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/nivo-slider.css', array(), $this->version, 'all' );
-		if ( get_post_type() == $this->labels['post_type'] ) {
+		if ( $load_css ) {
 			wp_enqueue_style( $this->plugin_name . '_admin_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/admin.css', array(), $this->version, 'all' );
 		}
 
