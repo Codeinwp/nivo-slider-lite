@@ -379,7 +379,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 				<input type="checkbox" name="<?php echo $element_name; ?>"
 				       value="on"<?php if ( $element_value == 'on' ) {
 							echo ' checked="checked"';
-} ?> class="<?php echo $element_class; ?> "/>
+									} ?> class="<?php echo $element_class; ?> "/>
 				<?php
 				break;
 			case 'select':
@@ -390,7 +390,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 						?>
 						<option value="<?php echo $value; ?>"<?php if ( $value == $element_value ) {
 							echo ' selected="selected"';
-} ?>><?php echo $name; ?></option>
+										} ?>><?php echo $name; ?></option>
 					<?php } ?>
 				</select>
 				<?php
@@ -423,11 +423,15 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 	 */
 	private function display_upsell() {
 		do_action(
-			NIVO_SLIDER_PLUGIN_NAME . '_upsell_products', array(
+			NIVO_SLIDER_PLUGIN_NAME . '_upsell_products',
+            array(
 				'otter-blocks' => 'Gutenberg Blocks',
 				'optimole-wp' => 'OptiMole',
 				'visualizer' => 'Visualizer',
-			), array(), array( 'install' => __( 'Install', 'nivo-slider' ) ), array( 'image' => 'icon' )
+			),
+            array(),
+            array( 'install' => __( 'Install', 'nivo-slider' ) ),
+            array( 'image' => 'icon' )
 		);
 	}
 
