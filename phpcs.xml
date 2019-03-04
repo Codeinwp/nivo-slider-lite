@@ -37,6 +37,7 @@
         <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
         <exclude name="PEAR.NamingConventions.ValidClassName" />
         <exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar" />
+        <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
     </rule>
     <rule ref="WordPress-Docs">
 
