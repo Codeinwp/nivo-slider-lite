@@ -20,8 +20,9 @@
     "issues": "https://github.com/Codeinwp/nivo-slider-lite/issues",
     "source": "https://github.com/Codeinwp/nivo-slider-lite"
   },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
   "require": {
-    "codeinwp/themeisle-sdk": "master"
-  },
-  "minimum-stability": "dev"
+    "codeinwp/themeisle-sdk": "^3.0"
+  }
 }

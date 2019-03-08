@@ -153,12 +153,12 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 			'post_id'   => ( isset( $post->ID ) ) ? $post->ID : '',
 			'labels'    => $this->labels,
 			'track_url' => add_query_arg(
-                array(
-				'nonce'  => wp_create_nonce( 'nivo-track' ),
-				'action' => 'track_url',
-                ),
-                admin_url( 'admin-ajax.php' )
-            ),
+				array(
+					'nonce'  => wp_create_nonce( 'nivo-track' ),
+					'action' => 'track_url',
+				),
+				admin_url( 'admin-ajax.php' )
+			),
 			'nonce'     => wp_create_nonce( $this->labels['post_type'] ),
 		);
 		$settings = apply_filters( $this->labels['post_type'] . '_script_settings', $settings );
@@ -168,11 +168,11 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		// Addition ends here.
 		// Galleries list for TinyMCE dropdown
 		$galleries = get_posts(
-            array(
-			'post_type'      => $this->labels['post_type'],
-			'posts_per_page' => - 1,
-            )
-        );
+			array(
+				'post_type'      => $this->labels['post_type'],
+				'posts_per_page' => - 1,
+			)
+		);
 		$list      = array();
 		foreach ( $galleries as $gallery ) {
 			$list[] = array(
@@ -226,56 +226,17 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 	 * @access    public
 	 */
 	public function admin_menu() {
-		if ( ! class_exists( 'Nivo_Slider_PRO_Admin' ) ) {
-			add_submenu_page(
-                'edit.php?post_type=' . $this->labels['post_type'],
-                __( 'More Features', 'nivo-slider' ),
-                __( 'More Features', 'nivo-slider' ) . '<span class="dashicons 
-		dashicons-star-filled more-features-icon" style="   width: 17px;  height: 17px;  margin-left: 4px;  color: #ffca54;  font-size: 17px; vertical-align: -3px;"></span>',
-                'manage_options',
-                'nivo-slider-admin-menu-pro-upsell',
-                array(
-				$this,
-				'render_upsell',
-                )
-            );
-		}
 		add_submenu_page(
 			'edit.php?post_type=' . $this->labels['post_type'],
-            'Settings',
-            'Settings',
-            'manage_options',
-            $this->labels['post_type'] . '-settings',
-            array(
+			'Settings',
+			'Settings',
+			'manage_options',
+			$this->labels['post_type'] . '-settings',
+			array(
 				$this,
 				'settings_page',
 			)
 		);
-	}
-
-	/**
-	 * Method used to render upsell page.
-	 *
-	 * @since   3.0.3
-	 * @access  public
-	 */
-	public function render_upsell() {
-		$this->load_layout( 'nivo-upsell' );
-	}
-
-	/**
-	 * Method used to render pages
-	 *
-	 * @since   3.0.3
-	 * @access  public
-	 *
-	 * @param   string $layout_name The name of the layout.
-	 *
-	 * @return mixed
-	 */
-	public function load_layout( $layout_name ) {
-		wp_enqueue_style( 'nivo-upsell', NIVO_SLIDER_PLUGIN_URL . '/includes/layouts/css/upsell.css' );
-		include( NIVO_SLIDER_PLUGIN_DIR . '/includes/layouts/' . $layout_name . '.php' );
 	}
 
 	/**
@@ -326,8 +287,33 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 					       value="<?php _e( 'Save Changes', 'nivo-slider' ); ?>">
 				</p>
 			</form>
+			<div class="nivo-sidebar-settings">
+				<h2><span class="dashicons dashicons-welcome-learn-more"></span> Nivo recommends</h2>
+				<?php $this->display_upsell(); ?>
+			</div>
 		</div>
+
 		<?php
+
+	}
+
+	/**
+	 * Displays the upsell sidebar.
+	 *
+	 * @since    2.2.1
+	 * @access    public
+	 */
+	private function display_upsell() {
+		do_action(
+			NIVO_SLIDER_PLUGIN_NAME . '_recommend_products',
+			array(
+				'otter-blocks' => 'Otter',
+				'optimole-wp'  => 'OptiMole',
+			),
+			array( 'neve' => 'Neve' ),
+			array( 'install' => __( 'More details', 'nivo-slider' ) ),
+			array( 'image' => 'icon' )
+		);
 	}
 
 	/**
@@ -339,20 +325,20 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 	public function register_settings() {
 		register_setting(
 			$this->labels['post_type'] . '-settings',
-            $this->labels['options_key'],
-            array(
+			$this->labels['options_key'],
+			array(
 				$this,
 				'settings_validate',
 			)
 		);
 		add_settings_section(
 			$this->labels['post_type'] . '-settings',
-            '',
-            array(
-			$this,
-			'display_settings_intro',
+			'',
+			array(
+				$this,
+				'display_settings_intro',
 			),
-            $this->labels['post_type'] . '-settings'
+			$this->labels['post_type'] . '-settings'
 		);
 		$settings[] = array(
 			'slug'  => 'custom-roles',
@@ -364,13 +350,13 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 			$function = 'setting_' . str_replace( '-', '_', $setting['slug'] );
 			add_settings_field(
 				$setting['slug'],
-                $setting['title'],
-                array(
-				$scope,
-				$function,
+				$setting['title'],
+				array(
+					$scope,
+					$function,
 				),
-                $this->labels['post_type'] . '-settings',
-                $this->labels['post_type'] . '-settings'
+				$this->labels['post_type'] . '-settings',
+				$this->labels['post_type'] . '-settings'
 			);
 		}
 	}
@@ -418,7 +404,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 				<input type="checkbox" name="<?php echo $element_name; ?>"
 				       value="on"<?php if ( $element_value == 'on' ) {
 							echo ' checked="checked"';
-} ?> class="<?php echo $element_class; ?> "/>
+				} ?> class="<?php echo $element_class; ?> "/>
 				<?php
 				break;
 			case 'select':
@@ -429,7 +415,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 						?>
 						<option value="<?php echo $value; ?>"<?php if ( $value == $element_value ) {
 							echo ' selected="selected"';
-} ?>><?php echo $name; ?></option>
+						} ?>><?php echo $name; ?></option>
 					<?php } ?>
 				</select>
 				<?php
@@ -601,8 +587,23 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+
+		$load_css = get_post_type() == $this->labels['post_type'];
+
+		if ( ! $load_css ) {
+			$screen = get_current_screen();
+
+			if ( ! isset( $screen->id ) ) {
+				return;
+			}
+
+			if ( 'nivoslider_page_nivoslider-settings' === $screen->id ) {
+				$load_css = true;
+			}
+		}
+
 		wp_enqueue_style( $this->plugin_name . '_nivo_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/nivo-slider.css', array(), $this->version, 'all' );
-		if ( get_post_type() == $this->labels['post_type'] ) {
+		if ( $load_css ) {
 			wp_enqueue_style( $this->plugin_name . '_admin_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/admin.css', array(), $this->version, 'all' );
 		}
 
@@ -630,17 +631,6 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		//wp_enqueue_script( $this->plugin_name . '_admin', NIVO_SLIDER_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( $this->plugin_name . '_image_admin', NIVO_SLIDER_PLUGIN_URL . 'assets/js/image-admin.js', array( 'jquery' ), $this->version, false );
 
-	}
-
-	/**
-	 *  Returns the upsell message for specific area.
-	 */
-	public function add_upsell( $type ) {
-		switch ( $type ) {
-			case 'slider_type':
-				return '<span class="nivo-field-upsell">' . sprintf( __( 'You can automatically build slider from post galleries, categories and sticky posts using the %1$s FULL%2$s version.', 'nivo-slider' ), '<a href="' . NIVO_PRO_UPSELL . '" target="_blank">', '</a>' ) . '</span>';
-				break;
-		}
 	}
 
 }

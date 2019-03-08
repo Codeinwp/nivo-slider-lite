@@ -304,28 +304,6 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
             $this->labels['post_type'],
             'side'
 		);
-		if ( ! defined( 'NIVO_SLIDER_PRO' ) ) {
-			add_meta_box(
-				$this->labels['post_type'] . '_usefullinks_box',
-                __( 'Full Version', 'nivo-slider' ),
-                array(
-					$this,
-					'meta_box_full_version',
-				),
-                $this->labels['post_type'],
-                'side'
-			);
-			add_meta_box(
-				$this->labels['post_type'] . '_enable_tracking',
-                __( 'Contribute to Nivo', 'nivo-slider' ),
-                array(
-					$this,
-					'enable_tracking',
-				),
-                $this->labels['post_type'],
-                'side'
-			);
-		}
 
 	}
 
@@ -349,28 +327,6 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 			echo ' or</p><p><code>&lt;?php ' . $this->labels['function'] . '( "' . $post->post_name . '" ); ?></code>';
 		}
 		echo '</p>';
-	}
-
-	/**
-	 * Adds upsell box to the edit screen
-	 *
-	 * @since    2.2.*
-	 * @access    public
-	 */
-	public function meta_box_full_version() {
-		?>
-		<div class="nivo-upsell-box">
-			<h3><?php _e( ' Extend Nivo Slider  ', 'nivo-slider' ); ?></h3>
-			<ul>
-				<li><?php _e( 'More slider types', 'nivo-slider' ); ?></li>
-				<li><?php _e( 'Build carousels', 'nivo-slider' ); ?></li>
-				<li><?php _e( 'Create lightboxes', 'nivo-slider' ); ?> </li>
-				<li><?php _e( 'Automatic updates', 'nivo-slider' ); ?></li>
-				<li><?php _e( 'Priority support', 'nivo-slider' ); ?></li>
-			</ul>
-			<a href="<?php echo NIVO_PRO_UPSELL; ?>" target="_blank" class="button button-primary">View more
-				features</a></div>
-		<?php
 	}
 
 	/**
@@ -428,7 +384,7 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 		global $post;
 		$options = get_post_meta( $post->ID, $this->labels['post_meta_key'], true );
 		wp_nonce_field( $this->labels['plugin_name'], $this->labels['post_type'] . '_noncename' );
-		echo '<input type="hidden" name="taxonomy" value="' . ( ( isset( $_GET['taxonomy'] ) ) ? $_GET['taxonomy'] : 'slider' ) . '" />';
+		echo '<input type="hidden" name="taxonomy" value="' . esc_attr( ( isset( $_GET['taxonomy'] ) ) ? $_GET['taxonomy'] : 'slider' ) . '" />';
 		?>
 		<table id="<?php echo $this->labels['post_type']; ?>-settings" class="form-table">
 			<tr valign="top">

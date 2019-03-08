@@ -142,7 +142,20 @@ input:checked + .nivo-slider:before {
 .nivo-tracking p small sup {
 	margin-left: -3px;
 }
+.nivo-sidebar-settings h2{
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+	width: 95%;
+}
+.nivo-sidebar-settings{
+	width:18%;
+	float:right;
 
+}
+#nivoslider-wrap form{
+	float:left;
+	width:80%;
+}
 .nivo-tracking p {
 	padding-left: 14px;
 	color: #23282d;
@@ -164,4 +177,12 @@ input:checked + .nivo-slider:before {
 	float: left;
 	margin-left: 3px;
 	border: 1px #ccc solid;
+}
+
+
+/** upsell box **/
+.upsell-product {
+	float: right;
+    width: 30%;
+    vertical-align: top;
 }

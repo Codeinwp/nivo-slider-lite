@@ -31,13 +31,13 @@
         <exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCase" />
         <exclude name="Squiz.Commenting" />
         <exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid" />
-        <exclude name="WordPress.Functions.DontExtract" />
         <exclude name="WordPress.NamingConventions.ValidVariableName.MemberNotSnakeCase" />
         <exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
         <exclude name="Squiz.PHP.CommentedOutCode" />
         <exclude name="WordPress.Files.FileName.InvalidClassFileName" />
         <exclude name="PEAR.NamingConventions.ValidClassName" />
         <exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar" />
+        <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
     </rule>
     <rule ref="WordPress-Docs">
 
