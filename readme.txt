@@ -69,6 +69,13 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 4. The final result
 
 == Changelog ==
+= 2.3.0 - 2019-03-08  = 
+
+* Tested up with WordPress 5.1
+* Fix escaping attribute issue
+* Remove mention of the pro plugin, discontinue integration on the Premium addon
+
+
 = 2.2.0 - 2018-11-19  = 
 
 * Improve compatibility with Wordpress 5.0 + Gutenberg Editor. 
