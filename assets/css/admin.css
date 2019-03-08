@@ -142,7 +142,20 @@ input:checked + .nivo-slider:before {
 .nivo-tracking p small sup {
 	margin-left: -3px;
 }
+.nivo-sidebar-settings h2{
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+	width: 95%;
+}
+.nivo-sidebar-settings{
+	width:18%;
+	float:right;
 
+}
+#nivoslider-wrap form{
+	float:left;
+	width:80%;
+}
 .nivo-tracking p {
 	padding-left: 14px;
 	color: #23282d;
@@ -172,11 +185,4 @@ input:checked + .nivo-slider:before {
 	float: right;
     width: 30%;
     vertical-align: top;
-}
-
-body.nivoslider_page_nivoslider-settings table.form-table {
-    float: left;
-    width: 65%;
-    vertical-align: top;
-	clear: none !important;
 }

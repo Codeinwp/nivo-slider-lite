@@ -142,7 +142,7 @@ class Nivo_Slider {
 		$this->loader->add_filter( 'nivo_slider_lite_logger_flag', $plugin_admin, 'check_logger', 10, 2 );
 		$this->loader->add_filter( 'get_nivo_settings', $plugin_admin, 'get_nivo_settings' );
 		$this->loader->add_filter( 'nivo_default_val', $plugin_admin, 'nivo_default_val', 10, 3 );
-		$this->loader->add_filter( NIVO_SLIDER_PLUGIN_NAME . '_enqueue_upsell', $this, 'nivo_upsell_plugins', 10, 2 );
+		$this->loader->add_filter( NIVO_SLIDER_PLUGIN_NAME . '_enqueue_recommend', $this, 'nivo_upsell_plugins', 10, 2 );
 
 		$plugin_admin_edit = new Nivo_Core_Admin_Edit();
 		// Actions Nivo_Core_Admin_Edit
