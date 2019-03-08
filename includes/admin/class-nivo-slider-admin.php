@@ -311,7 +311,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 				'optimole-wp'  => 'OptiMole',
 			),
 			array( 'neve' => 'Neve' ),
-			array( 'install' => __( 'Install', 'nivo-slider' ) ),
+			array( 'install' => __( 'More details', 'nivo-slider' ) ),
 			array( 'image' => 'icon' )
 		);
 	}
