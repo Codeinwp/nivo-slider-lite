@@ -1,4 +1,14 @@
 
+ ### v2.2.0 - 2018-11-19 
+ **Changes:** 
+ * Improve compatibility with Wordpress 5.0 + Gutenberg Editor. 
+* Adds integration with  Optimole - Image optimization service.
+ 
+ ### v2.1.2 - 2018-05-28 
+ **Changes:** 
+ * Removes redundant files present in distribution.
+* Sync ThemeIsle SDK code.
+ 
  ### v2.1.1 - 2018-01-05 
  **Changes:** 
  * Adds compatibility with latest WordPress standards.

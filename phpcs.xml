@@ -13,6 +13,7 @@
         <exclude name="Generic.Files.LowercasedFilename" />
         <exclude name="Generic.NamingConventions.UpperCaseConstantName" />
         <exclude name="Generic.PHP.NoSilencedErrors" />
+        <exclude name="WordPress.PHP.DontExtract.extract_extract" />
         <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSameWarning" />
         <exclude name="WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned" />
         <exclude name="Generic.Commenting.DocComment" />

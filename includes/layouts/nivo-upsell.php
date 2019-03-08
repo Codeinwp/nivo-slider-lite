@@ -6,6 +6,7 @@
  * @package  feedzy-rss-feeds
  */
 ?>
+
 <div id="pro-features" class="nivo-pro-upsell">
 
 	<div class="pro-features-header">
@@ -24,7 +25,8 @@
 	<div class="pro-feature">
 		<div class="pro-feature-features">
 			<h2>Create sliders from categories or galleries</h2>
-			<p>Besides the classic image sliders, Nivo allows you to choose between Category and Gallery sliders. This
+			<p>Besides the classic image sliders, Nivo allows you to choose between Category and Gallery sliders.
+				This
 				allows you to easily showcase your visitors your website’s content</p>
 		</div>
 		<div class="pro-feature-image">
@@ -47,7 +49,8 @@
 		<div class="pro-feature-features">
 			<h2>Carousel support</h2>
 			<p>You can leverage the use of the Nivo and create also powerfull carousels besides the regular sliders
-				which you are already familiar. You can add as many as you want and fetch images from posts, categories
+				which you are already familiar. You can add as many as you want and fetch images from posts,
+				categories
 				or custom post types.</p>
 		</div>
 		<div class="pro-feature-image">

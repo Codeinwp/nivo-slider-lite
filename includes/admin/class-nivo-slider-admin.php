@@ -152,10 +152,13 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		$settings = array(
 			'post_id'   => ( isset( $post->ID ) ) ? $post->ID : '',
 			'labels'    => $this->labels,
-			'track_url' => add_query_arg( array(
+			'track_url' => add_query_arg(
+                array(
 				'nonce'  => wp_create_nonce( 'nivo-track' ),
 				'action' => 'track_url',
-			), admin_url( 'admin-ajax.php' ) ),
+                ),
+                admin_url( 'admin-ajax.php' )
+            ),
 			'nonce'     => wp_create_nonce( $this->labels['post_type'] ),
 		);
 		$settings = apply_filters( $this->labels['post_type'] . '_script_settings', $settings );
@@ -164,10 +167,12 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		wp_localize_script( $this->labels['plugin_name'] . '_image_admin', 'nivo_plugin', $settings );
 		// Addition ends here.
 		// Galleries list for TinyMCE dropdown
-		$galleries = get_posts( array(
+		$galleries = get_posts(
+            array(
 			'post_type'      => $this->labels['post_type'],
 			'posts_per_page' => - 1,
-		) );
+            )
+        );
 		$list      = array();
 		foreach ( $galleries as $gallery ) {
 			$list[] = array(
@@ -222,14 +227,26 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 	 */
 	public function admin_menu() {
 		if ( ! class_exists( 'Nivo_Slider_PRO_Admin' ) ) {
-			add_submenu_page( 'edit.php?post_type=' . $this->labels['post_type'], __( 'More Features', 'nivo-slider' ), __( 'More Features', 'nivo-slider' ) . '<span class="dashicons 
-		dashicons-star-filled more-features-icon" style="   width: 17px;  height: 17px;  margin-left: 4px;  color: #ffca54;  font-size: 17px; vertical-align: -3px;"></span>', 'manage_options', 'nivo-slider-admin-menu-pro-upsell', array(
+			add_submenu_page(
+                'edit.php?post_type=' . $this->labels['post_type'],
+                __( 'More Features', 'nivo-slider' ),
+                __( 'More Features', 'nivo-slider' ) . '<span class="dashicons 
+		dashicons-star-filled more-features-icon" style="   width: 17px;  height: 17px;  margin-left: 4px;  color: #ffca54;  font-size: 17px; vertical-align: -3px;"></span>',
+                'manage_options',
+                'nivo-slider-admin-menu-pro-upsell',
+                array(
 				$this,
 				'render_upsell',
-			) );
+                )
+            );
 		}
 		add_submenu_page(
-			'edit.php?post_type=' . $this->labels['post_type'], 'Settings', 'Settings', 'manage_options', $this->labels['post_type'] . '-settings', array(
+			'edit.php?post_type=' . $this->labels['post_type'],
+            'Settings',
+            'Settings',
+            'manage_options',
+            $this->labels['post_type'] . '-settings',
+            array(
 				$this,
 				'settings_page',
 			)
@@ -321,16 +338,21 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 	 */
 	public function register_settings() {
 		register_setting(
-			$this->labels['post_type'] . '-settings', $this->labels['options_key'], array(
+			$this->labels['post_type'] . '-settings',
+            $this->labels['options_key'],
+            array(
 				$this,
 				'settings_validate',
 			)
 		);
 		add_settings_section(
-			$this->labels['post_type'] . '-settings', '', array(
+			$this->labels['post_type'] . '-settings',
+            '',
+            array(
 			$this,
 			'display_settings_intro',
-			), $this->labels['post_type'] . '-settings'
+			),
+            $this->labels['post_type'] . '-settings'
 		);
 		$settings[] = array(
 			'slug'  => 'custom-roles',
@@ -341,10 +363,14 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 			$scope    = ( isset( $setting['scope'] ) ) ? $setting['scope'] : $this;
 			$function = 'setting_' . str_replace( '-', '_', $setting['slug'] );
 			add_settings_field(
-				$setting['slug'], $setting['title'], array(
+				$setting['slug'],
+                $setting['title'],
+                array(
 				$scope,
 				$function,
-				), $this->labels['post_type'] . '-settings', $this->labels['post_type'] . '-settings'
+				),
+                $this->labels['post_type'] . '-settings',
+                $this->labels['post_type'] . '-settings'
 			);
 		}
 	}
