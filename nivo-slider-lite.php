@@ -106,6 +106,9 @@ function run_nivo_slider() {
 	if ( ! defined( 'NIVO_SLIDER_PLUGIN_BASENAME' ) ) {
 		define( 'NIVO_SLIDER_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 	}
+	if ( ! defined( 'NIVO_SLIDER_PLUGIN_NAME' ) ) {
+		define( 'NIVO_SLIDER_PLUGIN_NAME', 'nivo_slider_lite' );
+	}
 	if ( ! defined( 'NIVO_PRO_UPSELL' ) ) {
 		define( 'NIVO_PRO_UPSELL', 'https://themeisle.com/plugins/nivo-slider' );
 	}

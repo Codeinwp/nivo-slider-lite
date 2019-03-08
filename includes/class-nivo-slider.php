@@ -139,10 +139,10 @@ class Nivo_Slider {
 		$this->loader->add_filter( $post_type . '_post_type_menu_icon', $plugin_admin, 'menu_icon' );
 		$this->loader->add_filter( $post_type . '_post_type_labels', $plugin_admin, 'plugin_labels' );
 		$this->loader->add_filter( 'plugin_action_links', $plugin_admin, 'plugin_action_links', 10, 2 );
-		$this->loader->add_filter( 'nivo_field_upsell', $plugin_admin, 'add_upsell', 10, 2 );
 		$this->loader->add_filter( 'nivo_slider_lite_logger_flag', $plugin_admin, 'check_logger', 10, 2 );
 		$this->loader->add_filter( 'get_nivo_settings', $plugin_admin, 'get_nivo_settings' );
 		$this->loader->add_filter( 'nivo_default_val', $plugin_admin, 'nivo_default_val', 10, 3 );
+		$this->loader->add_filter( NIVO_SLIDER_PLUGIN_NAME . '_enqueue_upsell', $this, 'nivo_upsell_plugins', 10, 2 );
 
 		$plugin_admin_edit = new Nivo_Core_Admin_Edit();
 		// Actions Nivo_Core_Admin_Edit
@@ -192,6 +192,13 @@ class Nivo_Slider {
 		// Actions Nivo_Core_Shortcode
 		$this->loader->add_action( 'widgets_init', $plugin_widget, 'register_widget' );
 		$this->loader->add_action( 'plugins_loaded', 'Nivo_Slider_Optml', 'instance' );
+	}
+
+	/**
+	 * Validates the correct screen on which the assets for upsell should be loaded.
+	 */
+	function nivo_upsell_plugins( $return, $screen_id ) {
+		return $screen_id === 'nivoslider_page_nivoslider-settings';
 	}
 
 	/**
