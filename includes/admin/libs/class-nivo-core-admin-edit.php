@@ -305,6 +305,19 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
             'side'
 		);
 
+		if ( ! defined( 'OTTER_BLOCKS_VERSION' ) && current_user_can( 'manage_options' ) && version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
+			add_meta_box(
+				$this->labels['post_type'] . 'otter_notice',
+				__( 'Try Otter\'s Slider Block', 'nivo-slider' ),
+				array(
+					$this,
+					'meta_box_otter',
+				),
+				$this->labels['post_type'],
+				'side'
+			);
+		}
+
 	}
 
 	/**
@@ -327,6 +340,28 @@ class Nivo_Core_Admin_Edit extends Nivo_Core_Abstract implements Nivo_Library_In
 			echo ' or</p><p><code>&lt;?php ' . $this->labels['function'] . '( "' . $post->post_name . '" ); ?></code>';
 		}
 		echo '</p>';
+	}
+
+	/**
+	 * Adds the Shortcode meta box to the edit screen
+	 *
+	 * @since    2.2.*
+	 * @access    public
+	 */
+	public function meta_box_otter() {
+		$url = add_query_arg(
+			array(
+				'tab'       => 'plugin-information',
+				'plugin'    => 'otter-blocks',
+				'TB_iframe' => true,
+				'width'     => 800,
+				'height'    => 800,
+			),
+			network_admin_url( 'plugin-install.php' )
+		);
+
+		echo '<p>' . __( 'Nivo Slider recommends Otter for best in class Slider Block for WordPress\'s new Block Editor.', 'nivo-slider' ) . '</p>';
+		echo '<a href="' . esc_url( $url ) . '" class="button button-large thickbox">Try Otter</a>';
 	}
 
 	/**

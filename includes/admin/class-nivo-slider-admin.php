@@ -604,7 +604,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 
 		wp_enqueue_style( $this->plugin_name . '_nivo_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/nivo-slider.css', array(), $this->version, 'all' );
 		if ( $load_css ) {
-			wp_enqueue_style( $this->plugin_name . '_admin_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/admin.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name . '_admin_css', NIVO_SLIDER_PLUGIN_URL . 'assets/css/admin.css', array( 'thickbox' ), $this->version, 'all' );
 		}
 
 	}
@@ -629,7 +629,7 @@ class Nivo_Slider_Admin extends Nivo_Core_Abstract {
 		 */
 		wp_enqueue_script( $this->plugin_name . '_core_admin', NIVO_SLIDER_PLUGIN_URL . 'assets/js/core-admin.js', array( 'jquery' ), $this->version, false );
 		//wp_enqueue_script( $this->plugin_name . '_admin', NIVO_SLIDER_PLUGIN_URL . 'assets/js/admin.js', array( 'jquery' ), $this->version, false );
-		wp_enqueue_script( $this->plugin_name . '_image_admin', NIVO_SLIDER_PLUGIN_URL . 'assets/js/image-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name . '_image_admin', NIVO_SLIDER_PLUGIN_URL . 'assets/js/image-admin.js', array( 'jquery', 'thickbox' ), $this->version, false );
 
 	}
 
