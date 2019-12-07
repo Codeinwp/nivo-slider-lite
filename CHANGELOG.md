@@ -1,4 +1,8 @@
 
+ ### v2.3.1 - 2019-12-07 
+ **Changes:** 
+ * Tested up for wp 5.3 
+ 
  ### v2.3.0 - 2019-03-08 
  **Changes:** 
  * Tested up with WordPress 5.1

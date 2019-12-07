@@ -69,6 +69,11 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 4. The final result
 
 == Changelog ==
+= 2.3.1 - 2019-12-07  = 
+
+* Tested up for wp 5.3 
+
+
 = 2.3.0 - 2019-03-08  = 
 
 * Tested up with WordPress 5.1

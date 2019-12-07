@@ -2,7 +2,7 @@
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle), [codeinwp](https://profiles.wordpress.org/codeinwp), [nivoslider](https://profiles.wordpress.org/nivoslider)  
 **Tags:** slider, nivo,slider plugin, slideshow, slideshow plugin, template tag, wordpress gallery, wordpress image slider, wordpress photo gallery  
 **Requires at least:** 3.0  
-**Tested up to:** 5.1  
+**Tested up to:** 5.3  
 **Stable tag:** trunk  
 **Requires PHP:** 5.3  
 **License:** GPLv3  
@@ -69,6 +69,11 @@ Purchasing a license gets you access to the full version of the Nivo Slider Word
 4. The final result
 
 ## Changelog ##
+### 2.3.1 - 2019-12-07  ###
+
+* Tested up for wp 5.3 
+
+
 ### 2.3.0 - 2019-03-08  ###
 
 * Tested up with WordPress 5.1
